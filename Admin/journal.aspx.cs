@@ -11,4 +11,5 @@ public partial class Admin_journal : System.Web.UI.Page
     {
 
     }
+    
 }

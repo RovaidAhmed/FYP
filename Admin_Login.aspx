@@ -15,7 +15,6 @@
         }
         .txtbox{
             height:35px;
-            font-weight:bold;
             font-size:18px;
             width:100%;
             border-radius:25px;
@@ -50,18 +49,20 @@
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<asp:TextBox ID="TextBox2" runat="server" class="txtbox"></asp:TextBox>
+					<asp:TextBox ID="Txtusername" runat="server" class="txtbox"></asp:TextBox>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<asp:TextBox ID="TextBox1" runat="server" class="txtbox" TextMode="Password"></asp:TextBox>
+					<asp:TextBox ID="Txtpassword" runat="server" class="txtbox" TextMode="Password"></asp:TextBox>
 				</div>
+                <asp:Label ID="Lblcheck" runat="server" style="padding-left:150px;"></asp:Label>
+
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
 					<label for="check" class="label"><span class="icon"></span > Keep me Signed in</label>
 				</div>
 				<div class="group">
-					<asp:Button ID="Button1" runat="server" Text="Button" class="btn"/>
+					<asp:Button ID="btnsignin" runat="server" Text="Button" class="btn" OnClick="btnsignin_Click"/>
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -71,19 +72,19 @@
 			<div class="sign-up-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<asp:TextBox ID="TextBox3" runat="server" class="txtbox"></asp:TextBox>
+					<asp:TextBox ID="Txtsignupuser" runat="server" class="txtbox"></asp:TextBox>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<asp:TextBox ID="TextBox4" runat="server" class="txtbox" TextMode="Password"></asp:TextBox>
+					<asp:TextBox ID="Txtsignuppass" runat="server" class="txtbox" TextMode="Password"></asp:TextBox>
 				</div>
 				
 				<div class="group">
 					<label for="pass" class="label">Email Address</label>
-				<asp:TextBox ID="TextBox5" runat="server" class="txtbox"></asp:TextBox>
+				<asp:TextBox ID="Txtsignupemail" runat="server" class="txtbox"></asp:TextBox>
 				</div>
 				<div class="group">
-					<asp:Button ID="Button2" runat="server" Text="Button" class="btn" />
+					<asp:Button ID="btnsignup" runat="server" Text="Button" class="btn" OnClick="btnsignup_Click" />
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">

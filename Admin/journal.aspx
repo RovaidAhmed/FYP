@@ -39,7 +39,9 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="glyphicon glyphicon-lock"></i> Logout</a>
+                         
+                     <i class="glyphicon glyphicon-lock"> <asp:Label ID="Lbllogout" runat="server" Text="logout"></asp:Label> </i>
+                            </a>
                     </li>
                 </ul>
             </div>
