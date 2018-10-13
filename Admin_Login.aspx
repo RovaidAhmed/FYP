@@ -83,7 +83,7 @@
 				<asp:TextBox ID="TextBox5" runat="server" class="txtbox"></asp:TextBox>
 				</div>
 				<div class="group">
-					<asp:Button ID="Button2" runat="server" Text="Button" class="btn"/>
+					<asp:Button ID="Button2" runat="server" Text="Button" class="btn" />
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">

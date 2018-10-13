@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Researcher's Portal</title>
 
+   
       <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
@@ -14,24 +15,23 @@
 
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet"/>
-
+    <link href="css/bootstrap.css" rel="stylesheet" />
     <style>
       
-
         main {
             padding-top: 3rem;
             padding-bottom: 2rem;
         }
-
+        body{
+            font-size:15px;
+        }
         .extra-margins {
             margin-top: 1rem;
             margin-bottom: 2.5rem;
         }
-
         .navbar {
             background-color: #3b3b3f;
         }
-
         footer.page-footer {
             background-color: #3b3b3f;
             margin-top: 2rem;
@@ -42,8 +42,11 @@
         .navbar .btn-group .dropdown-menu a:active {
             color: #fff !important;
         }
+        .navbar-expand-lg .navbar-nav .nav-link{
+          padding-right: .5rem;
+          padding-left: 2.5rem;
+       }
     </style>
-   
 </head>
 <body>
     <form id="form1" runat="server">
@@ -74,7 +77,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Subscribe
                             </a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Favourite_Journal</a>
+                                <a class="dropdown-item" href="#"  style="font-size:13px;">Favourite_Journal</a>
                                 
                             </div>
                         </li>
@@ -110,7 +113,7 @@
                     <p>
                        We are providing a platform Where researchers have to find a journal according to their need and standard they face some        difficulties. Our main purpose to make this project is to provide easiness for students, professors or anyone who is interested in reading journals or want to publish their own research paper.
                         </p>
-                    <a href="" class="btn btn-info">let's Search</a>
+                    <a href="" class="btn btn-info"  style="font-size:14px;">let's Search</a>
                 </div>
             </div>
             <!--/.First row-->
@@ -133,7 +136,7 @@
                             <h4 class="card-title text-center">ISI</h4>
                             <hr>
                             <!--Text-->
-                            <p class="card-text">The ISI server provides indexing of major international journals and proceedings. Author can get information about international journal impact factor, proceedings (research papers) and information on upcoming events.
+                            <p class="card-text" style="font-size:15px;">The ISI server provides indexing of major international journals and proceedings. Author can get information about international journal impact factor, proceedings (research papers) and information on upcoming events.
                                 ISI Web Of Knowledge has 3 products: Web of Science ... The Science Edition covers about 5,700 leading international science journals from the ISI database.
                             </p>
                         </div>
@@ -157,7 +160,7 @@
                             <h4 class="card-title text-center">Scopus</h4>
                             <hr>
                             <!--Text-->
-                            <p class="card-text">Scopus is the world's largest abstract and citation database of peer-reviewed literature, including scientific journals, books and conference proceedings, covering research topics across all scientific and technical disciplines, ranging from medicine and social sciences to arts and humanities.
+                            <p class="card-text"  style="font-size:15px;">Scopus is the world's largest abstract and citation database of peer-reviewed literature, including scientific journals, books and conference proceedings, covering research topics across all scientific and technical disciplines, ranging from medicine and social sciences to arts and humanities.
                                 Hindawi's journals are indexed in hundreds of Abstracting and Indexing databases.
                             </p>
                         </div>
@@ -181,7 +184,7 @@
                             <h4 class="card-title text-center">Emerald</h4>
                             <hr>
                             <!--Text-->
-                            <p class="card-text">Emerald is committed to providing peer-reviewed, international content that can be trusted by the researchers, students and professionals we serve. Combining research rigour with practical relevance, our eJournal Collections focus on showcasing novel and thought-provoking work by leading authors in their fields.</p>
+                            <p class="card-text"  style="font-size:15px;">Emerald is committed to providing peer-reviewed, international content that can be trusted by the researchers, students and professionals we serve. Combining research rigour with practical relevance, our eJournal Collections focus on showcasing novel and thought-provoking work by leading authors in their fields.</p>
                         </div>
 
                     </div>
@@ -198,86 +201,28 @@
     <!--Footer-->
     <footer class="page-footer center-on-small-only">
 
-        <!--Footer links-->
+        <%--<!--Footer links-->
         <div class="container-fluid">
             <div class="row">
                 <!--First column-->
-                <div class="col-lg-3 col-md-6 ml-auto">
+                <div class="col-lg-offset-4 "></div>
+                <div class="col-lg-12 col-md-6 ml-auto">
                     <h5 class="title mb-3"><strong>About </strong></h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google.</p>
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS,
-                        and JS framework - Bootstrap.</p>
+                    <p> hp</p>
                 </div>
                 <!--/.First column-->
                 <hr class="w-100 clearfix d-sm-none">
-                <!--Second column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>First column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-                <hr class="w-100 clearfix d-sm-none">
-                <!--Third column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>Second column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-                <hr class="w-100 clearfix d-sm-none">
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>Third column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
+                
+                
             </div>
-        </div>
+        </div>--%>
         <!--/.Footer links-->
 
      
 
         <!--Copyright-->
         <div class="footer-copyright">
-            <div class="container-fluid">
+            <div class="container-fluid"  style="font-size:15px;">
                 © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcher's Portal</a>
 
             </div>
@@ -294,7 +239,7 @@
 
 </body>
      <!-- SCRIPTS -->
-<scripts>
+
         
 
      <!-- JQuery -->
@@ -312,6 +257,6 @@
     <script>
         new WOW().init();
     </script>
-    </scripts>
+    
 
 </html>
