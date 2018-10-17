@@ -13,7 +13,7 @@ public partial class Admin_Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void btnsignup_Click(object sender, EventArgs e)
@@ -39,6 +39,7 @@ public partial class Admin_Login : System.Web.UI.Page
     protected void btnsignin_Click(object sender, EventArgs e)
     {
 
+        
         //compare
         var check = from c in dv.admins
                    where c.ad_name==Txtusername.Text &&
@@ -49,8 +50,10 @@ public partial class Admin_Login : System.Web.UI.Page
         if (check.Any())
         {
 
-           Lblcheck.Text = "success";
-
+           
+            Lblcheck.Text = "success";
+            Session["username"] = Txtusername.Text;
+            Session["password"] = Txtpassword.Text;
             Response.Redirect("./Admin/journal.aspx");
         }
 
@@ -61,6 +64,7 @@ public partial class Admin_Login : System.Web.UI.Page
         {
 
             Lblcheck.Text = "Please check again";
+          
 
 
         } //compare 

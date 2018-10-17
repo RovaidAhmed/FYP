@@ -11,4 +11,6 @@ public partial class Admin_edit_or_delete_author : System.Web.UI.Page
     {
 
     }
+
+   
 }

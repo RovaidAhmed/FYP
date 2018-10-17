@@ -1,10 +1,10 @@
-﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeFile="journal.aspx.cs" Inherits="Admin_journal" %>--%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="journal.aspx.cs" Inherits="Admin_Admin" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <title> Researcher's portal</title>
+      <title> Researcher's portal</title>
      <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/sidebar.css" />
@@ -13,7 +13,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    
     <div id="top-nav" class="navbar navbar-inverse navbar-static-top box-shadow">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -28,20 +27,19 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-                            <i class="glyphicon glyphicon-user"></i> Admin
-                            <span class="caret"></span>
+                            <i class="glyphicon glyphicon-user">
+                                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></i>
+                            
                         </a>
                         <ul id="g-account-menu" class="dropdown-menu" role="menu">
                             <li>
                                 <a href="#">My Profile</a>
                             </li>
+                           
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
-                         
-                     <i class="glyphicon glyphicon-lock"> <asp:Label ID="Lbllogout" runat="server" Text="logout"></asp:Label> </i>
-                            </a>
+                    
                     </li>
                 </ul>
             </div>
@@ -134,6 +132,7 @@
                     </li>
 
                     <hr>
+                    <asp:Button ID="Button1" runat="server" Text="Logout" OnClick="Button1_Click1" cssclass="btn btn-warning"/>
 
                   
                     
@@ -214,50 +213,50 @@
 
 
 
-                                        <form>
+                                        </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Journal type</label>
-                                                <asp:TextBox ID="Txtjournaltype" runat="server" CssClass="form-control" placeholder="journal type" required="required"></asp:TextBox>
+                                                <asp:TextBox ID="Txtjournaltype" runat="server" CssClass="form-control" placeholder="journal type" ></asp:TextBox>
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">DOP</label>
-                                                 <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" placeholder="DOB" required="required"></asp:TextBox>
+                                                 <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" placeholder="DOB" ></asp:TextBox>
 
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Impact factor</label>
-                                              <asp:TextBox ID="TxtImpactf" runat="server" CssClass="form-control" placeholder="Impact factor" required="required"></asp:TextBox>
+                                              <asp:TextBox ID="TxtImpactf" runat="server" CssClass="form-control" placeholder="Impact factor"></asp:TextBox>
        
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">keywords</label>
-                                         <asp:TextBox ID="Txtkeywords" runat="server" CssClass="form-control" placeholder="keywords" required="required"></asp:TextBox>
+                                         <asp:TextBox ID="Txtkeywords" runat="server" CssClass="form-control" placeholder="keywords" ></asp:TextBox>
 
                                             </div>
                                             <div class="form-group">
                                                     <label for="exampleInputPassword1">Index_Name</label>
-                                             <asp:TextBox ID="Txtindexname" runat="server" CssClass="form-control" placeholder="Index Name" required="required"></asp:TextBox>
+                                             <asp:TextBox ID="Txtindexname" runat="server" CssClass="form-control" placeholder="Index Name" ></asp:TextBox>
 
                                                 </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Category</label>
-                                       <asp:TextBox ID="Txtcategory" runat="server" CssClass="form-control" placeholder="Category" required="required"></asp:TextBox>
+                                       <asp:TextBox ID="Txtcategory" runat="server" CssClass="form-control" placeholder="Category" ></asp:TextBox>
 
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Publication link</label>
-                                              <asp:TextBox ID="TxtPublication" runat="server" CssClass="form-control" placeholder="Publication link" required="required"></asp:TextBox>
+                                              <asp:TextBox ID="TxtPublication" runat="server" CssClass="form-control" placeholder="Publication link" ></asp:TextBox>
 
                                             </br>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">citations</label>
-                                             <asp:TextBox ID="Txtcitations" runat="server" CssClass="form-control" placeholder="citations" required="required"></asp:TextBox>
+                                             <asp:TextBox ID="Txtcitations" runat="server" CssClass="form-control" placeholder="citations" ></asp:TextBox>
 
                                             </br>
-                                           <asp:Button ID="btnjournal" runat="server" Text="Submit" CssClass="btn btn-primary"/>
-                                        </form>
+                                           <asp:Button ID="btnjournal" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnjournal_Click"/>
+                                        </div>
 
                                     </div>
                                     <div class="tab-pane fade" id="tab2primary">
@@ -320,7 +319,9 @@
                                 <hr>
 
 
-                                <hr>
+                                <p>
+                                    &nbsp;</p>
+    </form>
 
                                 <!--/col-span-9-->
                             </div>
@@ -349,6 +350,8 @@
                             </div>
                             <!-- /.modal-dalog -->
                         </div>
+
+                        
     </form>
 </body>
 </html>
