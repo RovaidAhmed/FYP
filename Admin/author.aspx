@@ -186,52 +186,58 @@
 
                         </div>
                         <div class="tab-pane fade" id="tab2primary">
-						<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-	      <th>option</th>
-	  
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>roviii@gmail.com</td>
-	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>tari@gmail.com</td>
-	  	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>twitter@gmail.com</td>
-	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
-						</div>
-                   
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>option</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>roviii@gmail.com</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning">Edit</button></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>tari@gmail.com</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning">Edit</button></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter@gmail.com</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning">Edit</button></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-	</div>
-</div>
+                </div>
+            </div>
 
 <style>
 
@@ -242,10 +248,10 @@
             </div>
             <!--/row-->
 
-            <hr>
+            <hr/>
 
 
-            <hr>
+            <hr/>
 
                   
     </div>
