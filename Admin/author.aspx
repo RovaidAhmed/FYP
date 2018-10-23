@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="author.aspx.cs" Inherits="Admin_author" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeFile="author.aspx.cs" Inherits="Admin_author" %>
 
 <!DOCTYPE html>
 

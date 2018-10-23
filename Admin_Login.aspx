@@ -14,6 +14,9 @@
            
         }
         .txtbox{
+            padding-left:25px !important;
+        }
+        .txtbox{
             height:35px;
             font-size:18px;
             width:100%;

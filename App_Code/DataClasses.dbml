@@ -18,19 +18,19 @@
       <Association Name="author_research_paper_author" Member="research_paper_authors" ThisKey="a_id" OtherKey="a_id" Type="research_paper_author" />
     </Type>
   </Table>
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="c_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="category_Journal" Member="Journals" ThisKey="c_id" OtherKey="c_id" Type="Journal" />
+    </Type>
+  </Table>
   <Table Name="dbo.favourite_list" Member="favourite_lists">
     <Type Name="favourite_list">
       <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="u_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Journal_favourite_list" Member="Journal" ThisKey="j_id" OtherKey="j_id" Type="Journal" IsForeignKey="true" />
       <Association Name="user_favourite_list" Member="user" ThisKey="u_id" OtherKey="u_id" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.category" Member="categories">
-    <Type Name="category">
-      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="c_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="category_Journal" Member="Journals" ThisKey="c_id" OtherKey="c_id" Type="Journal" />
     </Type>
   </Table>
   <Table Name="dbo.[index]" Member="indexes">
@@ -42,15 +42,15 @@
   </Table>
   <Table Name="dbo.Journal" Member="Journals">
     <Type Name="Journal">
-      <Column Name="DOP" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Impact_factor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="J_type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="YOP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Impact_factor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="J_name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="index_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="citations" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ad_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Publication_link" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="citations" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Publication_link" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="c_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ad_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Journal_favourite_list" Member="favourite_lists" ThisKey="j_id" OtherKey="j_id" Type="favourite_list" />
       <Association Name="Journal_journal_index" Member="journal_indexes" ThisKey="j_id" OtherKey="j_id" Type="journal_index" />
       <Association Name="Journal_research_paper" Member="research_papers" ThisKey="j_id" OtherKey="j_id" Type="research_paper" />

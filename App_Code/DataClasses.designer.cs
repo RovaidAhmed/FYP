@@ -98,19 +98,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<favourite_list> favourite_lists
-	{
-		get
-		{
-			return this.GetTable<favourite_list>();
-		}
-	}
-	
 	public System.Data.Linq.Table<category> categories
 	{
 		get
 		{
 			return this.GetTable<category>();
+		}
+	}
+	
+	public System.Data.Linq.Table<favourite_list> favourite_lists
+	{
+		get
+		{
+			return this.GetTable<favourite_list>();
 		}
 	}
 	
@@ -467,51 +467,6 @@ public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
-public partial class favourite_list
-{
-	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public favourite_list()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
 public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -626,6 +581,51 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
+public partial class favourite_list
+{
+	
+	private int _j_id;
+	
+	private int _u_id;
+	
+	public favourite_list()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this._u_id = value;
+			}
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[index]")]
 public partial class index : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -718,23 +718,23 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private System.DateTime _DOP;
+	private int _j_id;
+	
+	private int _YOP;
 	
 	private string _Impact_factor;
 	
-	private int _j_id;
-	
-	private string _J_type;
+	private string _J_name;
 	
 	private int _index_id;
 	
 	private string _citations;
 	
-	private int _ad_id;
-	
 	private string _Publication_link;
 	
-	private int _c_id;
+	private System.Nullable<int> _c_id;
+	
+	private System.Nullable<int> _ad_id;
 	
 	private EntitySet<research_paper> _research_papers;
 	
@@ -746,24 +746,24 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnDOPChanging(System.DateTime value);
-    partial void OnDOPChanged();
-    partial void OnImpact_factorChanging(string value);
-    partial void OnImpact_factorChanged();
     partial void Onj_idChanging(int value);
     partial void Onj_idChanged();
-    partial void OnJ_typeChanging(string value);
-    partial void OnJ_typeChanged();
+    partial void OnYOPChanging(int value);
+    partial void OnYOPChanged();
+    partial void OnImpact_factorChanging(string value);
+    partial void OnImpact_factorChanged();
+    partial void OnJ_nameChanging(string value);
+    partial void OnJ_nameChanged();
     partial void Onindex_idChanging(int value);
     partial void Onindex_idChanged();
     partial void OncitationsChanging(string value);
     partial void OncitationsChanged();
-    partial void Onad_idChanging(int value);
-    partial void Onad_idChanged();
     partial void OnPublication_linkChanging(string value);
     partial void OnPublication_linkChanged();
-    partial void Onc_idChanging(int value);
+    partial void Onc_idChanging(System.Nullable<int> value);
     partial void Onc_idChanged();
+    partial void Onad_idChanging(System.Nullable<int> value);
+    partial void Onad_idChanged();
     #endregion
 	
 	public Journal()
@@ -774,22 +774,42 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOP", DbType="Date NOT NULL")]
-	public System.DateTime DOP
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int j_id
 	{
 		get
 		{
-			return this._DOP;
+			return this._j_id;
 		}
 		set
 		{
-			if ((this._DOP != value))
+			if ((this._j_id != value))
 			{
-				this.OnDOPChanging(value);
+				this.Onj_idChanging(value);
 				this.SendPropertyChanging();
-				this._DOP = value;
-				this.SendPropertyChanged("DOP");
-				this.OnDOPChanged();
+				this._j_id = value;
+				this.SendPropertyChanged("j_id");
+				this.Onj_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YOP", DbType="Int NOT NULL")]
+	public int YOP
+	{
+		get
+		{
+			return this._YOP;
+		}
+		set
+		{
+			if ((this._YOP != value))
+			{
+				this.OnYOPChanging(value);
+				this.SendPropertyChanging();
+				this._YOP = value;
+				this.SendPropertyChanged("YOP");
+				this.OnYOPChanged();
 			}
 		}
 	}
@@ -814,42 +834,22 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int j_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+	public string J_name
 	{
 		get
 		{
-			return this._j_id;
+			return this._J_name;
 		}
 		set
 		{
-			if ((this._j_id != value))
+			if ((this._J_name != value))
 			{
-				this.Onj_idChanging(value);
+				this.OnJ_nameChanging(value);
 				this.SendPropertyChanging();
-				this._j_id = value;
-				this.SendPropertyChanged("j_id");
-				this.Onj_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string J_type
-	{
-		get
-		{
-			return this._J_type;
-		}
-		set
-		{
-			if ((this._J_type != value))
-			{
-				this.OnJ_typeChanging(value);
-				this.SendPropertyChanging();
-				this._J_type = value;
-				this.SendPropertyChanged("J_type");
-				this.OnJ_typeChanged();
+				this._J_name = value;
+				this.SendPropertyChanged("J_name");
+				this.OnJ_nameChanged();
 			}
 		}
 	}
@@ -874,7 +874,7 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_citations", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_citations", DbType="NVarChar(50)")]
 	public string citations
 	{
 		get
@@ -894,31 +894,7 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="Int NOT NULL")]
-	public int ad_id
-	{
-		get
-		{
-			return this._ad_id;
-		}
-		set
-		{
-			if ((this._ad_id != value))
-			{
-				if (this._admin.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onad_idChanging(value);
-				this.SendPropertyChanging();
-				this._ad_id = value;
-				this.SendPropertyChanged("ad_id");
-				this.Onad_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publication_link", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publication_link", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
 	public string Publication_link
 	{
 		get
@@ -938,8 +914,8 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", DbType="Int NOT NULL")]
-	public int c_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", DbType="Int")]
+	public System.Nullable<int> c_id
 	{
 		get
 		{
@@ -958,6 +934,30 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 				this._c_id = value;
 				this.SendPropertyChanged("c_id");
 				this.Onc_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="Int")]
+	public System.Nullable<int> ad_id
+	{
+		get
+		{
+			return this._ad_id;
+		}
+		set
+		{
+			if ((this._ad_id != value))
+			{
+				if (this._admin.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onad_idChanging(value);
+				this.SendPropertyChanging();
+				this._ad_id = value;
+				this.SendPropertyChanged("ad_id");
+				this.Onad_idChanged();
 			}
 		}
 	}
@@ -1002,7 +1002,7 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 				}
 				else
 				{
-					this._ad_id = default(int);
+					this._ad_id = default(Nullable<int>);
 				}
 				this.SendPropertyChanged("admin");
 			}
@@ -1036,7 +1036,7 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 				}
 				else
 				{
-					this._c_id = default(int);
+					this._c_id = default(Nullable<int>);
 				}
 				this.SendPropertyChanged("category");
 			}
