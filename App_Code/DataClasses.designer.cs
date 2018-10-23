@@ -32,12 +32,12 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertadmin(admin instance);
   partial void Updateadmin(admin instance);
   partial void Deleteadmin(admin instance);
-  partial void Insertauthor(author instance);
-  partial void Updateauthor(author instance);
-  partial void Deleteauthor(author instance);
   partial void Insertcategory(category instance);
   partial void Updatecategory(category instance);
   partial void Deletecategory(category instance);
+  partial void Insertauthor(author instance);
+  partial void Updateauthor(author instance);
+  partial void Deleteauthor(author instance);
   partial void Insertindex(index instance);
   partial void Updateindex(index instance);
   partial void Deleteindex(index instance);
@@ -90,19 +90,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<author> authors
-	{
-		get
-		{
-			return this.GetTable<author>();
-		}
-	}
-	
 	public System.Data.Linq.Table<category> categories
 	{
 		get
 		{
 			return this.GetTable<category>();
+		}
+	}
+	
+	public System.Data.Linq.Table<author> authors
+	{
+		get
+		{
+			return this.GetTable<author>();
 		}
 	}
 	
@@ -154,19 +154,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<subscription> subscriptions
-	{
-		get
-		{
-			return this.GetTable<subscription>();
-		}
-	}
-	
 	public System.Data.Linq.Table<user> users
 	{
 		get
 		{
 			return this.GetTable<user>();
+		}
+	}
+	
+	public System.Data.Linq.Table<subscription> subscriptions
+	{
+		get
+		{
+			return this.GetTable<subscription>();
 		}
 	}
 }
@@ -333,6 +333,120 @@ public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
+public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _c_id;
+	
+	private string _c_name;
+	
+	private EntitySet<Journal> _Journals;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onc_idChanging(int value);
+    partial void Onc_idChanged();
+    partial void Onc_nameChanging(string value);
+    partial void Onc_nameChanged();
+    #endregion
+	
+	public category()
+	{
+		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int c_id
+	{
+		get
+		{
+			return this._c_id;
+		}
+		set
+		{
+			if ((this._c_id != value))
+			{
+				this.Onc_idChanging(value);
+				this.SendPropertyChanging();
+				this._c_id = value;
+				this.SendPropertyChanged("c_id");
+				this.Onc_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string c_name
+	{
+		get
+		{
+			return this._c_name;
+		}
+		set
+		{
+			if ((this._c_name != value))
+			{
+				this.Onc_nameChanging(value);
+				this.SendPropertyChanging();
+				this._c_name = value;
+				this.SendPropertyChanged("c_name");
+				this.Onc_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
+	public EntitySet<Journal> Journals
+	{
+		get
+		{
+			return this._Journals;
+		}
+		set
+		{
+			this._Journals.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = this;
+	}
+	
+	private void detach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = null;
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
 public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -464,120 +578,6 @@ public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
-public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _c_id;
-	
-	private string _c_name;
-	
-	private EntitySet<Journal> _Journals;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onc_idChanging(int value);
-    partial void Onc_idChanged();
-    partial void Onc_nameChanging(string value);
-    partial void Onc_nameChanged();
-    #endregion
-	
-	public category()
-	{
-		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int c_id
-	{
-		get
-		{
-			return this._c_id;
-		}
-		set
-		{
-			if ((this._c_id != value))
-			{
-				this.Onc_idChanging(value);
-				this.SendPropertyChanging();
-				this._c_id = value;
-				this.SendPropertyChanged("c_id");
-				this.Onc_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string c_name
-	{
-		get
-		{
-			return this._c_name;
-		}
-		set
-		{
-			if ((this._c_name != value))
-			{
-				this.Onc_nameChanging(value);
-				this.SendPropertyChanging();
-				this._c_name = value;
-				this.SendPropertyChanged("c_name");
-				this.Onc_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
-	public EntitySet<Journal> Journals
-	{
-		get
-		{
-			return this._Journals;
-		}
-		set
-		{
-			this._Journals.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = this;
-	}
-	
-	private void detach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = null;
 	}
 }
 
@@ -720,17 +720,17 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _j_id;
 	
-	private int _YOP;
+	private string _J_name;
 	
 	private string _Impact_factor;
 	
-	private string _J_name;
-	
-	private int _index_id;
-	
 	private string _citations;
 	
+	private int _YOP;
+	
 	private string _Publication_link;
+	
+	private int _index_id;
 	
 	private System.Nullable<int> _c_id;
 	
@@ -748,18 +748,18 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnCreated();
     partial void Onj_idChanging(int value);
     partial void Onj_idChanged();
-    partial void OnYOPChanging(int value);
-    partial void OnYOPChanged();
-    partial void OnImpact_factorChanging(string value);
-    partial void OnImpact_factorChanged();
     partial void OnJ_nameChanging(string value);
     partial void OnJ_nameChanged();
-    partial void Onindex_idChanging(int value);
-    partial void Onindex_idChanged();
+    partial void OnImpact_factorChanging(string value);
+    partial void OnImpact_factorChanged();
     partial void OncitationsChanging(string value);
     partial void OncitationsChanged();
+    partial void OnYOPChanging(int value);
+    partial void OnYOPChanged();
     partial void OnPublication_linkChanging(string value);
     partial void OnPublication_linkChanged();
+    partial void Onindex_idChanging(int value);
+    partial void Onindex_idChanged();
     partial void Onc_idChanging(System.Nullable<int> value);
     partial void Onc_idChanged();
     partial void Onad_idChanging(System.Nullable<int> value);
@@ -794,22 +794,22 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YOP", DbType="Int NOT NULL")]
-	public int YOP
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+	public string J_name
 	{
 		get
 		{
-			return this._YOP;
+			return this._J_name;
 		}
 		set
 		{
-			if ((this._YOP != value))
+			if ((this._J_name != value))
 			{
-				this.OnYOPChanging(value);
+				this.OnJ_nameChanging(value);
 				this.SendPropertyChanging();
-				this._YOP = value;
-				this.SendPropertyChanged("YOP");
-				this.OnYOPChanged();
+				this._J_name = value;
+				this.SendPropertyChanged("J_name");
+				this.OnJ_nameChanged();
 			}
 		}
 	}
@@ -834,46 +834,6 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-	public string J_name
-	{
-		get
-		{
-			return this._J_name;
-		}
-		set
-		{
-			if ((this._J_name != value))
-			{
-				this.OnJ_nameChanging(value);
-				this.SendPropertyChanging();
-				this._J_name = value;
-				this.SendPropertyChanged("J_name");
-				this.OnJ_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
-	public int index_id
-	{
-		get
-		{
-			return this._index_id;
-		}
-		set
-		{
-			if ((this._index_id != value))
-			{
-				this.Onindex_idChanging(value);
-				this.SendPropertyChanging();
-				this._index_id = value;
-				this.SendPropertyChanged("index_id");
-				this.Onindex_idChanged();
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_citations", DbType="NVarChar(50)")]
 	public string citations
 	{
@@ -894,6 +854,26 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YOP", DbType="Int NOT NULL")]
+	public int YOP
+	{
+		get
+		{
+			return this._YOP;
+		}
+		set
+		{
+			if ((this._YOP != value))
+			{
+				this.OnYOPChanging(value);
+				this.SendPropertyChanging();
+				this._YOP = value;
+				this.SendPropertyChanged("YOP");
+				this.OnYOPChanged();
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publication_link", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
 	public string Publication_link
 	{
@@ -910,6 +890,26 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 				this._Publication_link = value;
 				this.SendPropertyChanged("Publication_link");
 				this.OnPublication_linkChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this.Onindex_idChanging(value);
+				this.SendPropertyChanging();
+				this._index_id = value;
+				this.SendPropertyChanged("index_id");
+				this.Onindex_idChanged();
 			}
 		}
 	}
@@ -1431,51 +1431,6 @@ public partial class research_paper_author
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
-public partial class subscription
-{
-	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public subscription()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
 public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1582,6 +1537,51 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
+public partial class subscription
+{
+	
+	private int _j_id;
+	
+	private int _u_id;
+	
+	public subscription()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this._u_id = value;
+			}
 		}
 	}
 }

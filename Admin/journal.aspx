@@ -189,7 +189,7 @@
                                     <div class="form-group">
                                     <label for="exampleInputPassword1">Category</label>&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="c_name" DataValueField="c_id" Height="20px" Width="115px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                                         </asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [category]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [category]" ></asp:SqlDataSource>
 
                                        <asp:TextBox ID="Txtcategory" runat="server"  CssClass="form-control" placeholder="category" Enabled="false" ></asp:TextBox>
        
@@ -249,22 +249,9 @@
 
                         <!--view details-->
 
-                         <div class="tab-pane fade" id="tab3primary">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>###</th>
-                                        
+                         <div class="tab-pane fade " id="tab3primary" >
+                         <asp:GridView ID="Gridviewjournal_detail" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover " style="background-color:azure;" ></asp:GridView>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   
-                                   
-                                   
-                                </tbody>
-                            </table>
                         </div>
                                <!--view details-->
 

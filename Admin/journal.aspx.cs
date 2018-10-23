@@ -12,26 +12,41 @@ using System.Configuration;
 public partial class Admin_rovaid : System.Web.UI.Page
 {
     DataClassesDataContext dv = new DataClassesDataContext();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        try {
-            if (Session["username"] != null)
-            {
-                Lbllogin.Text ="Welcome " +Session["username"].ToString();
-            }
-            
+        //**session
+        try
+        {
+                 if (Session["username"] != null)
+              {
+                Lbllogin.Text = "Welcome " + Session["username"].ToString();
+              }
+
 
             //fetch admin id from session whose login
             var adName = dv.admins.First(c => c.ad_name == Session["username"].ToString());
             var adID = adName.ad_id;
             txtAdminID.Text = adID.ToString();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             lbldataiscorrect_or_not.Text = "problem occured in session cause you are not logged in with admin";
         }
-  }
-     
+        //session**
+
+        Gridview_journal();
+       
+    }
+
+    private void Gridview_journal()
+    {
+        var aw = from q in dv.Journals     //retreive all data from journal
+                 select q;
+        Gridviewjournal_detail.DataSource = aw;
+        Gridviewjournal_detail.DataBind();
+        
+    }
 
     protected void btnjournal_Click(object sender, EventArgs e)
     {
@@ -54,8 +69,11 @@ public partial class Admin_rovaid : System.Web.UI.Page
             dv.Journals.InsertOnSubmit(j);
             get_cid();
             dv.SubmitChanges();
+            Gridview_journal();
+
+
             txtjname.Text = " "; Txtdop.Text = " ";Txtimpactfactor.Text = " ";Txtpublication.Text = " ";
-            Txtcitations.Text = " ";Txtcategory.Text = " "; txtAdminID.Text = " ";txtindexid.Text = " ";
+            Txtcitations.Text = " ";
             }
         catch
         {
@@ -74,6 +92,7 @@ public partial class Admin_rovaid : System.Web.UI.Page
         };
         dv.indexes.InsertOnSubmit(i);
         dv.SubmitChanges();
+        DropDownindex.DataBind();
         Txtaddnewindex.Text = " ";
     }
 
@@ -87,9 +106,10 @@ public partial class Admin_rovaid : System.Web.UI.Page
         dv.categories.InsertOnSubmit(c1);
         DropDownList1.DataBind();
         dv.SubmitChanges();
+        DropDownList1.DataBind();
         Txtaddnewcategory.Text = " ";
+      
     }
-
 
     void get_cid()      //**cid fetch from category  table
  {
@@ -118,7 +138,8 @@ public partial class Admin_rovaid : System.Web.UI.Page
         {
             lbldataiscorrect_or_not.Text = " something went wrong in c_id";
         }
-    } //cid fetch from category  table**
+    }
+    //cid fetch from category  table**
 
     //**get index_id
 
