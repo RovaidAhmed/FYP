@@ -146,6 +146,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<subscription> subscriptions
+	{
+		get
+		{
+			return this.GetTable<subscription>();
+		}
+	}
+	
 	public System.Data.Linq.Table<research_paper_author> research_paper_authors
 	{
 		get
@@ -159,14 +167,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<user>();
-		}
-	}
-	
-	public System.Data.Linq.Table<subscription> subscriptions
-	{
-		get
-		{
-			return this.GetTable<subscription>();
 		}
 	}
 }
@@ -1169,7 +1169,7 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_research_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_research_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
 	public string research_name
 	{
 		get
@@ -1209,7 +1209,7 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keywords", DbType="Char(10) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keywords", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
 	public string keywords
 	{
 		get
@@ -1229,7 +1229,7 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
 	public string title
 	{
 		get
@@ -1364,6 +1364,51 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
+public partial class subscription
+{
+	
+	private int _j_id;
+	
+	private int _u_id;
+	
+	public subscription()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this._u_id = value;
+			}
 		}
 	}
 }
@@ -1537,51 +1582,6 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
-public partial class subscription
-{
-	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public subscription()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
 		}
 	}
 }

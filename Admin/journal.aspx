@@ -74,7 +74,7 @@
                     <a href="#" data-toggle="collapse" data-target="#menu3"><strong> Papers </strong> <i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu3">
                         <li><a href="add_paper.aspx"><i class="glyphicon glyphicon-circle"></i> Add Papers </a></li>
-                        <li><a href="edit_or_delete_author.aspx"><i class="glyphicon glyphicon-circle"></i> View </a></li>
+                        <li><a href="view_papers.aspx"><i class="glyphicon glyphicon-circle"></i> View </a></li>
                     </ul>
                 </li>
 				
@@ -94,7 +94,7 @@
 				
 				   <hr>
 		
-				
+                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="btn bg-info" />
             </ul>
 
 
@@ -187,7 +187,7 @@
 
                                 </div>
                                     <div class="form-group">
-                                    <label for="exampleInputPassword1">Category</label>&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="c_name" DataValueField="c_id" Height="20px" Width="115px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
+                                    <label for="exampleInputPassword1">Category</label>&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="c_name" DataValueField="c_id" Height="24px" Width="133px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                                         </asp:DropDownList>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [category]" ></asp:SqlDataSource>
 
@@ -250,7 +250,13 @@
                         <!--view details-->
 
                          <div class="tab-pane fade " id="tab3primary" >
-                         <asp:GridView ID="Gridviewjournal_detail" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover " style="background-color:azure;" ></asp:GridView>
+                         <asp:GridView ID="Gridviewjournal_detail" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover " style="background-color:azure;"
+                             AllowPaging="true"
+                              AllowSorting="true" CellPadding="1" EnableSortingAndPagingCallbacks="True" PageSize="5"
+                                           
+                              >
+                             <PagerSettings Position="TopAndBottom" />
+                             </asp:GridView>
 
                         </div>
                                <!--view details-->

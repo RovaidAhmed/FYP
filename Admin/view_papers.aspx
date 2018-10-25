@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="edit_or_delete_author.aspx.cs" Inherits="Admin_edit_or_delete_author" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="view_papers.aspx.cs" Inherits="Admin_edit_or_delete_author" %>
 
 <!DOCTYPE html>
 
@@ -56,8 +56,6 @@
             <ul class="nav nav-stacked">
                 <li class="nav-header"> <a href="journal.aspx" data-toggle="collapse" data-target="#menu"><strong>Journal</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu">
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-home"></i> View Committee Members</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Add Members <span class="badge badge-info">4</span></a></li>
                      
                     </ul>
                 </li>
@@ -77,7 +75,7 @@
                     <a href="#" data-toggle="collapse" data-target="#menu3"><strong> Papers </strong> <i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu3">
                         <li><a href="add_paper.aspx"><i class="glyphicon glyphicon-circle"></i> Add Papers </a></li>
-                        <li><a href="edit_or_delete_author.aspx"><i class="glyphicon glyphicon-circle"></i> View </a></li>
+                        <li><a href="view_papers.aspx"><i class="glyphicon glyphicon-circle"></i> View </a></li>
                     </ul>
                 </li>
 				
@@ -92,10 +90,15 @@
                         <li><a href="activerequest.html"><i class="glyphicon glyphicon-circle"></i> Active Request </a></li>
                     </ul>
                 </li>
+
+				
+                    <a href="#" data-toggle="collapse" data-target="#menu4">
+                    
+                    </a>
 				   <hr>
 				
 		
-				
+				<asp:Button ID="btnlogout" runat="server" Text="Button" />
 		
 				
             </ul>
@@ -140,48 +143,38 @@
                 </div>
                 <!--/col-->
                 <div class="col-md-12">
-       <table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Paper Abstract</th>
-      <th>Keywords</th>
-      <th>Categories</th>
-       <th>No.of Authors</th>
-	      <th>option</th>
-	  
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>roviii@gmail.com</td>
-       <td>5</td>
-	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>tari@gmail.com</td>
-         <td>4</td>
-	  	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>twitter@gmail.com</td>
-         <td>3</td>
-	  <td><button type="button" class="btn btn-warning">Edit</button></td>
-	    <td><button type="button" class="btn btn-danger">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+      
+      <asp:GridView ID="GridView1" runat="server" AllowPaging="True"
+           AutoGenerateColumns="False" BackColor="White"
+           BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px"
+           CellPadding="3" DataKeyNames="r_id" DataSourceID="datasource_research_papers"
+          PageSize="5" CssClass="table table-bordered table-condensed table-hover" GridLines="Horizontal" Height="51px" Width="916px">
+          <AlternatingRowStyle BackColor="#F7F7F7" />
+          <Columns>
+              <asp:BoundField DataField="research_name" HeaderText="research_name" SortExpression="research_name" />
+              <asp:BoundField DataField="r_id" HeaderText="r_id" InsertVisible="False" ReadOnly="True" SortExpression="r_id" />
+              <asp:BoundField DataField="keywords" HeaderText="keywords" SortExpression="keywords" />
+              <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+              <asp:BoundField DataField="j_id" HeaderText="j_id" SortExpression="j_id" />
+              <asp:BoundField DataField="abstract_view" HeaderText="abstract_view" SortExpression="abstract_view" />
+              <asp:BoundField DataField="paper_upload" HeaderText="paper_upload" SortExpression="paper_upload" />
+          </Columns>
+          <EmptyDataTemplate>
+              <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("paper_upload") %>' Text='<%# Eval("paper_upload") %>'></asp:LinkButton>
+          </EmptyDataTemplate>
+          <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+          <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+          <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+          <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+          <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+          <SortedAscendingCellStyle BackColor="#F4F4FD" />
+          <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+          <SortedDescendingCellStyle BackColor="#D8D8F0" />
+          <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                    </asp:GridView>
+ 
+                    <asp:SqlDataSource ID="datasource_research_papers" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [research_paper]"></asp:SqlDataSource>
+ 
                 <!--/col-span-6-->
 
             </div>
@@ -195,7 +188,7 @@
 </div>
 <!-- /Main -->
 
-<footer class="text-center"><a href="index.php"><strong>Powered By &copy;Rp</strong></a></footer>
+<%--<footer class="text-center"><a href="index.php"><strong>Powered By &copy;Rp</strong></a></footer>--%>
 
 <div class="modal" id="addWidgetModal">
     <div class="modal-dialog">

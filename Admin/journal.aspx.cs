@@ -34,6 +34,7 @@ public partial class Admin_rovaid : System.Web.UI.Page
             lbldataiscorrect_or_not.Text = "problem occured in session cause you are not logged in with admin";
         }
         //session**
+       
 
         Gridview_journal();
        
@@ -48,7 +49,7 @@ public partial class Admin_rovaid : System.Web.UI.Page
         
     }
 
-    protected void btnjournal_Click(object sender, EventArgs e)
+      protected void btnjournal_Click(object sender, EventArgs e)
     {
 
         try   //insertion in journal

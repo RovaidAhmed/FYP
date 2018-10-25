@@ -33,19 +33,19 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-                            <i class="glyphicon glyphicon-user"></i> Admin
-                            <span class="caret"></span>
+                            <i class="glyphicon glyphicon-user"></i> 
+                           
                         </a>
                         <ul id="g-account-menu" class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#">My Profile</a>
+                               
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="glyphicon glyphicon-lock"></i> Logout</a>
-                    </li>
+                            <asp:Label ID="Lbllogin" runat="server" Text=""></asp:Label>
+                      </li>
                 </ul>
             </div>
         </div>
@@ -111,7 +111,7 @@
                                     <i class="glyphicon glyphicon-circle"></i> Add Papers </a>
                             </li>
                             <li>
-                                <a href="edit_or_delete_author.aspx">
+                                <a href="view_papers.aspx">
                                     <i class="glyphicon glyphicon-circle"></i> View </a>
                             </li>
                         </ul>
@@ -156,8 +156,8 @@
 
                 <a href="#">
                     <strong>
-                        <i class="glyphicon glyphicon-dashboard"></i> Researcher's portal</strong>
-                </a>
+                        <i class="glyphicon glyphicon-dashboard"></i> Researcher's portal </strong>&nbsp;</a><a href="#" data-toggle="collapse" data-target="#menu4"><asp:Label ID="lbl_error" runat="server"></asp:Label>
+                        </a>
                 <hr>
 
                 <div class="row">
@@ -166,13 +166,31 @@
 
 
 
+                <a href="#">
+                    <strong>
+                        
+                        </strong>
+                </a>
+
+
+
                     </div>
                     <!--/col-->
                     <div class="col-md-12">
                         </div>
+                                 <div class="form-group">
+                                        <label for="getjournal">Journal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                         &nbsp;<asp:DropDownList ID="DropDowngetj_id"  runat="server" Height="43px" Width="393px" AutoPostBack="True" DataSourceID="get_journal_id" DataTextField="J_name" DataValueField="j_id" AppendDataBoundItems="True" OnSelectedIndexChanged="DropDowngetj_id_SelectedIndexChanged">
+                                            <asp:ListItem>--select</asp:ListItem>
+                                           </asp:DropDownList>
+                                        <asp:SqlDataSource ID="get_journal_id" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT * FROM [Journal]"></asp:SqlDataSource>
+                                        <br /><br />
+                                         <asp:TextBox ID="txtjournal_id" runat="server" CssClass="form-control" placeholder="Journal id" required="required" Enabled="false"></asp:TextBox>
+
+                                    </div>
                                 <div class="form-group">
-                                        <label for="exampleInputEmail1">Paper Name</label>
-                                   <asp:TextBox ID="txtpaperName" runat="server" CssClass="form-control" placeholder="paper Name" required="required"></asp:TextBox>
+                                        <label for="exampleInputEmail1"> Paper type</label>
+                                   <asp:TextBox ID="txtpaperName" runat="server" CssClass="form-control" placeholder="ex:literature" required="required"></asp:TextBox>
 
                                     </div>
                             <div class="form-group">
@@ -196,7 +214,7 @@
         
 
 
-                              <asp:Button ID="btnadd_paper" runat="server" Text="Submit" CssClass="btn btn-primary"/>
+                              <asp:Button ID="btnadd_paper" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnadd_paper_Click1"/>
                         </form>
                         <br>
                         <!--/col-span-6-->
