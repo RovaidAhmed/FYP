@@ -32,12 +32,12 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertadmin(admin instance);
   partial void Updateadmin(admin instance);
   partial void Deleteadmin(admin instance);
-  partial void Insertcategory(category instance);
-  partial void Updatecategory(category instance);
-  partial void Deletecategory(category instance);
   partial void Insertauthor(author instance);
   partial void Updateauthor(author instance);
   partial void Deleteauthor(author instance);
+  partial void Insertcategory(category instance);
+  partial void Updatecategory(category instance);
+  partial void Deletecategory(category instance);
   partial void Insertindex(index instance);
   partial void Updateindex(index instance);
   partial void Deleteindex(index instance);
@@ -47,6 +47,9 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertresearch_paper(research_paper instance);
   partial void Updateresearch_paper(research_paper instance);
   partial void Deleteresearch_paper(research_paper instance);
+  partial void Insertresearch_paper_author(research_paper_author instance);
+  partial void Updateresearch_paper_author(research_paper_author instance);
+  partial void Deleteresearch_paper_author(research_paper_author instance);
   partial void Insertuser(user instance);
   partial void Updateuser(user instance);
   partial void Deleteuser(user instance);
@@ -90,19 +93,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<category> categories
-	{
-		get
-		{
-			return this.GetTable<category>();
-		}
-	}
-	
 	public System.Data.Linq.Table<author> authors
 	{
 		get
 		{
 			return this.GetTable<author>();
+		}
+	}
+	
+	public System.Data.Linq.Table<category> categories
+	{
+		get
+		{
+			return this.GetTable<category>();
 		}
 	}
 	
@@ -130,14 +133,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<journal_index> journal_indexes
-	{
-		get
-		{
-			return this.GetTable<journal_index>();
-		}
-	}
-	
 	public System.Data.Linq.Table<research_paper> research_papers
 	{
 		get
@@ -146,11 +141,11 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<subscription> subscriptions
+	public System.Data.Linq.Table<journal_index> journal_indexes
 	{
 		get
 		{
-			return this.GetTable<subscription>();
+			return this.GetTable<journal_index>();
 		}
 	}
 	
@@ -159,6 +154,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<research_paper_author>();
+		}
+	}
+	
+	public System.Data.Linq.Table<subscription> subscriptions
+	{
+		get
+		{
+			return this.GetTable<subscription>();
 		}
 	}
 	
@@ -333,6 +336,168 @@ public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
+public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _a_id;
+	
+	private string _a_name;
+	
+	private string _a_email;
+	
+	private string _a_country;
+	
+	private EntitySet<research_paper_author> _research_paper_authors;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ona_idChanging(int value);
+    partial void Ona_idChanged();
+    partial void Ona_nameChanging(string value);
+    partial void Ona_nameChanged();
+    partial void Ona_emailChanging(string value);
+    partial void Ona_emailChanged();
+    partial void Ona_countryChanging(string value);
+    partial void Ona_countryChanged();
+    #endregion
+	
+	public author()
+	{
+		this._research_paper_authors = new EntitySet<research_paper_author>(new Action<research_paper_author>(this.attach_research_paper_authors), new Action<research_paper_author>(this.detach_research_paper_authors));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int a_id
+	{
+		get
+		{
+			return this._a_id;
+		}
+		set
+		{
+			if ((this._a_id != value))
+			{
+				this.Ona_idChanging(value);
+				this.SendPropertyChanging();
+				this._a_id = value;
+				this.SendPropertyChanged("a_id");
+				this.Ona_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string a_name
+	{
+		get
+		{
+			return this._a_name;
+		}
+		set
+		{
+			if ((this._a_name != value))
+			{
+				this.Ona_nameChanging(value);
+				this.SendPropertyChanging();
+				this._a_name = value;
+				this.SendPropertyChanged("a_name");
+				this.Ona_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_email", DbType="NVarChar(50)")]
+	public string a_email
+	{
+		get
+		{
+			return this._a_email;
+		}
+		set
+		{
+			if ((this._a_email != value))
+			{
+				this.Ona_emailChanging(value);
+				this.SendPropertyChanging();
+				this._a_email = value;
+				this.SendPropertyChanged("a_email");
+				this.Ona_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_country", DbType="NVarChar(50)")]
+	public string a_country
+	{
+		get
+		{
+			return this._a_country;
+		}
+		set
+		{
+			if ((this._a_country != value))
+			{
+				this.Ona_countryChanging(value);
+				this.SendPropertyChanging();
+				this._a_country = value;
+				this.SendPropertyChanged("a_country");
+				this.Ona_countryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_research_paper_authors", ThisKey="a_id", OtherKey="a_id")]
+	public EntitySet<research_paper_author> research_paper_authors
+	{
+		get
+		{
+			return this._research_paper_authors;
+		}
+		set
+		{
+			this._research_paper_authors.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.author = this;
+	}
+	
+	private void detach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.author = null;
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
 public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -444,140 +609,6 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.category = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
-public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _a_id;
-	
-	private string _a_name;
-	
-	private string _a_email;
-	
-	private string _a_country;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ona_idChanging(int value);
-    partial void Ona_idChanged();
-    partial void Ona_nameChanging(string value);
-    partial void Ona_nameChanged();
-    partial void Ona_emailChanging(string value);
-    partial void Ona_emailChanged();
-    partial void Ona_countryChanging(string value);
-    partial void Ona_countryChanged();
-    #endregion
-	
-	public author()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int a_id
-	{
-		get
-		{
-			return this._a_id;
-		}
-		set
-		{
-			if ((this._a_id != value))
-			{
-				this.Ona_idChanging(value);
-				this.SendPropertyChanging();
-				this._a_id = value;
-				this.SendPropertyChanged("a_id");
-				this.Ona_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string a_name
-	{
-		get
-		{
-			return this._a_name;
-		}
-		set
-		{
-			if ((this._a_name != value))
-			{
-				this.Ona_nameChanging(value);
-				this.SendPropertyChanging();
-				this._a_name = value;
-				this.SendPropertyChanged("a_name");
-				this.Ona_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string a_email
-	{
-		get
-		{
-			return this._a_email;
-		}
-		set
-		{
-			if ((this._a_email != value))
-			{
-				this.Ona_emailChanging(value);
-				this.SendPropertyChanging();
-				this._a_email = value;
-				this.SendPropertyChanged("a_email");
-				this.Ona_emailChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_country", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string a_country
-	{
-		get
-		{
-			return this._a_country;
-		}
-		set
-		{
-			if ((this._a_country != value))
-			{
-				this.Ona_countryChanging(value);
-				this.SendPropertyChanging();
-				this._a_country = value;
-				this.SendPropertyChanged("a_country");
-				this.Ona_countryChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
 	}
 }
 
@@ -1076,51 +1107,6 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
-public partial class journal_index
-{
-	
-	private int _j_id;
-	
-	private int _index_id;
-	
-	public journal_index()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
-	public int index_id
-	{
-		get
-		{
-			return this._index_id;
-		}
-		set
-		{
-			if ((this._index_id != value))
-			{
-				this._index_id = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper")]
 public partial class research_paper : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1140,6 +1126,8 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 	private string _abstract_view;
 	
 	private string _paper_upload;
+	
+	private EntitySet<research_paper_author> _research_paper_authors;
 	
 	private EntityRef<Journal> _Journal;
 	
@@ -1165,6 +1153,7 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 	
 	public research_paper()
 	{
+		this._research_paper_authors = new EntitySet<research_paper_author>(new Action<research_paper_author>(this.attach_research_paper_authors), new Action<research_paper_author>(this.detach_research_paper_authors));
 		this._Journal = default(EntityRef<Journal>);
 		OnCreated();
 	}
@@ -1313,6 +1302,19 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="research_paper_research_paper_author", Storage="_research_paper_authors", ThisKey="r_id", OtherKey="r_id")]
+	public EntitySet<research_paper_author> research_paper_authors
+	{
+		get
+		{
+			return this._research_paper_authors;
+		}
+		set
+		{
+			this._research_paper_authors.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_research_paper", Storage="_Journal", ThisKey="j_id", OtherKey="j_id", IsForeignKey=true)]
 	public Journal Journal
 	{
@@ -1343,6 +1345,303 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 					this._j_id = default(int);
 				}
 				this.SendPropertyChanged("Journal");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.research_paper = this;
+	}
+	
+	private void detach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.research_paper = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
+public partial class journal_index
+{
+	
+	private int _j_id;
+	
+	private int _index_id;
+	
+	public journal_index()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this._index_id = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper_author")]
+public partial class research_paper_author : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _rpa_id;
+	
+	private int _r_id;
+	
+	private int _a_id;
+	
+	private string _is_mainauthor;
+	
+	private string _main_author_country;
+	
+	private EntityRef<author> _author;
+	
+	private EntityRef<research_paper> _research_paper;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onrpa_idChanging(int value);
+    partial void Onrpa_idChanged();
+    partial void Onr_idChanging(int value);
+    partial void Onr_idChanged();
+    partial void Ona_idChanging(int value);
+    partial void Ona_idChanged();
+    partial void Onis_mainauthorChanging(string value);
+    partial void Onis_mainauthorChanged();
+    partial void Onmain_author_countryChanging(string value);
+    partial void Onmain_author_countryChanged();
+    #endregion
+	
+	public research_paper_author()
+	{
+		this._author = default(EntityRef<author>);
+		this._research_paper = default(EntityRef<research_paper>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rpa_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int rpa_id
+	{
+		get
+		{
+			return this._rpa_id;
+		}
+		set
+		{
+			if ((this._rpa_id != value))
+			{
+				this.Onrpa_idChanging(value);
+				this.SendPropertyChanging();
+				this._rpa_id = value;
+				this.SendPropertyChanged("rpa_id");
+				this.Onrpa_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_id", DbType="Int NOT NULL")]
+	public int r_id
+	{
+		get
+		{
+			return this._r_id;
+		}
+		set
+		{
+			if ((this._r_id != value))
+			{
+				if (this._research_paper.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onr_idChanging(value);
+				this.SendPropertyChanging();
+				this._r_id = value;
+				this.SendPropertyChanged("r_id");
+				this.Onr_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
+	public int a_id
+	{
+		get
+		{
+			return this._a_id;
+		}
+		set
+		{
+			if ((this._a_id != value))
+			{
+				if (this._author.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Ona_idChanging(value);
+				this.SendPropertyChanging();
+				this._a_id = value;
+				this.SendPropertyChanged("a_id");
+				this.Ona_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_mainauthor", DbType="NVarChar(50)")]
+	public string is_mainauthor
+	{
+		get
+		{
+			return this._is_mainauthor;
+		}
+		set
+		{
+			if ((this._is_mainauthor != value))
+			{
+				this.Onis_mainauthorChanging(value);
+				this.SendPropertyChanging();
+				this._is_mainauthor = value;
+				this.SendPropertyChanged("is_mainauthor");
+				this.Onis_mainauthorChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_main_author_country", DbType="NVarChar(50)")]
+	public string main_author_country
+	{
+		get
+		{
+			return this._main_author_country;
+		}
+		set
+		{
+			if ((this._main_author_country != value))
+			{
+				this.Onmain_author_countryChanging(value);
+				this.SendPropertyChanging();
+				this._main_author_country = value;
+				this.SendPropertyChanged("main_author_country");
+				this.Onmain_author_countryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_author", ThisKey="a_id", OtherKey="a_id", IsForeignKey=true)]
+	public author author
+	{
+		get
+		{
+			return this._author.Entity;
+		}
+		set
+		{
+			author previousValue = this._author.Entity;
+			if (((previousValue != value) 
+						|| (this._author.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._author.Entity = null;
+					previousValue.research_paper_authors.Remove(this);
+				}
+				this._author.Entity = value;
+				if ((value != null))
+				{
+					value.research_paper_authors.Add(this);
+					this._a_id = value.a_id;
+				}
+				else
+				{
+					this._a_id = default(int);
+				}
+				this.SendPropertyChanged("author");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="research_paper_research_paper_author", Storage="_research_paper", ThisKey="r_id", OtherKey="r_id", IsForeignKey=true)]
+	public research_paper research_paper
+	{
+		get
+		{
+			return this._research_paper.Entity;
+		}
+		set
+		{
+			research_paper previousValue = this._research_paper.Entity;
+			if (((previousValue != value) 
+						|| (this._research_paper.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._research_paper.Entity = null;
+					previousValue.research_paper_authors.Remove(this);
+				}
+				this._research_paper.Entity = value;
+				if ((value != null))
+				{
+					value.research_paper_authors.Add(this);
+					this._r_id = value.r_id;
+				}
+				else
+				{
+					this._r_id = default(int);
+				}
+				this.SendPropertyChanged("research_paper");
 			}
 		}
 	}
@@ -1408,69 +1707,6 @@ public partial class subscription
 			if ((this._u_id != value))
 			{
 				this._u_id = value;
-			}
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper_author")]
-public partial class research_paper_author
-{
-	
-	private int _a_id;
-	
-	private string _is_mainauthor;
-	
-	private int _r_id;
-	
-	public research_paper_author()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
-	public int a_id
-	{
-		get
-		{
-			return this._a_id;
-		}
-		set
-		{
-			if ((this._a_id != value))
-			{
-				this._a_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_mainauthor", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string is_mainauthor
-	{
-		get
-		{
-			return this._is_mainauthor;
-		}
-		set
-		{
-			if ((this._is_mainauthor != value))
-			{
-				this._is_mainauthor = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_id", DbType="Int NOT NULL")]
-	public int r_id
-	{
-		get
-		{
-			return this._r_id;
-		}
-		set
-		{
-			if ((this._r_id != value))
-			{
-				this._r_id = value;
 			}
 		}
 	}
