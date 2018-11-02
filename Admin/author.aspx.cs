@@ -26,9 +26,22 @@ public partial class Admin_author : System.Web.UI.Page
         {
             Lblerror.Text = "problem occured in session cause you are not logged in with admin";
         }
+        //session**
+        load_grid();
+   }
+   
+    void load_grid()
+    {
+        var query = from c in dv.authors join d in dv.research_paper_authors
+                    on c.a_id equals d.a_id
+                    join e in dv.research_papers
+                    on  d.r_id equals e.r_id
+                    
+                    
+         select new {c.a_name ,c.a_country ,d.is_mainauthor,d.main_author_country , e.research_name ,e.title};
+        GridViewauthor_details.DataSource = query;
+        GridViewauthor_details.DataBind();
     }
-    //session**
-
 
 
 
@@ -130,6 +143,9 @@ public partial class Admin_author : System.Web.UI.Page
                 };
                 dv.research_paper_authors.InsertOnSubmit(p);
                 dv.SubmitChanges();
+                Txtcoauthor_id.Text = " "; Txtgetpaper_id.Text = " "; Txtmainauthor.Text = " "; Txtmainauthorcountry.Text = " ";
+                Response.Redirect("author.aspx");
+                  load_grid();
 
             }
             catch (Exception ex)
@@ -166,12 +182,13 @@ public partial class Admin_author : System.Web.UI.Page
                 txtcountry.Text = " ";
                 Response.Redirect("author.aspx");
                 DropDownListauthor.DataBind();
+                load_grid();
 
             }
         }
         catch(Exception ex)
         {
-            Lblerror.Text = "soething problem with data insertion";
+            Lblerror.Text = "something problem with data insertion";
         }
         
     }

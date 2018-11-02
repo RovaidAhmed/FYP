@@ -224,7 +224,9 @@
                        
                         <!--second tab end here-->
                          <div class="tab-pane fade" id="tab3primary">
-                             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                             <asp:GridView ID="GridViewauthor_details" runat="server" 
+                                 style="background-color:blanchedalmond"
+                                 CssClass="table table-bordered table-hover table-condensed table-responsive"></asp:GridView>
 
                         </div>
                     </div>
