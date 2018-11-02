@@ -94,7 +94,7 @@
 				
 				   <hr>
 		
-                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="btn bg-info" />
+                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="btn bg-info" OnClick="Button1_Click" />
             </ul>
 
 

@@ -160,7 +160,7 @@
                           
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Author Name</label>
-                             <asp:TextBox ID="txtAuthorName" runat="server" CssClass="form-control" placeholder="Author_Name " required="required"></asp:TextBox>
+                             <asp:TextBox ID="txtAuthorName" runat="server" CssClass="form-control" placeholder="Author_Name " ></asp:TextBox>
 
                                 </div>
                                 <div class="form-group">
@@ -170,16 +170,15 @@
                                 </div>
                                
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">country</label>
+                                    <label for="exampleInputPassword1">country  | University</label>
                                <asp:TextBox ID="txtcountry" runat="server" CssClass="form-control" placeholder="country" ></asp:TextBox>
 
                                 </div>
-                              
-                                           <asp:Button ID="btnauthor" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnauthor_Click" />
-
-</div>
-                                           
+                               
+                         <div> <asp:Button ID="Btnauthor" runat="server" Text="Button" OnClick="Btnauthor_Click" /></div>  
                           
+                                           
+                          </div>
                             
                         <div class="tab-pane fade" id="tab2primary">
                               
@@ -193,25 +192,7 @@
                                     <asp:TextBox ID="Txtgetpaper_id"   runat="server" CssClass="form-control" Enabled="false" placeholder="paper id"></asp:TextBox>
                                 </div>
 
-                            <script>
-                                function sethref1() {                     //client side code for select from dropdown
-
-                                    var Textb = document.getElementById('<%=Txtgetpaper_id.ClientID%>');
-                                    var parLab = document.getElementById('<%=DropDownListpaper.ClientID%>').options[document.getElementById('<%=DropDownListpaper.ClientID%>').selectedIndex].value;
-
-                                    if (parLab != '--select deptname--') {
-                                        Textb.value = parLab
-                                    }
-
-                                    else {
-
-                                        Textb.value = '';
-
-                                    }
-
-                                }
-                            </script>
-
+                            
                           
                                 <div class="form-group">
                                     <label for="exampleInputPassword1"> Choose Co-Author </label>
@@ -223,113 +204,37 @@
                                     <asp:TextBox ID="Txtcoauthor_id" runat="server" CssClass="form-control" Enabled="false" placeholder="co-author id"></asp:TextBox>
                                 </div>
                                
-                            <script>
-                                function sethref() {                     //client side code for select from dropdown
-
-                                    var Textb = document.getElementById('<%=Txtcoauthor_id.ClientID%>');
-                                    var parLab = document.getElementById('<%=DropDownListauthor.ClientID%>').options[document.getElementById('<%=DropDownListauthor.ClientID%>').selectedIndex].value;
-
-                                    if (parLab != '--select deptname--') {
-                                        Textb.value = parLab
-                                    }
-
-                                    else {
-
-                                        Textb.value = '';
-
-                                    }
-
-                                }
-                            </script>
-
-
+                           
 
 
 
                               <div class="form-group">
                                  <label for="exampleInputPassword1">IS_Main_Author</label>
-                               <asp:TextBox ID="Txtmainauthor" runat="server" CssClass="form-control" placeholder="main author"></asp:TextBox>
+                               <asp:TextBox ID="Txtmainauthor" runat="server" CssClass="form-control" placeholder="main author" ></asp:TextBox>
                                      </div>
                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Main_Author Country</label>
+                                 <label for="exampleInputPassword1">Main_Author Country | University</label>
                                <asp:TextBox ID="Txtmainauthorcountry" runat="server" CssClass="form-control" placeholder="main author country"></asp:TextBox>
                                      </div>
                              
-                               
-    
-                                <asp:Button ID="btnmainauthor" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnmainauthor_Click" />
-
+                            <asp:Button ID="Button1" runat="server" Text="Add" CssClass="btn btn-default" OnClick="Button1_Click" CausesValidation="false" />
                         </div>
+                        
                           
                        
                         <!--second tab end here-->
                          <div class="tab-pane fade" id="tab3primary">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>option</th>
+                             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>roviii@gmail.com</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button></td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">Delete</button></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>tari@gmail.com</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button></td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">Delete</button></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>twitter@gmail.com</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button></td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">Delete</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-                </div>
-            </div>
-
-<style>
-
-
-</style>
-                <!--/col-span-6-->
-
-            </div>
+              
             <!--/row-->
 
-            <hr/>
-
-
-            <hr/>
-
+            
                   
     </div>
     
@@ -360,6 +265,51 @@
     </form>
       <script src="js/jquery.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
+
+
+    <script>
+                                function sethref() {                     //client side code for select from dropdown
+
+                                    var Textb = document.getElementById('<%=Txtcoauthor_id.ClientID%>');
+                                    var parLab = document.getElementById('<%=DropDownListauthor.ClientID%>').options[document.getElementById('<%=DropDownListauthor.ClientID%>').selectedIndex].value;
+
+                                    if (parLab != '--select deptname--') {
+                                        Textb.value = parLab
+                                    }
+
+                                    else {
+
+                                        Textb.value = '';
+
+                                    }
+
+                                }
+
+        
+                                function sethref1() {                     //client side code for select from dropdown
+
+                                    var Textb = document.getElementById('<%=Txtgetpaper_id.ClientID%>');
+                                    var parLab = document.getElementById('<%=DropDownListpaper.ClientID%>').options[document.getElementById('<%=DropDownListpaper.ClientID%>').selectedIndex].value;
+
+                                    if (parLab != '--select deptname--') {
+                                        Textb.value = parLab
+                                    }
+
+                                    else {
+
+                                        Textb.value = '';
+
+                                    }
+
+                                }
+                           
+
+
+
+
+                            </script>
+
+
 
 </body>
 </html>

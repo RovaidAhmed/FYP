@@ -184,7 +184,6 @@ public partial class Admin_rovaid : System.Web.UI.Page
   {
         get_index_id();
   }
-   
 
 
 
@@ -228,6 +227,13 @@ public partial class Admin_rovaid : System.Web.UI.Page
 
 
 
-//class end
 
+    //class end
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Session.Remove("username");
+        Response.Redirect("../Admin_Login.aspx");
     }
+}

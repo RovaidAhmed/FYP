@@ -133,19 +133,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<research_paper> research_papers
-	{
-		get
-		{
-			return this.GetTable<research_paper>();
-		}
-	}
-	
 	public System.Data.Linq.Table<journal_index> journal_indexes
 	{
 		get
 		{
 			return this.GetTable<journal_index>();
+		}
+	}
+	
+	public System.Data.Linq.Table<research_paper> research_papers
+	{
+		get
+		{
+			return this.GetTable<research_paper>();
 		}
 	}
 	
@@ -1107,6 +1107,51 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
+public partial class journal_index
+{
+	
+	private int _j_id;
+	
+	private int _index_id;
+	
+	public journal_index()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this._index_id = value;
+			}
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper")]
 public partial class research_paper : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1379,51 +1424,6 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 	{
 		this.SendPropertyChanging();
 		entity.research_paper = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
-public partial class journal_index
-{
-	
-	private int _j_id;
-	
-	private int _index_id;
-	
-	public journal_index()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
-	public int index_id
-	{
-		get
-		{
-			return this._index_id;
-		}
-		set
-		{
-			if ((this._index_id != value))
-			{
-				this._index_id = value;
-			}
-		}
 	}
 }
 

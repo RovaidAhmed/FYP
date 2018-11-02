@@ -27,39 +27,12 @@ public partial class Admin_author : System.Web.UI.Page
             Lblerror.Text = "problem occured in session cause you are not logged in with admin";
         }
     }
-        //session**
-
-    protected void btnauthor_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            author a = new author                                   //insertion of the data
-            {
-                a_name = txtAuthorName.Text,
-                a_country = txtcountry.Text,
-                a_email = TxtAuthoremail.Text
+    //session**
 
 
-            };
-            dv.authors.InsertOnSubmit(a);
-            dv.SubmitChanges();
-            txtAuthorName.Text = " "; txtcountry.Text = " ";
-            TxtAuthoremail.Text = "";
-            DropDownListauthor.DataBind();
 
 
-        }
-        catch (Exception ex)
-        {
-            Lblerror.Text = "problem in insertion of data ";
-        }
-    }
-
-    /*main author*/
-
-  
-
-        void get_rid()      //**r_id fetch from researchpaper  table
+    void get_rid()      //**r_id fetch from researchpaper  table
     {
         try
         {
@@ -96,7 +69,7 @@ public partial class Admin_author : System.Web.UI.Page
     protected void DropDownListpaper_SelectedIndexChanged(object sender, EventArgs e)
     {
         get_rid();
-        
+
     }
 
 
@@ -109,7 +82,7 @@ public partial class Admin_author : System.Web.UI.Page
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                SqlCommand comm = new SqlCommand("select * from author where a_id=" +DropDownListauthor.SelectedValue, con);
+                SqlCommand comm = new SqlCommand("select * from author where a_id=" + DropDownListauthor.SelectedValue, con);
                 SqlDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
@@ -142,31 +115,64 @@ public partial class Admin_author : System.Web.UI.Page
 
 
 
-    protected void btnmainauthor_Click(object sender, EventArgs e)
+    protected void Button1_Click(object sender, EventArgs e)
     {
-        research_paper_author ra = new research_paper_author        //insertion of table
-        {
-            a_id=Convert.ToInt32(Txtcoauthor_id.Text),
-            r_id=Convert.ToInt32(Txtgetpaper_id.Text),
-            is_mainauthor=Txtmainauthor.Text,
-            main_author_country=Txtmainauthorcountry.Text
+      
+            try
+            {
+                research_paper_author p = new research_paper_author             //is_main_author
+                {
+                    a_id = Convert.ToInt32(Txtcoauthor_id.Text),
+                    r_id = Convert.ToInt32(Txtgetpaper_id.Text),
+                    is_mainauthor = Txtmainauthor.Text,
+                    main_author_country = Txtmainauthorcountry.Text
 
+                };
+                dv.research_paper_authors.InsertOnSubmit(p);
+                dv.SubmitChanges();
 
-        };
-        dv.research_paper_authors.InsertOnSubmit(ra);
-        dv.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                Lblerror.Text = "insertion in table main author";
+            }
+        
         Txtcoauthor_id.Text = " "; Txtgetpaper_id.Text = " "; Txtmainauthor.Text = " ";
         Txtmainauthorcountry.Text = " ";
-   }
+
+    }
 
 
 
 
 
+    protected void Btnauthor_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Btnauthor.Enabled)
+            {
+                author a = new author
+                {
+                    a_country = txtcountry.Text,
+                    a_name = txtAuthorName.Text,
+                    a_email = TxtAuthoremail.Text
 
+                };
+                dv.authors.InsertOnSubmit(a);
+                dv.SubmitChanges();
+                txtAuthorName.Text = " ";
+                TxtAuthoremail.Text = " ";
+                txtcountry.Text = " ";
+                Response.Redirect("author.aspx");
+                DropDownListauthor.DataBind();
 
-
-
-
-
+            }
+        }
+        catch(Exception ex)
+        {
+            Lblerror.Text = "soething problem with data insertion";
+        }
+        
+    }
 }

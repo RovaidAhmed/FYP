@@ -52,11 +52,19 @@
       <Column Name="c_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ad_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Journal_favourite_list" Member="favourite_lists" ThisKey="j_id" OtherKey="j_id" Type="favourite_list" />
-      <Association Name="Journal_research_paper" Member="research_papers" ThisKey="j_id" OtherKey="j_id" Type="research_paper" />
       <Association Name="Journal_journal_index" Member="journal_indexes" ThisKey="j_id" OtherKey="j_id" Type="journal_index" />
+      <Association Name="Journal_research_paper" Member="research_papers" ThisKey="j_id" OtherKey="j_id" Type="research_paper" />
       <Association Name="Journal_subscription" Member="subscriptions" ThisKey="j_id" OtherKey="j_id" Type="subscription" />
       <Association Name="admin_Journal" Member="admin" ThisKey="ad_id" OtherKey="ad_id" Type="admin" IsForeignKey="true" />
       <Association Name="category_Journal" Member="category" ThisKey="c_id" OtherKey="c_id" Type="category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.journal_index" Member="journal_indexes">
+    <Type Name="journal_index">
+      <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="index_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="index_journal_index" Member="index" ThisKey="index_id" OtherKey="index_id" Type="index" IsForeignKey="true" />
+      <Association Name="Journal_journal_index" Member="Journal" ThisKey="j_id" OtherKey="j_id" Type="Journal" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.research_paper" Member="research_papers">
@@ -70,14 +78,6 @@
       <Column Name="paper_upload" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="research_paper_research_paper_author" Member="research_paper_authors" ThisKey="r_id" OtherKey="r_id" Type="research_paper_author" />
       <Association Name="Journal_research_paper" Member="Journal" ThisKey="j_id" OtherKey="j_id" Type="Journal" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.journal_index" Member="journal_indexes">
-    <Type Name="journal_index">
-      <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="index_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="index_journal_index" Member="index" ThisKey="index_id" OtherKey="index_id" Type="index" IsForeignKey="true" />
-      <Association Name="Journal_journal_index" Member="Journal" ThisKey="j_id" OtherKey="j_id" Type="Journal" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.research_paper_author" Member="research_paper_authors">
