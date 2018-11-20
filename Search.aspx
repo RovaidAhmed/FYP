@@ -6,86 +6,181 @@
 <head runat="server">
     <title>Searching</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet" />
- <script src="js/jquery-3.1.1.min.js"></script>
-
-
+ <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+    <!-- Bootstrap core CSS -->
+    
+    <!-- Material Design Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" /> 
+    
+  <%--link href="css/mdb.min.css" rel="stylesheet" />--%> 
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    
+    
     <style>
+        main {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        body {
+            font-size: 15px;
+        }
+
+        .extra-margins {
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .navbar {
+            background-color: #3b3b3f;
+        }
+
+        .page-footer {
+            background-color: #3b3b3f;
+            margin-top: 2rem;
+        }
+
+        .navbar .btn-group .dropdown-menu a:hover {
+            color: #000 !important;
+        }
+
+        .navbar .btn-group .dropdown-menu a:active {
+            color: #fff !important;
+        }
+
+        .navbar-expand-lg .navbar-nav .nav-link {
+            padding-right: .5rem;
+            padding-left: 2.5rem;
+        }
+
+        /* label */
+        .label1{
+            font-size:35px;
+            font-weight:bold;
+            padding:10px 0px;
+        }
+
+        .btn-icon{
+            padding:10px
+        }
+        .row .text-center span, .row .text-center .rd{
+            padding-left:10px;
+        }
+        .textbox1{
+            font-size:20px;
+            padding-left:10px
+        }
+        
 
     </style>
-
  </head>
 <body>
     <form id="form1" runat="server">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <img src="./img/nav_logo.png" />
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Search.aspx">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Journals</a>
+                    </li>
+                    <li class="nav-item btn-group">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Subscribe
+                        </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#" style="font-size:13px;">Favourite_Journal</a>
 
+                        </div>
+                    </li>
+                </ul>
 
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Brand</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
- 
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-    <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div>
-        </form>
+    </nav>
+    
+            <div class="form-group" style="padding-top:80px">
+                <p class="text-center label1" style="font-family:cursive">Researcher's Portal</p>
+                <div class="row">
+                <div class="col-lg-2 col-sm-2"></div>
+                <div class="col-lg-8">
+                    <div class="input-group">
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control textbox1"></asp:TextBox>
+                   <div class="input-group-btn"><button class="btn btn-primary btn-icon" type="submit"><i class="fa fa-search"></i></button></div>
+                </div>
+                    </div>
+                <div class="col-lg-2"></div>
+                    </div>
+
+
+
+                <br />
+
+
+
+
+
+                <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                <asp:RadioButton ID="RadioButton1" runat="server" CssClass="rd"/><span>By Author</span>
+                <asp:RadioButton ID="RadioButton5" runat="server" CssClass="rd"/><span>By Title</span>
+                <asp:RadioButton ID="RadioButton6" runat="server" CssClass="rd"/><span>Keyword</span>
+                <asp:RadioButton ID="RadioButton2" runat="server"  CssClass="rd"/><span>Emerald Database</span>
+                <asp:RadioButton ID="RadioButton3" runat="server" CssClass="rd" /><span>ACM Database</span>
+                <asp:RadioButton ID="RadioButton4" runat="server" CssClass="rd" /><span>IEEE Database</span>
+                </div>
+                <div class="col-lg-2"></div>
+                 </div>
+            </div>
+    <br />
+    
+    
+    
+    
+    
+ <%--   <footer class="page-footer center-on-small-only">
+     <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid"  style="font-size:15px;">
+                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcher's Portal</a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>--%>
+        <%--<div id="footer">
+            Copyright@2018
+        </div>--%>
+    
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
     </form>
-   
-    <script>
-        $(document).ready(function (e) {
-            $('.search-panel .dropdown-menu').find('a').click(function (e) {
-                e.preventDefault();
-                var param = $(this).attr("href").replace("#", "");
-                var concept = $(this).text();
-                $('.search-panel span#search_concept').text(concept);
-                $('.input-group #search_param').val(param);
-            });
-        });
-    </script>
 </body>
+      <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+
+      <!-- Bootstrap dropdown -->
+      <script type="text/javascript" src="js/popper.min.js"></script>
+
+      <!-- Bootstrap core JavaScript -->
+     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+     <!-- MDB core JavaScript -->
+     <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
 </html>
