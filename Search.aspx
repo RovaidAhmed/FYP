@@ -118,10 +118,13 @@
                 <div class="col-lg-2 col-sm-2"></div>
                 <div class="col-lg-8">
                     <div class="input-group">
+
                     <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control textbox1"></asp:TextBox>
-                   <div class="input-group-btn"><button class="btn btn-primary btn-icon" type="submit"><i class="fa fa-search"></i></button></div>
-                </div>
-                    </div>
+                   <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="search"  style="background-color:blue;color:white;"/>
+                       
+                    
+                  </div>
+                  </div>
                 <div class="col-lg-2"></div>
                     </div>
 
@@ -136,16 +139,18 @@
                 <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8 text-center">
-                <asp:RadioButton ID="RadioButton1" runat="server" CssClass="rd"/><span>By Author</span>
-                <asp:RadioButton ID="RadioButton5" runat="server" CssClass="rd"/><span>By Title</span>
-                <asp:RadioButton ID="RadioButton6" runat="server" CssClass="rd"/><span>Keyword</span>
-                <asp:RadioButton ID="RadioButton2" runat="server"  CssClass="rd"/><span>Emerald Database</span>
-                <asp:RadioButton ID="RadioButton3" runat="server" CssClass="rd" /><span>ACM Database</span>
-                <asp:RadioButton ID="RadioButton4" runat="server" CssClass="rd" /><span>IEEE Database</span>
+                <asp:RadioButton ID="RadioBtnauthor" runat="server" CssClass="rd" GroupName="choose"/><span>By Author</span>
+                <asp:RadioButton ID="RadioBtntitle" runat="server" CssClass="rd" GroupName="choose"/><span>By Title</span>
+                <asp:RadioButton ID="Radiobtnkeyword" runat="server" CssClass="rd" GroupName="choose"/><span>Keyword</span>
+                <asp:RadioButton ID="Radiobtnemerald" runat="server"  CssClass="rd" GroupName="choose"/><span>Emerald Database</span>
+                <asp:RadioButton ID="Radiobtnacm" runat="server" CssClass="rd" GroupName="choose" /><span>ACM Database</span>
+                <asp:RadioButton ID="RadiobtnIEEE" runat="server" CssClass="rd" GroupName="choose" /><span>IEEE Database</span>
                 </div>
                 <div class="col-lg-2"></div>
                  </div>
             </div>
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
     <br />
     
     

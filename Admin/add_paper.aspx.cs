@@ -17,14 +17,18 @@ public partial class Admin_add_paper : System.Web.UI.Page
         //**session
         try
         {
-            if (Session["username"] != null)
+            if (Session["username"] == null && Session["password"] == null)
+            {
+                Response.Redirect("../Admin_Login.aspx");
+            }
+            else
             {
                 Lbllogin.Text = "Welcome " + Session["username"].ToString();
             }
         }
         catch (Exception ex)
         {
-            lbl_error.Text = "not logged in with admin";
+            Lbllogin.Text = "not logged in with admin";
 
         }
 

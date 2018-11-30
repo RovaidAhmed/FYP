@@ -18,10 +18,14 @@ public partial class Admin_rovaid : System.Web.UI.Page
         //**session
         try
         {
-                 if (Session["username"] != null)
-              {
+            if (Session["username"] == null && Session["password"] == null)
+            {
+                Response.Redirect("../Admin_Login.aspx");
+            }
+            else
+            {
                 Lbllogin.Text = "Welcome " + Session["username"].ToString();
-              }
+            }
 
 
             //fetch admin id from session whose login
