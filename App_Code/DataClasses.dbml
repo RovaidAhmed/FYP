@@ -9,6 +9,13 @@
       <Association Name="admin_Journal" Member="Journals" ThisKey="ad_id" OtherKey="ad_id" Type="Journal" />
     </Type>
   </Table>
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="c_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="category_Journal" Member="Journals" ThisKey="c_id" OtherKey="c_id" Type="Journal" />
+    </Type>
+  </Table>
   <Table Name="dbo.author" Member="authors">
     <Type Name="author">
       <Column Name="a_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -16,13 +23,6 @@
       <Column Name="a_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="a_country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="author_research_paper_author" Member="research_paper_authors" ThisKey="a_id" OtherKey="a_id" Type="research_paper_author" />
-    </Type>
-  </Table>
-  <Table Name="dbo.category" Member="categories">
-    <Type Name="category">
-      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="c_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="category_Journal" Member="Journals" ThisKey="c_id" OtherKey="c_id" Type="Journal" />
     </Type>
   </Table>
   <Table Name="dbo.favourite_list" Member="favourite_lists">
@@ -69,12 +69,12 @@
   </Table>
   <Table Name="dbo.research_paper" Member="research_papers">
     <Type Name="research_paper">
-      <Column Name="research_name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Research_Name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="r_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="keywords" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="abstract_view" Type="System.String" DbType="NVarChar(3000) NOT NULL" CanBeNull="false" />
+      <Column Name="Abstract_View" Type="System.String" DbType="NVarChar(3000) NOT NULL" CanBeNull="false" />
       <Column Name="paper_upload" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="research_paper_research_paper_author" Member="research_paper_authors" ThisKey="r_id" OtherKey="r_id" Type="research_paper_author" />
       <Association Name="Journal_research_paper" Member="Journal" ThisKey="j_id" OtherKey="j_id" Type="Journal" IsForeignKey="true" />

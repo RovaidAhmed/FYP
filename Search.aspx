@@ -117,12 +117,12 @@
                 <div class="row">
                 <div class="col-lg-2 col-sm-2"></div>
                 <div class="col-lg-8">
-                    <div class="input-group">
+                    <div class="input-group">   <!--searching-->
 
                     <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control textbox1"></asp:TextBox>
                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="search"  style="background-color:blue;color:white;"/>
                        
-                    
+                                                 <!--searching-->
                   </div>
                   </div>
                 <div class="col-lg-2"></div>
@@ -131,9 +131,6 @@
 
 
                 <br />
-
-
-
 
 
                 <div class="row">
@@ -146,14 +143,31 @@
                 <asp:RadioButton ID="Radiobtnacm" runat="server" CssClass="rd" GroupName="choose" /><span>ACM Database</span>
                 <asp:RadioButton ID="RadiobtnIEEE" runat="server" CssClass="rd" GroupName="choose" /><span>IEEE Database</span>
                 </div>
+
                 <div class="col-lg-2"></div>
+
+
                  </div>
-            </div>
-        <asp:GridView ID="GridView1" runat="server">
+                 </div>
+
+
+
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
+            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px">
+            <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
     <br />
     
     
+
+
     
     
     

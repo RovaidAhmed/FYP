@@ -21,35 +21,70 @@ public partial class Search : System.Web.UI.Page
 
    
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void Button1_Click1(object sender, EventArgs e)
     {
-
+        search_Author();
+        search_Title();
+        search_Keyword();
     }
 
-    protected void Button1_Click1(object sender, EventArgs e)
+    //search from Author and Main Author
+    void search_Author()
     {
         if (RadioBtnauthor.Checked == true)
         {
             //Response.Redirect("search_Discription.aspx");
-          using(SqlConnection con = new SqlConnection(cs))
+            using (SqlConnection con = new SqlConnection(cs))
             {
-                string sear = "SELECT author.a_name , author.a_id ,research_paper_author.is_mainauthor,research_paper_author.a_id FROM author INNER JOIN research_paper_author ON research_paper_author.a_id = author.a_id where author.a_name like ('%"+TextBox1.Text+"%')";
 
-                string search = "select * from author where a_name like '"+TextBox1.Text+"'";
-                var cust = from v in dv.authors join d in dv.research_paper_authors
+                var cust = from v in dv.authors
+                           join d in dv.research_paper_authors
                            on v.a_id equals d.a_id
-                           where  v.a_name==(TextBox1.Text.Trim()) 
-                           select new {v.a_name,v.a_id,d.is_mainauthor};
+                           join e1 in dv.research_papers on d.r_id equals e1.r_id
+                           where v.a_name.Contains(TextBox1.Text) || d.is_mainauthor.Contains(TextBox1.Text)
+                           select new { v.a_name, d.is_mainauthor, e1.Title };
 
-              
 
-                GridView1.DataSource =cust;
+
+                GridView1.DataSource = cust;
                 GridView1.DataBind();
-                           
+
 
 
             }
-                      
         }
     }
+
+
+    void search_Title()
+    {
+        if (RadioBtntitle.Checked == true)
+        {
+            var cust1 = from v in dv.research_papers
+                        where v.Title.Contains(TextBox1.Text)
+                        select new { v.Title, v.Research_Name,v.Abstract_View };
+
+            GridView1.DataSource = cust1;
+            GridView1.DataBind();
+        }
+
+    }
+
+    void search_Keyword()
+    {
+        if (Radiobtnkeyword.Checked == true)
+        {
+            var cust2 = from v in dv.research_papers
+                        where v.keywords.Contains(TextBox1.Text)
+                        select new { v.Title, v.Research_Name, v.Abstract_View };
+
+            GridView1.DataSource = cust2;
+            GridView1.DataBind();
+        }
+
+    }
+
+
+
+
 }

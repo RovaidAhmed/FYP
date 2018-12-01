@@ -82,10 +82,10 @@ public partial class Admin_add_paper : System.Web.UI.Page
         {
             research_paper r = new research_paper         //insertion of the data
             {
-                research_name = txtpaperName.Text,
+                Research_Name = txtpaperName.Text,
                 keywords = txtkeywords.Text,
-                title = txtpapertitle.Text,
-                abstract_view = txtpaperabstract.Text,
+                Title = txtpapertitle.Text,
+                Abstract_View = txtpaperabstract.Text,
                 j_id = Convert.ToInt32(txtjournal_id.Text),
                 paper_upload = pathstring,
 

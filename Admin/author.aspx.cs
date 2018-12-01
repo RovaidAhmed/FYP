@@ -42,7 +42,7 @@ public partial class Admin_author : System.Web.UI.Page
                     on  d.r_id equals e.r_id
                     
                     
-         select new {c.a_name ,c.a_country ,d.is_mainauthor,d.main_author_country , e.research_name ,e.title};
+         select new {c.a_name ,c.a_country ,d.is_mainauthor,d.main_author_country , e.Research_Name ,e.Title};
         GridViewauthor_details.DataSource = query;
         GridViewauthor_details.DataBind();
     }
