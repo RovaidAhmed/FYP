@@ -14,7 +14,8 @@
 
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" 
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet"> 
     <style>
       
         main {
@@ -23,6 +24,10 @@
         }
         body{
             font-size:15px;
+        background-color:white;
+      
+            
+            
         }
         .extra-margins {
             margin-top: 1rem;
@@ -45,6 +50,19 @@
           padding-right: .5rem;
           padding-left: 2.5rem;
        }
+       h1{
+           color:darkslategray;
+           text-align:center;
+           font-weight:bold;
+           font-family:'Times New Roman', Times, serif;
+           font-style:italic;
+           text-decoration:underline;
+           text-shadow: 2px 2px white;
+       }
+       .form-group{
+           padding-bottom:20px;
+       }
+       
     </style>
 </head>
 
@@ -88,7 +106,65 @@
         </nav>
         <!--/.Navbar-->
 
- 
+ <div>
+     <h1 style="font-family: 'Patua One', cursive;">Publish</h1>
+    
+ </div><br />
+
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-12">
+                 <div class="form-group">
+                     <label>Keyword:</label><br />
+                  <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+
+                 </div>
+
+                  <div class="form-group">
+                     <label>ISSN:</label><br />
+                  <asp:TextBox ID="Txtissn" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+
+
+                 </div>
+         
+                  <div class="form-group">
+                     <label>Indexing:</label><br />
+                      <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left:25px;" Width="377px" CssClass="form-control"></asp:DropDownList>
+
+                 </div>
+                 <hr />
+                   <div class="form-group">
+                     <label>Publication Time:</label><br />
+                      <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+
+                 </div>
+                 <hr />
+                   <div class="form-group">
+                     <label>Publication Charges:</label><br />
+                  <asp:TextBox ID="Txtpubcharges" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+
+                 </div>
+
+                    <div class="form-group">
+                     <label>Impact factor:</label><br />
+                  <asp:TextBox ID="Txtimpactfactor" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+
+                 </div>
+
+                   <div class="form-group">
+                     <label>Access:</label><br />
+                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+
+                 </div>
+
+                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;"  />
+
+             </div>
+         </div>
+
+     </div>
+
+
     </form>
 </body>
 </html>
