@@ -26,6 +26,7 @@ public partial class Search : System.Web.UI.Page
         search_Author();
         search_Title();
         search_Keyword();
+        search_from_Emerald();
     }
 
     //search from Author and Main Author
@@ -42,7 +43,7 @@ public partial class Search : System.Web.UI.Page
                            on v.a_id equals d.a_id
                            join e1 in dv.research_papers on d.r_id equals e1.r_id
                            where v.a_name.Contains(TextBox1.Text) || d.is_mainauthor.Contains(TextBox1.Text)
-                           select new { v.a_name, d.is_mainauthor, e1.Title };
+                           select new { v.a_name, d.is_mainauthor, e1.Title, };
 
 
 
@@ -83,6 +84,24 @@ public partial class Search : System.Web.UI.Page
         }
 
     }
+
+    void search_from_Emerald()
+    {
+        if (Radiobtnemerald.Checked == true)
+        {
+            var cust3 = from v in dv.Journals  join  d in dv.categories 
+                        on v.c_id equals d.c_id join g in dv.research_papers
+                        on  v.j_id  equals g.j_id
+                        where d.c_name.Contains(TextBox1.Text)
+                        select new {d.c_name,v.citations,v.Impact_factor,v.J_name,g.Research_Name,g.Title,g.Abstract_View,g.paper_upload};
+
+            GridView1.DataSource = cust3;
+            GridView1.DataBind();
+        }
+
+    }
+
+
 
 
 

@@ -73,11 +73,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">Journals</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="Publish.aspx">Publish</a>
+                        </li>
                         <li class="nav-item btn-group">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Subscribe
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More
                             </a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#"  style="font-size:13px;">Favourite_Journal</a>
+                                <a class="dropdown-item" href="#"  style="font-size:13px;">Publish</a>
                                 
                             </div>
                         </li>

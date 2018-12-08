@@ -97,6 +97,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Journals</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="Publish.aspx">Publish</a>
+                    </li>
                     <li class="nav-item btn-group">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Subscribe
