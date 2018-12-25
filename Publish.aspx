@@ -139,6 +139,11 @@
 
                  </div>
                  <hr />
+                  <div class="form-group">
+                     <label>Access:</label><br />
+                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+
+                 </div><br />
                    <div class="form-group">
                      <label>Publication Charges:</label><br />
                   <asp:TextBox ID="Txtpubcharges" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
@@ -151,11 +156,7 @@
 
                  </div>
 
-                   <div class="form-group">
-                     <label>Access:</label><br />
-                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
-
-                 </div>
+                  
 
                  <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;"  />
 
