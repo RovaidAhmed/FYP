@@ -29,30 +29,33 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
-  partial void Insertadmin(admin instance);
-  partial void Updateadmin(admin instance);
-  partial void Deleteadmin(admin instance);
+  partial void Insertuser(user instance);
+  partial void Updateuser(user instance);
+  partial void Deleteuser(user instance);
+  partial void Insertresearch_paper_author(research_paper_author instance);
+  partial void Updateresearch_paper_author(research_paper_author instance);
+  partial void Deleteresearch_paper_author(research_paper_author instance);
+  partial void Insertresearch_paper(research_paper instance);
+  partial void Updateresearch_paper(research_paper instance);
+  partial void Deleteresearch_paper(research_paper instance);
+  partial void Insertjournals_publication(journals_publication instance);
+  partial void Updatejournals_publication(journals_publication instance);
+  partial void Deletejournals_publication(journals_publication instance);
+  partial void InsertJournal(Journal instance);
+  partial void UpdateJournal(Journal instance);
+  partial void DeleteJournal(Journal instance);
+  partial void Insertindex(index instance);
+  partial void Updateindex(index instance);
+  partial void Deleteindex(index instance);
   partial void Insertcategory(category instance);
   partial void Updatecategory(category instance);
   partial void Deletecategory(category instance);
   partial void Insertauthor(author instance);
   partial void Updateauthor(author instance);
   partial void Deleteauthor(author instance);
-  partial void Insertindex(index instance);
-  partial void Updateindex(index instance);
-  partial void Deleteindex(index instance);
-  partial void InsertJournal(Journal instance);
-  partial void UpdateJournal(Journal instance);
-  partial void DeleteJournal(Journal instance);
-  partial void Insertresearch_paper(research_paper instance);
-  partial void Updateresearch_paper(research_paper instance);
-  partial void Deleteresearch_paper(research_paper instance);
-  partial void Insertresearch_paper_author(research_paper_author instance);
-  partial void Updateresearch_paper_author(research_paper_author instance);
-  partial void Deleteresearch_paper_author(research_paper_author instance);
-  partial void Insertuser(user instance);
-  partial void Updateuser(user instance);
-  partial void Deleteuser(user instance);
+  partial void Insertadmin(admin instance);
+  partial void Updateadmin(admin instance);
+  partial void Deleteadmin(admin instance);
   #endregion
 	
 	public DataClassesDataContext() : 
@@ -85,11 +88,75 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<admin> admins
+	public System.Data.Linq.Table<user> users
 	{
 		get
 		{
-			return this.GetTable<admin>();
+			return this.GetTable<user>();
+		}
+	}
+	
+	public System.Data.Linq.Table<subscription> subscriptions
+	{
+		get
+		{
+			return this.GetTable<subscription>();
+		}
+	}
+	
+	public System.Data.Linq.Table<research_paper_author> research_paper_authors
+	{
+		get
+		{
+			return this.GetTable<research_paper_author>();
+		}
+	}
+	
+	public System.Data.Linq.Table<research_paper> research_papers
+	{
+		get
+		{
+			return this.GetTable<research_paper>();
+		}
+	}
+	
+	public System.Data.Linq.Table<journal_index> journal_indexes
+	{
+		get
+		{
+			return this.GetTable<journal_index>();
+		}
+	}
+	
+	public System.Data.Linq.Table<journals_publication> journals_publications
+	{
+		get
+		{
+			return this.GetTable<journals_publication>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Journal> Journals
+	{
+		get
+		{
+			return this.GetTable<Journal>();
+		}
+	}
+	
+	public System.Data.Linq.Table<index> indexes
+	{
+		get
+		{
+			return this.GetTable<index>();
+		}
+	}
+	
+	public System.Data.Linq.Table<favourite_list> favourite_lists
+	{
+		get
+		{
+			return this.GetTable<favourite_list>();
 		}
 	}
 	
@@ -109,384 +176,85 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<favourite_list> favourite_lists
+	public System.Data.Linq.Table<admin> admins
 	{
 		get
 		{
-			return this.GetTable<favourite_list>();
-		}
-	}
-	
-	public System.Data.Linq.Table<index> indexes
-	{
-		get
-		{
-			return this.GetTable<index>();
-		}
-	}
-	
-	public System.Data.Linq.Table<Journal> Journals
-	{
-		get
-		{
-			return this.GetTable<Journal>();
-		}
-	}
-	
-	public System.Data.Linq.Table<journal_index> journal_indexes
-	{
-		get
-		{
-			return this.GetTable<journal_index>();
-		}
-	}
-	
-	public System.Data.Linq.Table<research_paper> research_papers
-	{
-		get
-		{
-			return this.GetTable<research_paper>();
-		}
-	}
-	
-	public System.Data.Linq.Table<research_paper_author> research_paper_authors
-	{
-		get
-		{
-			return this.GetTable<research_paper_author>();
-		}
-	}
-	
-	public System.Data.Linq.Table<subscription> subscriptions
-	{
-		get
-		{
-			return this.GetTable<subscription>();
-		}
-	}
-	
-	public System.Data.Linq.Table<user> users
-	{
-		get
-		{
-			return this.GetTable<user>();
+			return this.GetTable<admin>();
 		}
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin")]
-public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
+public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private string _ad_name;
+	private int _u_id;
 	
-	private int _ad_id;
-	
-	private string _ad_pass;
-	
-	private string _ad_email;
-	
-	private EntitySet<Journal> _Journals;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onad_nameChanging(string value);
-    partial void Onad_nameChanged();
-    partial void Onad_idChanging(int value);
-    partial void Onad_idChanged();
-    partial void Onad_passChanging(string value);
-    partial void Onad_passChanged();
-    partial void Onad_emailChanging(string value);
-    partial void Onad_emailChanged();
-    #endregion
-	
-	public admin()
-	{
-		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string ad_name
-	{
-		get
-		{
-			return this._ad_name;
-		}
-		set
-		{
-			if ((this._ad_name != value))
-			{
-				this.Onad_nameChanging(value);
-				this.SendPropertyChanging();
-				this._ad_name = value;
-				this.SendPropertyChanged("ad_name");
-				this.Onad_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ad_id
-	{
-		get
-		{
-			return this._ad_id;
-		}
-		set
-		{
-			if ((this._ad_id != value))
-			{
-				this.Onad_idChanging(value);
-				this.SendPropertyChanging();
-				this._ad_id = value;
-				this.SendPropertyChanged("ad_id");
-				this.Onad_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_pass", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string ad_pass
-	{
-		get
-		{
-			return this._ad_pass;
-		}
-		set
-		{
-			if ((this._ad_pass != value))
-			{
-				this.Onad_passChanging(value);
-				this.SendPropertyChanging();
-				this._ad_pass = value;
-				this.SendPropertyChanged("ad_pass");
-				this.Onad_passChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string ad_email
-	{
-		get
-		{
-			return this._ad_email;
-		}
-		set
-		{
-			if ((this._ad_email != value))
-			{
-				this.Onad_emailChanging(value);
-				this.SendPropertyChanging();
-				this._ad_email = value;
-				this.SendPropertyChanged("ad_email");
-				this.Onad_emailChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="admin_Journal", Storage="_Journals", ThisKey="ad_id", OtherKey="ad_id")]
-	public EntitySet<Journal> Journals
-	{
-		get
-		{
-			return this._Journals;
-		}
-		set
-		{
-			this._Journals.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.admin = this;
-	}
-	
-	private void detach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.admin = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
-public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _c_id;
-	
-	private string _c_name;
-	
-	private EntitySet<Journal> _Journals;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onc_idChanging(int value);
-    partial void Onc_idChanged();
-    partial void Onc_nameChanging(string value);
-    partial void Onc_nameChanged();
-    #endregion
-	
-	public category()
-	{
-		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int c_id
-	{
-		get
-		{
-			return this._c_id;
-		}
-		set
-		{
-			if ((this._c_id != value))
-			{
-				this.Onc_idChanging(value);
-				this.SendPropertyChanging();
-				this._c_id = value;
-				this.SendPropertyChanged("c_id");
-				this.Onc_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string c_name
-	{
-		get
-		{
-			return this._c_name;
-		}
-		set
-		{
-			if ((this._c_name != value))
-			{
-				this.Onc_nameChanging(value);
-				this.SendPropertyChanging();
-				this._c_name = value;
-				this.SendPropertyChanged("c_name");
-				this.Onc_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
-	public EntitySet<Journal> Journals
-	{
-		get
-		{
-			return this._Journals;
-		}
-		set
-		{
-			this._Journals.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = this;
-	}
-	
-	private void detach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
-public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	private string _u_email;
 	
 	private int _a_id;
 	
-	private string _a_name;
-	
-	private string _a_email;
-	
-	private string _a_country;
-	
-	private EntitySet<research_paper_author> _research_paper_authors;
-	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void Onu_idChanging(int value);
+    partial void Onu_idChanged();
+    partial void Onu_emailChanging(string value);
+    partial void Onu_emailChanged();
     partial void Ona_idChanging(int value);
     partial void Ona_idChanged();
-    partial void Ona_nameChanging(string value);
-    partial void Ona_nameChanged();
-    partial void Ona_emailChanging(string value);
-    partial void Ona_emailChanged();
-    partial void Ona_countryChanging(string value);
-    partial void Ona_countryChanged();
     #endregion
 	
-	public author()
+	public user()
 	{
-		this._research_paper_authors = new EntitySet<research_paper_author>(new Action<research_paper_author>(this.attach_research_paper_authors), new Action<research_paper_author>(this.detach_research_paper_authors));
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this.Onu_idChanging(value);
+				this.SendPropertyChanging();
+				this._u_id = value;
+				this.SendPropertyChanged("u_id");
+				this.Onu_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string u_email
+	{
+		get
+		{
+			return this._u_email;
+		}
+		set
+		{
+			if ((this._u_email != value))
+			{
+				this.Onu_emailChanging(value);
+				this.SendPropertyChanging();
+				this._u_email = value;
+				this.SendPropertyChanged("u_email");
+				this.Onu_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
 	public int a_id
 	{
 		get
@@ -506,79 +274,6 @@ public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string a_name
-	{
-		get
-		{
-			return this._a_name;
-		}
-		set
-		{
-			if ((this._a_name != value))
-			{
-				this.Ona_nameChanging(value);
-				this.SendPropertyChanging();
-				this._a_name = value;
-				this.SendPropertyChanged("a_name");
-				this.Ona_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_email", DbType="NVarChar(50)")]
-	public string a_email
-	{
-		get
-		{
-			return this._a_email;
-		}
-		set
-		{
-			if ((this._a_email != value))
-			{
-				this.Ona_emailChanging(value);
-				this.SendPropertyChanging();
-				this._a_email = value;
-				this.SendPropertyChanged("a_email");
-				this.Ona_emailChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_country", DbType="NVarChar(50)")]
-	public string a_country
-	{
-		get
-		{
-			return this._a_country;
-		}
-		set
-		{
-			if ((this._a_country != value))
-			{
-				this.Ona_countryChanging(value);
-				this.SendPropertyChanging();
-				this._a_country = value;
-				this.SendPropertyChanged("a_country");
-				this.Ona_countryChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_research_paper_authors", ThisKey="a_id", OtherKey="a_id")]
-	public EntitySet<research_paper_author> research_paper_authors
-	{
-		get
-		{
-			return this._research_paper_authors;
-		}
-		set
-		{
-			this._research_paper_authors.Assign(value);
-		}
-	}
-	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -598,29 +293,17 @@ public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
-	
-	private void attach_research_paper_authors(research_paper_author entity)
-	{
-		this.SendPropertyChanging();
-		entity.author = this;
-	}
-	
-	private void detach_research_paper_authors(research_paper_author entity)
-	{
-		this.SendPropertyChanging();
-		entity.author = null;
-	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
-public partial class favourite_list
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
+public partial class subscription
 {
 	
 	private int _j_id;
 	
 	private int _u_id;
 	
-	public favourite_list()
+	public subscription()
 	{
 	}
 	
@@ -657,67 +340,221 @@ public partial class favourite_list
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[index]")]
-public partial class index : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper_author")]
+public partial class research_paper_author : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _index_id;
+	private int _rpa_id;
 	
-	private string _index_name;
+	private int _r_id;
+	
+	private int _a_id;
+	
+	private string _is_mainauthor;
+	
+	private string _main_author_country;
+	
+	private EntityRef<research_paper> _research_paper;
+	
+	private EntityRef<author> _author;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onindex_idChanging(int value);
-    partial void Onindex_idChanged();
-    partial void Onindex_nameChanging(string value);
-    partial void Onindex_nameChanged();
+    partial void Onrpa_idChanging(int value);
+    partial void Onrpa_idChanged();
+    partial void Onr_idChanging(int value);
+    partial void Onr_idChanged();
+    partial void Ona_idChanging(int value);
+    partial void Ona_idChanged();
+    partial void Onis_mainauthorChanging(string value);
+    partial void Onis_mainauthorChanged();
+    partial void Onmain_author_countryChanging(string value);
+    partial void Onmain_author_countryChanged();
     #endregion
 	
-	public index()
+	public research_paper_author()
 	{
+		this._research_paper = default(EntityRef<research_paper>);
+		this._author = default(EntityRef<author>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int index_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rpa_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int rpa_id
 	{
 		get
 		{
-			return this._index_id;
+			return this._rpa_id;
 		}
 		set
 		{
-			if ((this._index_id != value))
+			if ((this._rpa_id != value))
 			{
-				this.Onindex_idChanging(value);
+				this.Onrpa_idChanging(value);
 				this.SendPropertyChanging();
-				this._index_id = value;
-				this.SendPropertyChanged("index_id");
-				this.Onindex_idChanged();
+				this._rpa_id = value;
+				this.SendPropertyChanged("rpa_id");
+				this.Onrpa_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string index_name
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_id", DbType="Int NOT NULL")]
+	public int r_id
 	{
 		get
 		{
-			return this._index_name;
+			return this._r_id;
 		}
 		set
 		{
-			if ((this._index_name != value))
+			if ((this._r_id != value))
 			{
-				this.Onindex_nameChanging(value);
+				if (this._research_paper.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onr_idChanging(value);
 				this.SendPropertyChanging();
-				this._index_name = value;
-				this.SendPropertyChanged("index_name");
-				this.Onindex_nameChanged();
+				this._r_id = value;
+				this.SendPropertyChanged("r_id");
+				this.Onr_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
+	public int a_id
+	{
+		get
+		{
+			return this._a_id;
+		}
+		set
+		{
+			if ((this._a_id != value))
+			{
+				if (this._author.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Ona_idChanging(value);
+				this.SendPropertyChanging();
+				this._a_id = value;
+				this.SendPropertyChanged("a_id");
+				this.Ona_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_mainauthor", DbType="NVarChar(50)")]
+	public string is_mainauthor
+	{
+		get
+		{
+			return this._is_mainauthor;
+		}
+		set
+		{
+			if ((this._is_mainauthor != value))
+			{
+				this.Onis_mainauthorChanging(value);
+				this.SendPropertyChanging();
+				this._is_mainauthor = value;
+				this.SendPropertyChanged("is_mainauthor");
+				this.Onis_mainauthorChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_main_author_country", DbType="NVarChar(50)")]
+	public string main_author_country
+	{
+		get
+		{
+			return this._main_author_country;
+		}
+		set
+		{
+			if ((this._main_author_country != value))
+			{
+				this.Onmain_author_countryChanging(value);
+				this.SendPropertyChanging();
+				this._main_author_country = value;
+				this.SendPropertyChanged("main_author_country");
+				this.Onmain_author_countryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="research_paper_research_paper_author", Storage="_research_paper", ThisKey="r_id", OtherKey="r_id", IsForeignKey=true)]
+	public research_paper research_paper
+	{
+		get
+		{
+			return this._research_paper.Entity;
+		}
+		set
+		{
+			research_paper previousValue = this._research_paper.Entity;
+			if (((previousValue != value) 
+						|| (this._research_paper.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._research_paper.Entity = null;
+					previousValue.research_paper_authors.Remove(this);
+				}
+				this._research_paper.Entity = value;
+				if ((value != null))
+				{
+					value.research_paper_authors.Add(this);
+					this._r_id = value.r_id;
+				}
+				else
+				{
+					this._r_id = default(int);
+				}
+				this.SendPropertyChanged("research_paper");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_author", ThisKey="a_id", OtherKey="a_id", IsForeignKey=true)]
+	public author author
+	{
+		get
+		{
+			return this._author.Entity;
+		}
+		set
+		{
+			author previousValue = this._author.Entity;
+			if (((previousValue != value) 
+						|| (this._author.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._author.Entity = null;
+					previousValue.research_paper_authors.Remove(this);
+				}
+				this._author.Entity = value;
+				if ((value != null))
+				{
+					value.research_paper_authors.Add(this);
+					this._a_id = value.a_id;
+				}
+				else
+				{
+					this._a_id = default(int);
+				}
+				this.SendPropertyChanged("author");
 			}
 		}
 	}
@@ -739,415 +576,6 @@ public partial class index : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Journal")]
-public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _j_id;
-	
-	private string _J_name;
-	
-	private string _Impact_factor;
-	
-	private string _citations;
-	
-	private int _YOP;
-	
-	private string _Publication_link;
-	
-	private int _index_id;
-	
-	private System.Nullable<int> _c_id;
-	
-	private System.Nullable<int> _ad_id;
-	
-	private EntitySet<research_paper> _research_papers;
-	
-	private EntityRef<admin> _admin;
-	
-	private EntityRef<category> _category;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onj_idChanging(int value);
-    partial void Onj_idChanged();
-    partial void OnJ_nameChanging(string value);
-    partial void OnJ_nameChanged();
-    partial void OnImpact_factorChanging(string value);
-    partial void OnImpact_factorChanged();
-    partial void OncitationsChanging(string value);
-    partial void OncitationsChanged();
-    partial void OnYOPChanging(int value);
-    partial void OnYOPChanged();
-    partial void OnPublication_linkChanging(string value);
-    partial void OnPublication_linkChanged();
-    partial void Onindex_idChanging(int value);
-    partial void Onindex_idChanged();
-    partial void Onc_idChanging(System.Nullable<int> value);
-    partial void Onc_idChanged();
-    partial void Onad_idChanging(System.Nullable<int> value);
-    partial void Onad_idChanged();
-    #endregion
-	
-	public Journal()
-	{
-		this._research_papers = new EntitySet<research_paper>(new Action<research_paper>(this.attach_research_papers), new Action<research_paper>(this.detach_research_papers));
-		this._admin = default(EntityRef<admin>);
-		this._category = default(EntityRef<category>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this.Onj_idChanging(value);
-				this.SendPropertyChanging();
-				this._j_id = value;
-				this.SendPropertyChanged("j_id");
-				this.Onj_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-	public string J_name
-	{
-		get
-		{
-			return this._J_name;
-		}
-		set
-		{
-			if ((this._J_name != value))
-			{
-				this.OnJ_nameChanging(value);
-				this.SendPropertyChanging();
-				this._J_name = value;
-				this.SendPropertyChanged("J_name");
-				this.OnJ_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Impact_factor", DbType="NVarChar(50)")]
-	public string Impact_factor
-	{
-		get
-		{
-			return this._Impact_factor;
-		}
-		set
-		{
-			if ((this._Impact_factor != value))
-			{
-				this.OnImpact_factorChanging(value);
-				this.SendPropertyChanging();
-				this._Impact_factor = value;
-				this.SendPropertyChanged("Impact_factor");
-				this.OnImpact_factorChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_citations", DbType="NVarChar(50)")]
-	public string citations
-	{
-		get
-		{
-			return this._citations;
-		}
-		set
-		{
-			if ((this._citations != value))
-			{
-				this.OncitationsChanging(value);
-				this.SendPropertyChanging();
-				this._citations = value;
-				this.SendPropertyChanged("citations");
-				this.OncitationsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YOP", DbType="Int NOT NULL")]
-	public int YOP
-	{
-		get
-		{
-			return this._YOP;
-		}
-		set
-		{
-			if ((this._YOP != value))
-			{
-				this.OnYOPChanging(value);
-				this.SendPropertyChanging();
-				this._YOP = value;
-				this.SendPropertyChanged("YOP");
-				this.OnYOPChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publication_link", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-	public string Publication_link
-	{
-		get
-		{
-			return this._Publication_link;
-		}
-		set
-		{
-			if ((this._Publication_link != value))
-			{
-				this.OnPublication_linkChanging(value);
-				this.SendPropertyChanging();
-				this._Publication_link = value;
-				this.SendPropertyChanged("Publication_link");
-				this.OnPublication_linkChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
-	public int index_id
-	{
-		get
-		{
-			return this._index_id;
-		}
-		set
-		{
-			if ((this._index_id != value))
-			{
-				this.Onindex_idChanging(value);
-				this.SendPropertyChanging();
-				this._index_id = value;
-				this.SendPropertyChanged("index_id");
-				this.Onindex_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", DbType="Int")]
-	public System.Nullable<int> c_id
-	{
-		get
-		{
-			return this._c_id;
-		}
-		set
-		{
-			if ((this._c_id != value))
-			{
-				if (this._category.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onc_idChanging(value);
-				this.SendPropertyChanging();
-				this._c_id = value;
-				this.SendPropertyChanged("c_id");
-				this.Onc_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="Int")]
-	public System.Nullable<int> ad_id
-	{
-		get
-		{
-			return this._ad_id;
-		}
-		set
-		{
-			if ((this._ad_id != value))
-			{
-				if (this._admin.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onad_idChanging(value);
-				this.SendPropertyChanging();
-				this._ad_id = value;
-				this.SendPropertyChanged("ad_id");
-				this.Onad_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_research_paper", Storage="_research_papers", ThisKey="j_id", OtherKey="j_id")]
-	public EntitySet<research_paper> research_papers
-	{
-		get
-		{
-			return this._research_papers;
-		}
-		set
-		{
-			this._research_papers.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="admin_Journal", Storage="_admin", ThisKey="ad_id", OtherKey="ad_id", IsForeignKey=true)]
-	public admin admin
-	{
-		get
-		{
-			return this._admin.Entity;
-		}
-		set
-		{
-			admin previousValue = this._admin.Entity;
-			if (((previousValue != value) 
-						|| (this._admin.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._admin.Entity = null;
-					previousValue.Journals.Remove(this);
-				}
-				this._admin.Entity = value;
-				if ((value != null))
-				{
-					value.Journals.Add(this);
-					this._ad_id = value.ad_id;
-				}
-				else
-				{
-					this._ad_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("admin");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_category", ThisKey="c_id", OtherKey="c_id", IsForeignKey=true)]
-	public category category
-	{
-		get
-		{
-			return this._category.Entity;
-		}
-		set
-		{
-			category previousValue = this._category.Entity;
-			if (((previousValue != value) 
-						|| (this._category.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._category.Entity = null;
-					previousValue.Journals.Remove(this);
-				}
-				this._category.Entity = value;
-				if ((value != null))
-				{
-					value.Journals.Add(this);
-					this._c_id = value.c_id;
-				}
-				else
-				{
-					this._c_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("category");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_research_papers(research_paper entity)
-	{
-		this.SendPropertyChanging();
-		entity.Journal = this;
-	}
-	
-	private void detach_research_papers(research_paper entity)
-	{
-		this.SendPropertyChanging();
-		entity.Journal = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
-public partial class journal_index
-{
-	
-	private int _j_id;
-	
-	private int _index_id;
-	
-	public journal_index()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
-	public int index_id
-	{
-		get
-		{
-			return this._index_id;
-		}
-		set
-		{
-			if ((this._index_id != value))
-			{
-				this._index_id = value;
-			}
 		}
 	}
 }
@@ -1427,221 +855,249 @@ public partial class research_paper : INotifyPropertyChanging, INotifyPropertyCh
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.research_paper_author")]
-public partial class research_paper_author : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journal_index")]
+public partial class journal_index
+{
+	
+	private int _j_id;
+	
+	private int _index_id;
+	
+	public journal_index()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this._index_id = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.journals_publication")]
+public partial class journals_publication : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _rpa_id;
+	private int _publication_id;
 	
-	private int _r_id;
+	private string _Keyword;
 	
-	private int _a_id;
+	private string _publication_time;
 	
-	private string _is_mainauthor;
+	private string _publication_charges;
 	
-	private string _main_author_country;
+	private int _j_id;
 	
-	private EntityRef<author> _author;
+	private string _pub_Jou_Access;
 	
-	private EntityRef<research_paper> _research_paper;
+	private EntityRef<Journal> _Journal;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onrpa_idChanging(int value);
-    partial void Onrpa_idChanged();
-    partial void Onr_idChanging(int value);
-    partial void Onr_idChanged();
-    partial void Ona_idChanging(int value);
-    partial void Ona_idChanged();
-    partial void Onis_mainauthorChanging(string value);
-    partial void Onis_mainauthorChanged();
-    partial void Onmain_author_countryChanging(string value);
-    partial void Onmain_author_countryChanged();
+    partial void Onpublication_idChanging(int value);
+    partial void Onpublication_idChanged();
+    partial void OnKeywordChanging(string value);
+    partial void OnKeywordChanged();
+    partial void Onpublication_timeChanging(string value);
+    partial void Onpublication_timeChanged();
+    partial void Onpublication_chargesChanging(string value);
+    partial void Onpublication_chargesChanged();
+    partial void Onj_idChanging(int value);
+    partial void Onj_idChanged();
+    partial void Onpub_Jou_AccessChanging(string value);
+    partial void Onpub_Jou_AccessChanged();
     #endregion
 	
-	public research_paper_author()
+	public journals_publication()
 	{
-		this._author = default(EntityRef<author>);
-		this._research_paper = default(EntityRef<research_paper>);
+		this._Journal = default(EntityRef<Journal>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rpa_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int rpa_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_publication_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int publication_id
 	{
 		get
 		{
-			return this._rpa_id;
+			return this._publication_id;
 		}
 		set
 		{
-			if ((this._rpa_id != value))
+			if ((this._publication_id != value))
 			{
-				this.Onrpa_idChanging(value);
+				this.Onpublication_idChanging(value);
 				this.SendPropertyChanging();
-				this._rpa_id = value;
-				this.SendPropertyChanged("rpa_id");
-				this.Onrpa_idChanged();
+				this._publication_id = value;
+				this.SendPropertyChanged("publication_id");
+				this.Onpublication_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_id", DbType="Int NOT NULL")]
-	public int r_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Keyword", DbType="NVarChar(500)")]
+	public string Keyword
 	{
 		get
 		{
-			return this._r_id;
+			return this._Keyword;
 		}
 		set
 		{
-			if ((this._r_id != value))
+			if ((this._Keyword != value))
 			{
-				if (this._research_paper.HasLoadedOrAssignedValue)
+				this.OnKeywordChanging(value);
+				this.SendPropertyChanging();
+				this._Keyword = value;
+				this.SendPropertyChanged("Keyword");
+				this.OnKeywordChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_publication_time", DbType="NVarChar(500)")]
+	public string publication_time
+	{
+		get
+		{
+			return this._publication_time;
+		}
+		set
+		{
+			if ((this._publication_time != value))
+			{
+				this.Onpublication_timeChanging(value);
+				this.SendPropertyChanging();
+				this._publication_time = value;
+				this.SendPropertyChanged("publication_time");
+				this.Onpublication_timeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_publication_charges", DbType="NVarChar(500)")]
+	public string publication_charges
+	{
+		get
+		{
+			return this._publication_charges;
+		}
+		set
+		{
+			if ((this._publication_charges != value))
+			{
+				this.Onpublication_chargesChanging(value);
+				this.SendPropertyChanging();
+				this._publication_charges = value;
+				this.SendPropertyChanged("publication_charges");
+				this.Onpublication_chargesChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				if (this._Journal.HasLoadedOrAssignedValue)
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
-				this.Onr_idChanging(value);
+				this.Onj_idChanging(value);
 				this.SendPropertyChanging();
-				this._r_id = value;
-				this.SendPropertyChanged("r_id");
-				this.Onr_idChanged();
+				this._j_id = value;
+				this.SendPropertyChanged("j_id");
+				this.Onj_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
-	public int a_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pub_Jou_Access", DbType="NVarChar(50)")]
+	public string pub_Jou_Access
 	{
 		get
 		{
-			return this._a_id;
+			return this._pub_Jou_Access;
 		}
 		set
 		{
-			if ((this._a_id != value))
+			if ((this._pub_Jou_Access != value))
 			{
-				if (this._author.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Ona_idChanging(value);
+				this.Onpub_Jou_AccessChanging(value);
 				this.SendPropertyChanging();
-				this._a_id = value;
-				this.SendPropertyChanged("a_id");
-				this.Ona_idChanged();
+				this._pub_Jou_Access = value;
+				this.SendPropertyChanged("pub_Jou_Access");
+				this.Onpub_Jou_AccessChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_mainauthor", DbType="NVarChar(50)")]
-	public string is_mainauthor
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_journals_publication", Storage="_Journal", ThisKey="j_id", OtherKey="j_id", IsForeignKey=true)]
+	public Journal Journal
 	{
 		get
 		{
-			return this._is_mainauthor;
+			return this._Journal.Entity;
 		}
 		set
 		{
-			if ((this._is_mainauthor != value))
-			{
-				this.Onis_mainauthorChanging(value);
-				this.SendPropertyChanging();
-				this._is_mainauthor = value;
-				this.SendPropertyChanged("is_mainauthor");
-				this.Onis_mainauthorChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_main_author_country", DbType="NVarChar(50)")]
-	public string main_author_country
-	{
-		get
-		{
-			return this._main_author_country;
-		}
-		set
-		{
-			if ((this._main_author_country != value))
-			{
-				this.Onmain_author_countryChanging(value);
-				this.SendPropertyChanging();
-				this._main_author_country = value;
-				this.SendPropertyChanged("main_author_country");
-				this.Onmain_author_countryChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_author", ThisKey="a_id", OtherKey="a_id", IsForeignKey=true)]
-	public author author
-	{
-		get
-		{
-			return this._author.Entity;
-		}
-		set
-		{
-			author previousValue = this._author.Entity;
+			Journal previousValue = this._Journal.Entity;
 			if (((previousValue != value) 
-						|| (this._author.HasLoadedOrAssignedValue == false)))
+						|| (this._Journal.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._author.Entity = null;
-					previousValue.research_paper_authors.Remove(this);
+					this._Journal.Entity = null;
+					previousValue.journals_publications.Remove(this);
 				}
-				this._author.Entity = value;
+				this._Journal.Entity = value;
 				if ((value != null))
 				{
-					value.research_paper_authors.Add(this);
-					this._a_id = value.a_id;
+					value.journals_publications.Add(this);
+					this._j_id = value.j_id;
 				}
 				else
 				{
-					this._a_id = default(int);
+					this._j_id = default(int);
 				}
-				this.SendPropertyChanged("author");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="research_paper_research_paper_author", Storage="_research_paper", ThisKey="r_id", OtherKey="r_id", IsForeignKey=true)]
-	public research_paper research_paper
-	{
-		get
-		{
-			return this._research_paper.Entity;
-		}
-		set
-		{
-			research_paper previousValue = this._research_paper.Entity;
-			if (((previousValue != value) 
-						|| (this._research_paper.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._research_paper.Entity = null;
-					previousValue.research_paper_authors.Remove(this);
-				}
-				this._research_paper.Entity = value;
-				if ((value != null))
-				{
-					value.research_paper_authors.Add(this);
-					this._r_id = value.r_id;
-				}
-				else
-				{
-					this._r_id = default(int);
-				}
-				this.SendPropertyChanged("research_paper");
+				this.SendPropertyChanged("Journal");
 			}
 		}
 	}
@@ -1667,15 +1123,517 @@ public partial class research_paper_author : INotifyPropertyChanging, INotifyPro
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
-public partial class subscription
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Journal")]
+public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _j_id;
+	
+	private string _J_name;
+	
+	private string _Impact_factor;
+	
+	private string _citations;
+	
+	private int _YOP;
+	
+	private string _Publication_link;
+	
+	private int _index_id;
+	
+	private System.Nullable<int> _c_id;
+	
+	private System.Nullable<int> _ad_id;
+	
+	private string _ISSN;
+	
+	private EntitySet<research_paper> _research_papers;
+	
+	private EntitySet<journals_publication> _journals_publications;
+	
+	private EntityRef<category> _category;
+	
+	private EntityRef<admin> _admin;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onj_idChanging(int value);
+    partial void Onj_idChanged();
+    partial void OnJ_nameChanging(string value);
+    partial void OnJ_nameChanged();
+    partial void OnImpact_factorChanging(string value);
+    partial void OnImpact_factorChanged();
+    partial void OncitationsChanging(string value);
+    partial void OncitationsChanged();
+    partial void OnYOPChanging(int value);
+    partial void OnYOPChanged();
+    partial void OnPublication_linkChanging(string value);
+    partial void OnPublication_linkChanged();
+    partial void Onindex_idChanging(int value);
+    partial void Onindex_idChanged();
+    partial void Onc_idChanging(System.Nullable<int> value);
+    partial void Onc_idChanged();
+    partial void Onad_idChanging(System.Nullable<int> value);
+    partial void Onad_idChanged();
+    partial void OnISSNChanging(string value);
+    partial void OnISSNChanged();
+    #endregion
+	
+	public Journal()
+	{
+		this._research_papers = new EntitySet<research_paper>(new Action<research_paper>(this.attach_research_papers), new Action<research_paper>(this.detach_research_papers));
+		this._journals_publications = new EntitySet<journals_publication>(new Action<journals_publication>(this.attach_journals_publications), new Action<journals_publication>(this.detach_journals_publications));
+		this._category = default(EntityRef<category>);
+		this._admin = default(EntityRef<admin>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this.Onj_idChanging(value);
+				this.SendPropertyChanging();
+				this._j_id = value;
+				this.SendPropertyChanged("j_id");
+				this.Onj_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_name", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+	public string J_name
+	{
+		get
+		{
+			return this._J_name;
+		}
+		set
+		{
+			if ((this._J_name != value))
+			{
+				this.OnJ_nameChanging(value);
+				this.SendPropertyChanging();
+				this._J_name = value;
+				this.SendPropertyChanged("J_name");
+				this.OnJ_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Impact_factor", DbType="NVarChar(50)")]
+	public string Impact_factor
+	{
+		get
+		{
+			return this._Impact_factor;
+		}
+		set
+		{
+			if ((this._Impact_factor != value))
+			{
+				this.OnImpact_factorChanging(value);
+				this.SendPropertyChanging();
+				this._Impact_factor = value;
+				this.SendPropertyChanged("Impact_factor");
+				this.OnImpact_factorChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_citations", DbType="NVarChar(50)")]
+	public string citations
+	{
+		get
+		{
+			return this._citations;
+		}
+		set
+		{
+			if ((this._citations != value))
+			{
+				this.OncitationsChanging(value);
+				this.SendPropertyChanging();
+				this._citations = value;
+				this.SendPropertyChanged("citations");
+				this.OncitationsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YOP", DbType="Int NOT NULL")]
+	public int YOP
+	{
+		get
+		{
+			return this._YOP;
+		}
+		set
+		{
+			if ((this._YOP != value))
+			{
+				this.OnYOPChanging(value);
+				this.SendPropertyChanging();
+				this._YOP = value;
+				this.SendPropertyChanged("YOP");
+				this.OnYOPChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Publication_link", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+	public string Publication_link
+	{
+		get
+		{
+			return this._Publication_link;
+		}
+		set
+		{
+			if ((this._Publication_link != value))
+			{
+				this.OnPublication_linkChanging(value);
+				this.SendPropertyChanging();
+				this._Publication_link = value;
+				this.SendPropertyChanged("Publication_link");
+				this.OnPublication_linkChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", DbType="Int NOT NULL")]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this.Onindex_idChanging(value);
+				this.SendPropertyChanging();
+				this._index_id = value;
+				this.SendPropertyChanged("index_id");
+				this.Onindex_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", DbType="Int")]
+	public System.Nullable<int> c_id
+	{
+		get
+		{
+			return this._c_id;
+		}
+		set
+		{
+			if ((this._c_id != value))
+			{
+				if (this._category.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onc_idChanging(value);
+				this.SendPropertyChanging();
+				this._c_id = value;
+				this.SendPropertyChanged("c_id");
+				this.Onc_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="Int")]
+	public System.Nullable<int> ad_id
+	{
+		get
+		{
+			return this._ad_id;
+		}
+		set
+		{
+			if ((this._ad_id != value))
+			{
+				if (this._admin.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onad_idChanging(value);
+				this.SendPropertyChanging();
+				this._ad_id = value;
+				this.SendPropertyChanged("ad_id");
+				this.Onad_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISSN", DbType="NVarChar(50)")]
+	public string ISSN
+	{
+		get
+		{
+			return this._ISSN;
+		}
+		set
+		{
+			if ((this._ISSN != value))
+			{
+				this.OnISSNChanging(value);
+				this.SendPropertyChanging();
+				this._ISSN = value;
+				this.SendPropertyChanged("ISSN");
+				this.OnISSNChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_research_paper", Storage="_research_papers", ThisKey="j_id", OtherKey="j_id")]
+	public EntitySet<research_paper> research_papers
+	{
+		get
+		{
+			return this._research_papers;
+		}
+		set
+		{
+			this._research_papers.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_journals_publication", Storage="_journals_publications", ThisKey="j_id", OtherKey="j_id")]
+	public EntitySet<journals_publication> journals_publications
+	{
+		get
+		{
+			return this._journals_publications;
+		}
+		set
+		{
+			this._journals_publications.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_category", ThisKey="c_id", OtherKey="c_id", IsForeignKey=true)]
+	public category category
+	{
+		get
+		{
+			return this._category.Entity;
+		}
+		set
+		{
+			category previousValue = this._category.Entity;
+			if (((previousValue != value) 
+						|| (this._category.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._category.Entity = null;
+					previousValue.Journals.Remove(this);
+				}
+				this._category.Entity = value;
+				if ((value != null))
+				{
+					value.Journals.Add(this);
+					this._c_id = value.c_id;
+				}
+				else
+				{
+					this._c_id = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("category");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="admin_Journal", Storage="_admin", ThisKey="ad_id", OtherKey="ad_id", IsForeignKey=true)]
+	public admin admin
+	{
+		get
+		{
+			return this._admin.Entity;
+		}
+		set
+		{
+			admin previousValue = this._admin.Entity;
+			if (((previousValue != value) 
+						|| (this._admin.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._admin.Entity = null;
+					previousValue.Journals.Remove(this);
+				}
+				this._admin.Entity = value;
+				if ((value != null))
+				{
+					value.Journals.Add(this);
+					this._ad_id = value.ad_id;
+				}
+				else
+				{
+					this._ad_id = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("admin");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_research_papers(research_paper entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = this;
+	}
+	
+	private void detach_research_papers(research_paper entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = null;
+	}
+	
+	private void attach_journals_publications(journals_publication entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = this;
+	}
+	
+	private void detach_journals_publications(journals_publication entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[index]")]
+public partial class index : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _index_id;
+	
+	private string _index_name;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onindex_idChanging(int value);
+    partial void Onindex_idChanged();
+    partial void Onindex_nameChanging(string value);
+    partial void Onindex_nameChanged();
+    #endregion
+	
+	public index()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int index_id
+	{
+		get
+		{
+			return this._index_id;
+		}
+		set
+		{
+			if ((this._index_id != value))
+			{
+				this.Onindex_idChanging(value);
+				this.SendPropertyChanging();
+				this._index_id = value;
+				this.SendPropertyChanged("index_id");
+				this.Onindex_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_index_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string index_name
+	{
+		get
+		{
+			return this._index_name;
+		}
+		set
+		{
+			if ((this._index_name != value))
+			{
+				this.Onindex_nameChanging(value);
+				this.SendPropertyChanging();
+				this._index_name = value;
+				this.SendPropertyChanged("index_name");
+				this.Onindex_nameChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
+public partial class favourite_list
 {
 	
 	private int _j_id;
 	
 	private int _u_id;
 	
-	public subscription()
+	public favourite_list()
 	{
 	}
 	
@@ -1712,92 +1670,84 @@ public partial class subscription
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
-public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
+public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _u_id;
+	private int _c_id;
 	
-	private string _u_email;
+	private string _c_name;
 	
-	private int _a_id;
+	private EntitySet<Journal> _Journals;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onu_idChanging(int value);
-    partial void Onu_idChanged();
-    partial void Onu_emailChanging(string value);
-    partial void Onu_emailChanged();
-    partial void Ona_idChanging(int value);
-    partial void Ona_idChanged();
+    partial void Onc_idChanging(int value);
+    partial void Onc_idChanged();
+    partial void Onc_nameChanging(string value);
+    partial void Onc_nameChanged();
     #endregion
 	
-	public user()
+	public category()
 	{
+		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int u_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int c_id
 	{
 		get
 		{
-			return this._u_id;
+			return this._c_id;
 		}
 		set
 		{
-			if ((this._u_id != value))
+			if ((this._c_id != value))
 			{
-				this.Onu_idChanging(value);
+				this.Onc_idChanging(value);
 				this.SendPropertyChanging();
-				this._u_id = value;
-				this.SendPropertyChanged("u_id");
-				this.Onu_idChanged();
+				this._c_id = value;
+				this.SendPropertyChanged("c_id");
+				this.Onc_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string u_email
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string c_name
 	{
 		get
 		{
-			return this._u_email;
+			return this._c_name;
 		}
 		set
 		{
-			if ((this._u_email != value))
+			if ((this._c_name != value))
 			{
-				this.Onu_emailChanging(value);
+				this.Onc_nameChanging(value);
 				this.SendPropertyChanging();
-				this._u_email = value;
-				this.SendPropertyChanged("u_email");
-				this.Onu_emailChanged();
+				this._c_name = value;
+				this.SendPropertyChanged("c_name");
+				this.Onc_nameChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
-	public int a_id
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
+	public EntitySet<Journal> Journals
 	{
 		get
 		{
-			return this._a_id;
+			return this._Journals;
 		}
 		set
 		{
-			if ((this._a_id != value))
-			{
-				this.Ona_idChanging(value);
-				this.SendPropertyChanging();
-				this._a_id = value;
-				this.SendPropertyChanged("a_id");
-				this.Ona_idChanged();
-			}
+			this._Journals.Assign(value);
 		}
 	}
 	
@@ -1819,6 +1769,342 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = this;
+	}
+	
+	private void detach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
+public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _a_id;
+	
+	private string _a_name;
+	
+	private string _a_email;
+	
+	private string _a_country;
+	
+	private EntitySet<research_paper_author> _research_paper_authors;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ona_idChanging(int value);
+    partial void Ona_idChanged();
+    partial void Ona_nameChanging(string value);
+    partial void Ona_nameChanged();
+    partial void Ona_emailChanging(string value);
+    partial void Ona_emailChanged();
+    partial void Ona_countryChanging(string value);
+    partial void Ona_countryChanged();
+    #endregion
+	
+	public author()
+	{
+		this._research_paper_authors = new EntitySet<research_paper_author>(new Action<research_paper_author>(this.attach_research_paper_authors), new Action<research_paper_author>(this.detach_research_paper_authors));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int a_id
+	{
+		get
+		{
+			return this._a_id;
+		}
+		set
+		{
+			if ((this._a_id != value))
+			{
+				this.Ona_idChanging(value);
+				this.SendPropertyChanging();
+				this._a_id = value;
+				this.SendPropertyChanged("a_id");
+				this.Ona_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string a_name
+	{
+		get
+		{
+			return this._a_name;
+		}
+		set
+		{
+			if ((this._a_name != value))
+			{
+				this.Ona_nameChanging(value);
+				this.SendPropertyChanging();
+				this._a_name = value;
+				this.SendPropertyChanged("a_name");
+				this.Ona_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_email", DbType="NVarChar(50)")]
+	public string a_email
+	{
+		get
+		{
+			return this._a_email;
+		}
+		set
+		{
+			if ((this._a_email != value))
+			{
+				this.Ona_emailChanging(value);
+				this.SendPropertyChanging();
+				this._a_email = value;
+				this.SendPropertyChanged("a_email");
+				this.Ona_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_country", DbType="NVarChar(50)")]
+	public string a_country
+	{
+		get
+		{
+			return this._a_country;
+		}
+		set
+		{
+			if ((this._a_country != value))
+			{
+				this.Ona_countryChanging(value);
+				this.SendPropertyChanging();
+				this._a_country = value;
+				this.SendPropertyChanged("a_country");
+				this.Ona_countryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="author_research_paper_author", Storage="_research_paper_authors", ThisKey="a_id", OtherKey="a_id")]
+	public EntitySet<research_paper_author> research_paper_authors
+	{
+		get
+		{
+			return this._research_paper_authors;
+		}
+		set
+		{
+			this._research_paper_authors.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.author = this;
+	}
+	
+	private void detach_research_paper_authors(research_paper_author entity)
+	{
+		this.SendPropertyChanging();
+		entity.author = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin")]
+public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private string _ad_name;
+	
+	private int _ad_id;
+	
+	private string _ad_pass;
+	
+	private string _ad_email;
+	
+	private EntitySet<Journal> _Journals;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onad_nameChanging(string value);
+    partial void Onad_nameChanged();
+    partial void Onad_idChanging(int value);
+    partial void Onad_idChanged();
+    partial void Onad_passChanging(string value);
+    partial void Onad_passChanged();
+    partial void Onad_emailChanging(string value);
+    partial void Onad_emailChanged();
+    #endregion
+	
+	public admin()
+	{
+		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string ad_name
+	{
+		get
+		{
+			return this._ad_name;
+		}
+		set
+		{
+			if ((this._ad_name != value))
+			{
+				this.Onad_nameChanging(value);
+				this.SendPropertyChanging();
+				this._ad_name = value;
+				this.SendPropertyChanged("ad_name");
+				this.Onad_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ad_id
+	{
+		get
+		{
+			return this._ad_id;
+		}
+		set
+		{
+			if ((this._ad_id != value))
+			{
+				this.Onad_idChanging(value);
+				this.SendPropertyChanging();
+				this._ad_id = value;
+				this.SendPropertyChanged("ad_id");
+				this.Onad_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_pass", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string ad_pass
+	{
+		get
+		{
+			return this._ad_pass;
+		}
+		set
+		{
+			if ((this._ad_pass != value))
+			{
+				this.Onad_passChanging(value);
+				this.SendPropertyChanging();
+				this._ad_pass = value;
+				this.SendPropertyChanged("ad_pass");
+				this.Onad_passChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string ad_email
+	{
+		get
+		{
+			return this._ad_email;
+		}
+		set
+		{
+			if ((this._ad_email != value))
+			{
+				this.Onad_emailChanging(value);
+				this.SendPropertyChanging();
+				this._ad_email = value;
+				this.SendPropertyChanged("ad_email");
+				this.Onad_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="admin_Journal", Storage="_Journals", ThisKey="ad_id", OtherKey="ad_id")]
+	public EntitySet<Journal> Journals
+	{
+		get
+		{
+			return this._Journals;
+		}
+		set
+		{
+			this._Journals.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.admin = this;
+	}
+	
+	private void detach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.admin = null;
 	}
 }
 #pragma warning restore 1591
