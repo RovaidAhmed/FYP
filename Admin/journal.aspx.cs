@@ -68,7 +68,9 @@ public partial class Admin_rovaid : System.Web.UI.Page
                 citations = Txtcitations.Text,
                 c_id = Convert.ToInt32(Txtcategory.Text),
                 ad_id = Convert.ToInt32(txtAdminID.Text),
-                index_id = Convert.ToInt32(txtindexid.Text)
+                index_id = Convert.ToInt32(txtindexid.Text),
+                ISSN=txtissn.Text
+
 
             };
             dv.Journals.InsertOnSubmit(j);
@@ -78,7 +80,7 @@ public partial class Admin_rovaid : System.Web.UI.Page
 
 
             txtjname.Text = " "; Txtdop.Text = " ";Txtimpactfactor.Text = " ";Txtpublication.Text = " ";
-            Txtcitations.Text = " ";
+            Txtcitations.Text = " "; txtissn.Text = " ";
             }
         catch
         {

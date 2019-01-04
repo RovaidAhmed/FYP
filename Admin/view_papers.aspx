@@ -84,9 +84,9 @@
 			<li class="nav-header">
 
 				
-                    <a href="#" data-toggle="collapse" data-target="#menu4"><strong> Participants </strong> <i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
+                    <a href="#" data-toggle="collapse" data-target="#menu4"><strong> Publication</strong> <i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu4">
-                        <li><a href="newrequest.html"><i class="glyphicon glyphicon-circle"></i> New Request </a></li>
+                        <li><a href="publication.aspx"><i class="glyphicon glyphicon-circle"></i> Add Information about Journal's Publication  </a></li>
                         <li><a href="activerequest.html"><i class="glyphicon glyphicon-circle"></i> Active Request </a></li>
                     </ul>
                 </li>

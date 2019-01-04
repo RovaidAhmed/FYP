@@ -1,7 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="journal.aspx.cs" Inherits="Admin_rovaid" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="publication.aspx.cs" Inherits="Admin_publication" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
 <title> Rp </title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -14,7 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <form id="form1" runat="server">
+   <form id="form1" runat="server">
    <div id="top-nav" class="navbar navbar-inverse navbar-static-top box-shadow">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -93,8 +95,7 @@
 <%--				    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" />--%>
 				
 				   <hr>
-		
-                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="btn bg-info" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="btn btn-primary" />
             </ul>
 
 
@@ -136,18 +137,20 @@
             </div>
         </div>
         <div class="col-md-12">
+            <asp:Label ID="Lblerror" runat="server" Text=""></asp:Label>
             <div class="panel with-nav-tabs panel-primary">
+
                 <div class="panel-heading" id="two">
+
                         <ul class="nav nav-tabs">
-                            <li class="active one"><a href="#tab1primary" style="font-size:20px" data-toggle="tab">journals</a></li>
-                            <li class="one"><a href="#tab2primary"  style="font-size:20px"  data-toggle="tab">Add Category</a></li>
-                           <li class="one"><a href="#tab4primary"  style="font-size:20px"  data-toggle="tab">Add Index</a></li>
-                           <li class="one"><a href="#tab3primary"  style="font-size:20px"  data-toggle="tab">View details</a></li>
+
+                            <li class="active one"><a href="#tab1primary" style="font-size:20px" data-toggle="tab">Publication in Journals </a></li>
+
 
                             <li class="dropdown">
                               
                                 <ul class="dropdown-menu" role="menu">
-                            
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -156,116 +159,46 @@
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1primary">
 
-                              <div class="form-group">
-                                    <label for="exampleInputEmail1">ADMIN ID</label>
-                             <asp:TextBox ID="txtAdminID" runat="server" CssClass="form-control" placeholder="Admin ID" Enabled="false" ></asp:TextBox>
 
-                                </div>
-                            
-                                <div class="form-group">
+                             <div class="form-group">
                                     <label for="exampleInputEmail1">Journal Name</label>
-                             <asp:TextBox ID="txtjname" runat="server" CssClass="form-control" placeholder="journal name " ></asp:TextBox>
+                                 <asp:DropDownList ID="DropDownjname" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="J_name" DataValueField="j_id" OnSelectedIndexChanged="DropDownjname_SelectedIndexChanged"></asp:DropDownList> 
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher_s_portalConnectionString %>" SelectCommand="SELECT * FROM [Journal]"></asp:SqlDataSource>
+                                    <br />
 
+                                <asp:TextBox ID="Txtjid" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
                                 </div>
                             
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">ISSN</label>
-                             <asp:TextBox ID="txtissn" runat="server" CssClass="form-control" placeholder="journal ISSN" ></asp:TextBox>
-
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">Access</label>
+                                <asp:TextBox ID="Txtjournalaccess" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">YOP</label>
-                              <asp:TextBox ID="Txtdop" runat="server" CssClass="form-control" placeholder="dop" ></asp:TextBox>
-
+                                    <label for="exampleInputEmail1">Publication Time</label>
+                                    <asp:TextBox ID="Txtpublicationtime" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="form-group">
-                                        <label for="exampleInputEmail1">Impact factor</label>
-                                  <asp:TextBox ID="Txtimpactfactor" runat="server" CssClass="form-control" placeholder="Impact factor" ></asp:TextBox>
-
-                                    </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Index_id&nbsp;&nbsp;&nbsp;&nbsp; </label>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString2 %>" SelectCommand="SELECT * FROM [index]"></asp:SqlDataSource>
-                                    <asp:DropDownList ID="DropDownindex" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="index_name" DataValueField="index_id" Height="25px" OnSelectedIndexChanged="DropDownindex_SelectedIndexChanged" Width="96px">
-                                    </asp:DropDownList>
-                              &nbsp;
-                                    <asp:TextBox ID="txtindexid" runat="server" CssClass="form-control" placeholder="index id" Enabled="false"></asp:TextBox>
-
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">Publication Charges</label>
+                                    <asp:TextBox ID="Txtpubcharges" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                    <div class="form-group">
-                                    <label for="exampleInputPassword1">Category</label>&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="c_name" DataValueField="c_id" Height="24px" Width="133px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
-                                        </asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [category]" ></asp:SqlDataSource>
 
-                                       <asp:TextBox ID="Txtcategory" runat="server"  CssClass="form-control" placeholder="category" Enabled="false" ></asp:TextBox>
-       
-
-                                </div>
-                                     <div class="form-group">
-                                    <label for="exampleInputPassword1">Publication link</label>
-                               <asp:TextBox ID="Txtpublication" runat="server" CssClass="form-control" placeholder="publication" ></asp:TextBox>
-
-                                </div>
+                                                       
+                             
                                         <div class="form-group">
-                                    <label for="exampleInputPassword1">Citations</label>
-                               <asp:TextBox ID="Txtcitations" runat="server" CssClass="form-control" placeholder="citations" ></asp:TextBox>
-
-                                </div>
+                                    <label for="exampleInputPassword1">Keyword</label>
+                                            <asp:TextBox ID="Txtkeyword" runat="server" CssClass="form-control"></asp:TextBox>
+                                       </div>
                                
                                
     
+                            <asp:Button ID="Button2" runat="server" Text="Add Information" CssClass="btn-register" OnClick="Button2_Click" />
     
-    
-                                    <asp:Button ID="btnjournal" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnjournal_Click"/>
-                           
-
                         </div>
 
-                        <!--tab2 category panel-->
-
-                        <div class="tab-pane fade" id="tab2primary">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    
-                                        <th>Category Name</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                         <asp:TextBox ID="Txtaddnewcategory" CssClass="form-control" runat="server"></asp:TextBox>
-
-                                        </td>
-                                    </tr>
-                                   <tr>
-                                       <td>
-                                      <asp:Button ID="Btnaddcategory" CssClass="btn btn-primary" runat="server" Text="Add" OnClick="Btnaddcategory_Click"></asp:Button>
-
-                                       </td>
-                                   </tr>
-                                   
-                                   
-                                </tbody>
-                            </table>
-                        </div>
+                     
 
                          <!-- end tab2 category panel-->
 
-                        <!--view details-->
-
-                         <div class="tab-pane fade " id="tab3primary" >
-                         <asp:GridView ID="Gridviewjournal_detail" runat="server" CssClass="table table-bordered table-condensed table-responsive table-hover " style="background-color:azure;"
-                             AllowPaging="true"
-                              AllowSorting="true" CellPadding="1" EnableSortingAndPagingCallbacks="True" PageSize="5"
-                                           
-                              >
-                             <PagerSettings Position="TopAndBottom" />
-                             </asp:GridView>
-
-                        </div>
-                               <!--view details-->
 
 
 
@@ -273,29 +206,7 @@
 
                            <!--Index-->
 
-                         <div class="tab-pane fade" id="tab4primary">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Index Name</th>                                 
-                                    </tr>
-                                </thead>
-                               <tbody>
-                                    <tr>
-                                        <td>
-                                         <asp:TextBox ID="Txtaddnewindex" CssClass="form-control" runat="server"></asp:TextBox>
-                                        </td>
-                                    </tr>
-                                   <tr>
-                                       <td>
-                                      <asp:Button ID="Btnaddnewindex" CssClass="btn btn-primary" runat="server" Text="Add" OnClick="Btnaddnewindex_Click"></asp:Button>
-                                       </td>
-                                   </tr>                                   
-                                   
-                                </tbody>
-                            </table>
-                        </div>
-                               <!--Index-->
+                        
 
                     </div>
                 </div>
