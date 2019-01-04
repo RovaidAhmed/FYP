@@ -23,14 +23,16 @@ public partial class Admin_publication : System.Web.UI.Page
            publication_charges=Txtpubcharges.Text,
            publication_time=Txtpublicationtime.Text,
            Keyword=Txtkeyword.Text,
-           pub_Jou_Access=Txtjournalaccess.Text
+           pub_Jou_Access=Txtjournalaccess.Text,
+           j_id=Convert.ToInt32(Txtjid.Text),
+
           
 
         };
-        dv.journals_publications.InsertOnSubmit(j);
-
-     
+        dv.journals_publications.InsertOnSubmit(j);     
         dv.SubmitChanges();
+        Txtpublicationtime.Text = " ";Txtpubcharges.Text = " ";Txtkeyword.Text = " ";
+        Txtjournalaccess.Text = " ";Txtjid.Text = " ";
    
           
 

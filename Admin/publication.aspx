@@ -162,7 +162,9 @@
 
                              <div class="form-group">
                                     <label for="exampleInputEmail1">Journal Name</label>
-                                 <asp:DropDownList ID="DropDownjname" runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="J_name" DataValueField="j_id" OnSelectedIndexChanged="DropDownjname_SelectedIndexChanged"></asp:DropDownList> 
+                                 <asp:DropDownList ID="DropDownjname"  AppendDataBoundItems="true"              runat="server" CssClass="form-control" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="J_name" DataValueField="j_id" OnSelectedIndexChanged="DropDownjname_SelectedIndexChanged">
+                                     <asp:ListItem>--choosee--</asp:ListItem>
+                                    </asp:DropDownList> 
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher_s_portalConnectionString %>" SelectCommand="SELECT * FROM [Journal]"></asp:SqlDataSource>
                                     <br />
 
@@ -174,11 +176,13 @@
                                 <asp:TextBox ID="Txtjournalaccess" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Publication Time</label>
+                                    <label for="exampleInputEmail1">Publication Time  </label>
                                     <asp:TextBox ID="Txtpublicationtime" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
+
+
                             <div class="form-group">
-                                    <label for="exampleInputEmail1">Publication Charges</label>
+                                    <label for="exampleInputEmail1">Publication Charges(USD)</label>
                                     <asp:TextBox ID="Txtpubcharges" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
 
