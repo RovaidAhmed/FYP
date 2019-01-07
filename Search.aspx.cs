@@ -111,14 +111,24 @@ public partial class Search : System.Web.UI.Page
 
     protected void GridView1_RowCommand1(object sender, GridViewCommandEventArgs e)
     {
-        if (e.CommandName == "Download")
+        try
         {
-            Response.Clear();
-            Response.ContentType = ("application/octect-stream");
-            Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
-            Response.TransmitFile(Server.MapPath("~/files/") + e.CommandArgument);
-            Response.End();
 
+
+            if (e.CommandName == "Download")
+            {
+                Response.Clear();
+                Response.ContentType = ("application/octect-stream");
+                Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+                Response.TransmitFile(Server.MapPath("~/files/") + e.CommandArgument);
+                Response.End();
+
+            }
+
+        }
+        catch(Exception ex)
+        {
+            Label1.Text = "file not found";
         }
     }
 }

@@ -147,7 +147,9 @@
                 <asp:RadioButton ID="RadiobtnIEEE" runat="server" CssClass="rd" GroupName="choose" /><span>IEEE Database</span>
                 </div>
 
-                <div class="col-lg-2"></div>
+                <div class="col-lg-2">
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    </div>
 
 
                  </div>
