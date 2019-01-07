@@ -156,7 +156,14 @@
 
 
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
-            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px">
+            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px" OnRowCommand="GridView1_RowCommand1">
+            <Columns>
+                <asp:TemplateField HeaderText="DOWNLOAD">
+                    <ItemTemplate>
+                        <asp:Button ID="Button2" CssClass="btn-primary"    runat="server" CommandArgument='<%# Eval("paper_upload") %>' CommandName="Download" Text="download" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
