@@ -16,7 +16,7 @@ public partial class Search : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       
     }
 
    
@@ -27,6 +27,8 @@ public partial class Search : System.Web.UI.Page
         search_Title();
         search_Keyword();
         search_from_Emerald();
+        search_from_ACM();
+        search_from_IEEE();
     }
 
     //search from Author and Main Author
@@ -61,9 +63,9 @@ public partial class Search : System.Web.UI.Page
     {
         if (RadioBtntitle.Checked == true)
         {
-            var cust1 = from v in dv.research_papers
+            var cust1 = from v in dv.research_papers  
                         where v.Title.Contains(TextBox1.Text)
-                        select new { v.Title, v.Research_Name,v.Abstract_View };
+                        select new { v.Title, v.Research_Name,v.Abstract_View,v.paper_upload };
 
             GridView1.DataSource = cust1;
             GridView1.DataBind();
@@ -76,8 +78,10 @@ public partial class Search : System.Web.UI.Page
         if (Radiobtnkeyword.Checked == true)
         {
             var cust2 = from v in dv.research_papers
+                        join d in dv.research_paper_authors
+                        on v.r_id equals d.r_id
                         where v.keywords.Contains(TextBox1.Text)
-                        select new { v.Title, v.Research_Name, v.Abstract_View };
+                        select new { v.Title, v.Research_Name, v.Abstract_View,v.paper_upload,d.is_mainauthor };
 
             GridView1.DataSource = cust2;
             GridView1.DataBind();
@@ -104,10 +108,48 @@ public partial class Search : System.Web.UI.Page
 
 
 
+    void search_from_ACM()
+    {
+        if (Radiobtnacm.Checked == true)
+        {
+                   var cust3 = from v in dv.Journals
+                        join d in dv.categories
+                         on v.c_id equals d.c_id
+                        join g in dv.research_papers
+                        on v.j_id equals g.j_id
+                        where d.c_name.Contains(TextBox1.Text)
+                        select new { d.c_name, v.citations, v.Impact_factor, v.J_name, g.Research_Name, g.Title, g.Abstract_View, g.paper_upload };
+
+            GridView1.DataSource = cust3;
+            GridView1.DataBind();
+        }
+
+    }
+
+
+    void search_from_IEEE()
+    {
+        if (RadiobtnIEEE.Checked == true)
+        {
+            var cust3 = from v in dv.Journals
+                        join d in dv.categories
+                         on v.c_id equals d.c_id
+                        join g in dv.research_papers
+                        on v.j_id equals g.j_id
+                        where d.c_name.Contains(TextBox1.Text)
+                        select new { d.c_name, v.citations, v.Impact_factor, v.J_name, g.Research_Name, g.Title, g.Abstract_View, g.paper_upload };
+
+            GridView1.DataSource = cust3;
+            GridView1.DataBind();
+        }
+
+    }
 
 
 
-   
+
+
+
 
     protected void GridView1_RowCommand1(object sender, GridViewCommandEventArgs e)
     {
@@ -119,16 +161,20 @@ public partial class Search : System.Web.UI.Page
             {
                 Response.Clear();
                 Response.ContentType = ("application/octect-stream");
-                Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+                Response.AppendHeader("content-disposition", "filename=\"" + e.CommandArgument);
                 Response.TransmitFile(Server.MapPath("~/files/") + e.CommandArgument);
                 Response.End();
 
             }
+          
 
         }
         catch(Exception ex)
         {
-            Label1.Text = "file not found";
+      
+          
         }
     }
+
+
 }

@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="col-lg-2">
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                  
                     </div>
 
 
@@ -163,7 +163,9 @@
                 <asp:TemplateField HeaderText="DOWNLOAD">
                     <ItemTemplate>
                         <asp:Button ID="Button2" CssClass="btn-primary"    runat="server" CommandArgument='<%# Eval("paper_upload") %>' CommandName="Download" Text="download" />
+
                     </ItemTemplate>
+                    
                 </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
