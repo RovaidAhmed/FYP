@@ -45,7 +45,7 @@ public partial class Search : System.Web.UI.Page
                            on v.a_id equals d.a_id
                            join e1 in dv.research_papers on d.r_id equals e1.r_id
                            where v.a_name.Contains(TextBox1.Text) || d.is_mainauthor.Contains(TextBox1.Text)
-                           select new { v.a_name, d.is_mainauthor, e1.Title, e1.paper_upload};
+                           select new { v.a_name,v.a_country,v.a_email ,d.is_mainauthor, e1.Title,e1.paper_upload};
 
 
 

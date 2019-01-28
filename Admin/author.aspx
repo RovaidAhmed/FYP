@@ -140,9 +140,9 @@
             <div class="panel with-nav-tabs panel-primary">
                 <div class="panel-heading" id="two">
                         <ul class="nav nav-tabs">
-                            <li class="active one"><a href="#tab1primary" style="font-size:20px" data-toggle="tab">Authors</a></li>
-                            <li class="one"><a href="#tab2primary"  style="font-size:20px"  data-toggle="tab">Main_Author</a></li>
-                             <li class="one"><a href="#tab3primary"  style="font-size:20px"  data-toggle="tab">details</a></li>
+                            <li class="active one"><a href="#tab1primary" style="font-size:20px" data-toggle="tab">Add Authors</a></li>
+                            <li class="one"><a href="#tab2primary"  style="font-size:20px"  data-toggle="tab">Main Author</a></li>
+                             <li class="one"><a href="#tab3primary"  style="font-size:20px"  data-toggle="tab">Details</a></li>
 
                            
                             <li class="dropdown">
@@ -195,7 +195,7 @@
                             
                           
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1"> Choose Co-Author </label>
+                                    <label for="exampleInputPassword1"> Select Main Author </label>
                                     <asp:DropDownList ID="DropDownListauthor" AppendDataBoundItems="true" runat="server" Height="32px" Width="477px" DataSourceID="SqlDataSource2" DataTextField="a_name" DataValueField="a_id" OnSelectedIndexChanged="DropDownListauthor_SelectedIndexChanged"  onchange="sethref()">
                                         <asp:ListItem>--choose--</asp:ListItem>
                                     </asp:DropDownList>
@@ -209,11 +209,11 @@
 
 
                               <div class="form-group">
-                                 <label for="exampleInputPassword1">IS_Main_Author</label>
+                                 <label for="exampleInputPassword1">If Any Co-Author</label>
                                <asp:TextBox ID="Txtmainauthor" runat="server" CssClass="form-control" placeholder="main author" ></asp:TextBox>
                                      </div>
                              <div class="form-group">
-                                 <label for="exampleInputPassword1">Main_Author Country | University</label>
+                                 <label for="exampleInputPassword1">Co-Author Country | University</label>
                                <asp:TextBox ID="Txtmainauthorcountry" runat="server" CssClass="form-control" placeholder="main author country"></asp:TextBox>
                                      </div>
                              
