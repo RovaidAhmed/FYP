@@ -79,42 +79,39 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <img src="./img/nav_logo.png" />
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            <div class="container">
+                <img src="./img/nav_logo.png" />
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Search.aspx">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Journals</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="Publish.aspx">Publish</a>
-                    </li>
-                    <li class="nav-item btn-group">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Subscribe
-                        </a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#" style="font-size:13px;">Favourite_Journal</a>
-
-                        </div>
-                    </li>
-                </ul>
-
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search.aspx">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="research_papers.aspx">Research Papers</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="Publish.aspx">Publication Information</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                        </li>
+                       
+                    </ul>
+                   
+                </div>
             </div>
-        </div>
-    </nav>
-    
+        </nav>
+        <!--/.Navbar-->
+
             <div class="form-group" style="padding-top:80px">
                 <p class="text-center label1" style="font-family:cursive">Researcher's Portal</p>
                 <div class="row">
@@ -160,8 +157,8 @@
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
             CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px" OnRowCommand="GridView1_RowCommand1">
             <Columns>
-                <asp:TemplateField HeaderText="DOWNLOAD">
-                    <ItemTemplate>
+                <asp:TemplateField HeaderText="DOWNLOAD" >
+                    <ItemTemplate >
                         <asp:Button ID="Button2" CssClass="btn-primary"    runat="server" CommandArgument='<%# Eval("paper_upload") %>' CommandName="Download" Text="download" />
 
                     </ItemTemplate>
@@ -177,6 +174,7 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
     <br />
     
     

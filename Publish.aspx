@@ -8,7 +8,7 @@
     
       <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -16,6 +16,7 @@
     <link href="css/mdb.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet" 
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet"> 
+   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto" rel="stylesheet">
     <style>
       
         main {
@@ -70,7 +71,7 @@
     <form id="form1" runat="server">
  <header>
 
-        <!--Navbar-->
+   <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <img src="./img/nav_logo.png" />
@@ -87,18 +88,15 @@
                             <a class="nav-link" href="Search.aspx">Search</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Journals</a>
+                            <a class="nav-link" href="research_papers.aspx">Research Papers</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="Publish.aspx">Publish</a>
+                            <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
-                        <li class="nav-item btn-group">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More
-                            </a>
-                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#"  style="font-size:13px;">Publish</a>
-                                
-                            </div>
+                         <li class="nav-item">
+                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                        </li>
+                       
                     </ul>
                    
                 </div>
@@ -107,58 +105,59 @@
         <!--/.Navbar-->
 
  <div>
-     <h1 style="font-family: 'Patua One', cursive;">Publish</h1>
-    
+    <%-- <img src="img/publish-logo.png" style="display:block;margin-left:auto;margin-right:auto;height:60px;" />--%>
+    <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
+       font-family: 'Roboto', sans-serif;">Publication Information</h1>
  </div><br />
 
      <div class="container">
          <div class="row">
              <div class="col-lg-12">
                  <div class="form-group">
-                     <label>Keyword:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Keyword:</label><br />
                   <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
                  </div>
 
                   <div class="form-group">
-                     <label>ISSN:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">ISSN:</label><br />
                   <asp:TextBox ID="Txtissn" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
 
                  </div>
          
                   <div class="form-group">
-                     <label>Indexing:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Indexing:</label><br />
                       <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left:25px;" Width="377px" CssClass="form-control"></asp:DropDownList>
 
                  </div>
                  <hr />
                    <div class="form-group">
-                     <label>Publication Time:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Time:</label><br />
                       <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
 
                  </div>
                  <hr />
                   <div class="form-group">
-                     <label>Access:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Access:</label><br />
                       <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
 
                  </div><br />
                    <div class="form-group">
-                     <label>Publication Charges:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Charges:</label><br />
                   <asp:TextBox ID="Txtpubcharges" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
                  </div>
 
                     <div class="form-group">
-                     <label>Impact factor:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Impact factor:</label><br />
                   <asp:TextBox ID="Txtimpactfactor" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
                  </div>
 
                   
 
-                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;"  />
+                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;" OnClick="Button1_Click"  />
 
              </div>
          </div>
