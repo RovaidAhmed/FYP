@@ -6,72 +6,80 @@
 <head runat="server">
     <title>Publish</title>
     
-      <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-
+    
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap.css" rel="stylesheet" 
-    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet"> 
-   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" /> 
+    
+  <%--link href="css/mdb.min.css" rel="stylesheet" />--%> 
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    
+    
     <style>
-      
         main {
             padding-top: 3rem;
             padding-bottom: 2rem;
         }
-        body{
-            font-size:15px;
-        background-color:white;
-      
-            
-            
+
+        body {
+            font-size: 15px;
         }
+
         .extra-margins {
             margin-top: 1rem;
             margin-bottom: 2.5rem;
         }
+
         .navbar {
             background-color: #3b3b3f;
         }
-        footer.page-footer {
+
+        .page-footer {
             background-color: #3b3b3f;
             margin-top: 2rem;
         }
+
         .navbar .btn-group .dropdown-menu a:hover {
             color: #000 !important;
         }
+
         .navbar .btn-group .dropdown-menu a:active {
             color: #fff !important;
         }
-        .navbar-expand-lg .navbar-nav .nav-link{
-          padding-right: .5rem;
-          padding-left: 2.5rem;
-       }
-       h1{
-           color:darkslategray;
-           text-align:center;
-           font-weight:bold;
-           font-family:'Times New Roman', Times, serif;
-           font-style:italic;
-           text-decoration:underline;
-           text-shadow: 2px 2px white;
-       }
-       .form-group{
-           padding-bottom:20px;
-       }
-       
-    </style>
-</head>
 
+        .navbar-expand-lg .navbar-nav .nav-link {
+            padding-right: .5rem;
+            padding-left: 2.5rem;
+        }
+
+        /* label */
+        .label1{
+            font-size:35px;
+            font-weight:bold;
+            padding:10px 0px;
+        }
+
+        .btn-icon{
+            padding:10px
+        }
+        .row .text-center span, .row .text-center .rd{
+            padding-left:10px;
+        }
+        .textbox1{
+            font-size:20px;
+            padding-left:10px
+        }
+        
+
+    </style>
+ </head>
 <body>
     <form id="form1" runat="server">
- <header>
-
-   <!--Navbar-->
+    <div>
+        <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <img src="./img/nav_logo.png" />
@@ -104,67 +112,105 @@
         </nav>
         <!--/.Navbar-->
 
- <div>
-    <%-- <img src="img/publish-logo.png" style="display:block;margin-left:auto;margin-right:auto;height:60px;" />--%>
-    <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
-       font-family: 'Roboto', sans-serif;">Publication Information</h1>
- </div><br />
+            <div class="form-group" style="padding-top:80px">
+                <p class="text-center label1" style="font-family:cursive">publication Information</p>
+                <div class="row">
+                <div class="col-lg-2 col-sm-2"></div>
+                <div class="col-lg-8">
+                    <div class="input-group">   <!--searching-->
 
-     <div class="container">
-         <div class="row">
-             <div class="col-lg-12">
-                 <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Keyword:</label><br />
-                  <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
-
-                 </div>
-
-                  <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">ISSN:</label><br />
-                  <asp:TextBox ID="Txtissn" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control textbox1"></asp:TextBox>
+                   <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="search"  style="background-color:blue;color:white;"/>
+                       
+                                                 <!--searching-->
+                  </div>
+                  </div>
+                <div class="col-lg-2"></div>
+                    </div>
 
 
-                 </div>
-         
-                  <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Indexing:</label><br />
-                      <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left:25px;" Width="377px" CssClass="form-control"></asp:DropDownList>
 
-                 </div>
-                 <hr />
-                   <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Time:</label><br />
-                      <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+                <br />
 
-                 </div>
-                 <hr />
-                  <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Access:</label><br />
-                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
 
-                 </div><br />
-                   <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Charges:</label><br />
-                  <asp:TextBox ID="Txtpubcharges" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+                <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                <asp:RadioButton ID="Radiokeyword" runat="server" CssClass="rd" GroupName="choose"/><span>Keyword</span>
+                <asp:RadioButton ID="RadioISSN" runat="server" CssClass="rd" GroupName="choose"/><span>ISSN</span>
+                <asp:RadioButton ID="RadioPubcharges" runat="server" CssClass="rd" GroupName="choose"/><span>Publication Charges</span>
+                <asp:RadioButton ID="Radiopublicationtime" runat="server" CssClass="rd" GroupName="choose"/><span>Publication Time</span>
+                <asp:RadioButton ID="Radiocategory" runat="server"  CssClass="rd" GroupName="choose"/><span>Category(ex:Elsevier)</span>
+                <asp:RadioButton ID="Radioimpactfactor" runat="server" CssClass="rd" GroupName="choose" /><span>Impact Factor</span>
+                </div>
 
-                 </div>
-
-                    <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Impact factor:</label><br />
-                  <asp:TextBox ID="Txtimpactfactor" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
-
-                 </div>
-
+                <div class="col-lg-2">
                   
-
-                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;" OnClick="Button1_Click"  />
-
-             </div>
-         </div>
-
-     </div>
+                    </div>
 
 
+                 </div>
+                 </div>
+
+
+
+    <br />
+    
+    
+
+
+    
+    
+    
+ <%--   <footer class="page-footer center-on-small-only">
+     <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid"  style="font-size:15px;">
+                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcher's Portal</a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>--%>
+        <%--<div id="footer">
+            Copyright@2018
+        </div>--%>
+    
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
+            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px" OnRowDataBound="GridView1_RowDataBound" >
+    <Columns>
+             <asp:templatefield headertext="Browse" >
+             <itemtemplate> 
+
+           <asp:hyperlink id="hlDownload" runat="server"  NavigateUrl='<%# Eval("Publication_link") %>' Text="Click_Here"  Target='<%# "_blank" %>'/>
+  
+            </itemtemplate>                                       
+           </asp:templatefield>
+    </Columns>
+            <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#242121" />
+        </asp:GridView>
+    </div>
     </form>
 </body>
+      <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+
+      <!-- Bootstrap dropdown -->
+      <script type="text/javascript" src="js/popper.min.js"></script>
+
+      <!-- Bootstrap core JavaScript -->
+     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+     <!-- MDB core JavaScript -->
+     <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
 </html>

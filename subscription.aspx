@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="publish_Discription.aspx.cs" Inherits="publish_Discription" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="subscription.aspx.cs" Inherits="subscription" %>
 
 <!DOCTYPE html>
 

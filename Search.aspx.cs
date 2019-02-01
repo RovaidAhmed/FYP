@@ -77,6 +77,7 @@ public partial class Search : System.Web.UI.Page
     {
         if (Radiobtnkeyword.Checked == true)
         {
+           
             var cust2 = from v in dv.research_papers
                         join d in dv.research_paper_authors
                         on v.r_id equals d.r_id
@@ -85,6 +86,7 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust2;
             GridView1.DataBind();
+          
         }
 
     }
