@@ -72,6 +72,9 @@
             font-size:20px;
             padding-left:10px
         }
+        #lblerror{
+            color:red;
+        }
         
 
     </style>
@@ -141,13 +144,15 @@
                 <asp:RadioButton ID="RadioPubcharges" runat="server" CssClass="rd" GroupName="choose"/><span>Publication Charges</span>
                 <asp:RadioButton ID="Radiopublicationtime" runat="server" CssClass="rd" GroupName="choose"/><span>Publication Time</span>
                 <asp:RadioButton ID="Radiocategory" runat="server"  CssClass="rd" GroupName="choose"/><span>Category(ex:Elsevier)</span>
-                <asp:RadioButton ID="Radioimpactfactor" runat="server" CssClass="rd" GroupName="choose" /><span>Impact Factor</span>
+                <asp:RadioButton ID="Radioimpactfactor" runat="server" CssClass="rd" GroupName="choose" /><span>Impact Factor</span><br />
+                    <span style="font-size:15px;"><a href="Advance_Publication.aspx" style="text-align:center;"><b>Advance Search</b></a></span>
                 </div>
+                       
 
                 <div class="col-lg-2">
                   
                     </div>
-
+              
 
                  </div>
                  </div>

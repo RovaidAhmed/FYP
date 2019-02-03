@@ -1320,7 +1320,6 @@ pre {
     order: 12; } }
 
 .table {
-  width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
