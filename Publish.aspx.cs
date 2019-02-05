@@ -23,7 +23,7 @@ public partial class Publish : System.Web.UI.Page
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
-        
+        if (Radiokeyword.Checked == true || RadioPubcharges.Checked==true || RadioISSN.Checked==true || Radiocategory.Checked==true || Radioimpactfactor.Checked==true || Radiopublicationtime.Checked==true) {
 
             var cust = from c in dv.Journals
                        join d in dv.journals_publications
@@ -44,6 +44,8 @@ public partial class Publish : System.Web.UI.Page
 
             GridView1.DataSource = cust;
             GridView1.DataBind();
+        }
+        
         }
      
       

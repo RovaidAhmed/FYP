@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Researcher's Portal</title>
+    <title>Researcheropedia</title>
 
    
       <!-- Font Awesome -->
@@ -107,12 +107,12 @@
 
                 <!--Main information-->
                 <div class="col-lg-5">
-                    <h2 class="h2-responsive font-bold">Researcher's Portal</h2>
+                    <h2 class="h2-responsive font-bold">Researcheropedia</h2>
                     <hr>
                     <p>
                        We are providing a platform Where researchers have to find a journal according to their need and standard they face some        difficulties. Our main purpose to make this project is to provide easiness for students, professors or anyone who is interested in reading journals or want to publish their own research paper.
                         </p>
-                    <a href="" class="btn btn-info"  style="font-size:14px;">let's Search</a>
+                    <a href="search.aspx" class="btn btn-info"  style="font-size:14px;">let's Search</a>
                 </div>
             </div>
             <!--/.First row-->
@@ -225,7 +225,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid"  style="font-size:15px;">
-                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcher's Portal</a>
+                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcheropedia</a>
 
             </div>
         </div>

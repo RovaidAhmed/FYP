@@ -29,6 +29,7 @@ public partial class Search : System.Web.UI.Page
         search_from_Emerald();
         search_from_ACM();
         search_from_IEEE();
+
     }
 
     //search from Author and Main Author
@@ -64,8 +65,10 @@ public partial class Search : System.Web.UI.Page
         if (RadioBtntitle.Checked == true)
         {
             var cust1 = from v in dv.research_papers  
+                        join e in dv.research_paper_authors
+                        on v.r_id equals e.r_id
                         where v.Title.Contains(TextBox1.Text)
-                        select new { v.Title, v.Research_Name,v.Abstract_View,v.paper_upload };
+                        select new { v.Title, v.Research_Name,v.Abstract_View,e.is_mainauthor,e.main_author_country,v.paper_upload };
 
             GridView1.DataSource = cust1;
             GridView1.DataBind();
@@ -82,7 +85,7 @@ public partial class Search : System.Web.UI.Page
                         join d in dv.research_paper_authors
                         on v.r_id equals d.r_id
                         where v.keywords.Contains(TextBox1.Text)
-                        select new { v.Title, v.Research_Name, v.Abstract_View,v.paper_upload,d.is_mainauthor };
+                        select new { v.Title, v.Research_Name,d.main_author_country, d.is_mainauthor,v.Abstract_View,v.paper_upload};
 
             GridView1.DataSource = cust2;
             GridView1.DataBind();
@@ -99,7 +102,7 @@ public partial class Search : System.Web.UI.Page
                         on v.c_id equals d.c_id join g in dv.research_papers
                         on  v.j_id  equals g.j_id
                         where d.c_name.Contains(TextBox1.Text)
-                        select new {d.c_name,v.citations,v.Impact_factor,v.J_name,g.Research_Name,g.Title,g.Abstract_View,g.paper_upload};
+                        select new {d.c_name,v.citations,v.J_name,g.Research_Name,g.Title,g.paper_upload};
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
@@ -120,7 +123,7 @@ public partial class Search : System.Web.UI.Page
                         join g in dv.research_papers
                         on v.j_id equals g.j_id
                         where d.c_name.Contains(TextBox1.Text)
-                        select new { d.c_name, v.citations, v.Impact_factor, v.J_name, g.Research_Name, g.Title, g.Abstract_View, g.paper_upload };
+                        select new {  v.citations, v.Impact_factor, v.J_name, g.Title, g.Abstract_View, g.paper_upload };
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
@@ -139,7 +142,7 @@ public partial class Search : System.Web.UI.Page
                         join g in dv.research_papers
                         on v.j_id equals g.j_id
                         where d.c_name.Contains(TextBox1.Text)
-                        select new { d.c_name, v.citations, v.Impact_factor, v.J_name, g.Research_Name, g.Title, g.Abstract_View, g.paper_upload };
+                        select new { d.c_name, v.citations, v.Impact_factor, v.J_name, g.Research_Name, g.paper_upload };
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
@@ -150,6 +153,7 @@ public partial class Search : System.Web.UI.Page
 
 
 
+   
 
 
 
@@ -179,4 +183,9 @@ public partial class Search : System.Web.UI.Page
     }
 
 
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        e.Row.Cells[6].Visible = false;
+    }
 }

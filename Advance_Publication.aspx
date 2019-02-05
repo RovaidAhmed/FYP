@@ -10,6 +10,9 @@
      <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet"> 
    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     <!-- Bootstrap core CSS -->
     
@@ -74,6 +77,14 @@
             font-size:20px;
             padding-left:10px
         }
+        h1 :hover{
+            color :green;
+        }
+        #Button1:hover{
+            background-color:lightblue;
+            color:firebrick;
+            font-weight:bold;
+        }
         
 
     </style>
@@ -114,7 +125,7 @@
         </nav>
         <!--/.Navbar-->   
     <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
-   font-family: 'Roboto', sans-serif;"><b>Publication Information</b></h1>
+     font-family: 'Cuprum', sans-serif;font-size:2em;"><b>Publication Information</b></h1>
  </div><br />
 
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" 
@@ -132,13 +143,13 @@
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 
-
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
 <div class="container" runat="server" id="main_div">
          <div class="row">
              <div class="col-lg-12">
                  <div class="form-group">
                      <label style="font-family: 'Noto Sans JP', sans-serif;">Keyword:</label><br />
-                  <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
+                  <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control"  ></asp:TextBox>
 
                  </div>
 
@@ -163,7 +174,7 @@
                  <hr />
                   <div class="form-group">
                      <label style="font-family: 'Noto Sans JP', sans-serif;">Access:</label><br />
-                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control" required="required;"></asp:DropDownList>
 
                  </div><br />
                    <div class="form-group">
@@ -194,8 +205,9 @@
 
 
 
-
     </div>
     </form>
+
 </body>
+   
 </html>

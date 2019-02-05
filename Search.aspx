@@ -113,7 +113,7 @@
         <!--/.Navbar-->
 
             <div class="form-group" style="padding-top:80px">
-                <p class="text-center label1" style="font-family:cursive">Researcher's Portal</p>
+                <p class="text-center label1" style="font-family:cursive">Researcheropedia</p>
                 <div class="row">
                 <div class="col-lg-2 col-sm-2"></div>
                 <div class="col-lg-8">
@@ -155,7 +155,7 @@
 
 
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None"
-            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px" OnRowCommand="GridView1_RowCommand1">
+            CssClass=" table-bordered table-condensed table-hover" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" Height="189px" Width="1392px" OnRowCommand="GridView1_RowCommand1" OnRowDataBound="GridView1_RowDataBound">
             <Columns>
                 <asp:TemplateField HeaderText="DOWNLOAD" >
                     <ItemTemplate >
