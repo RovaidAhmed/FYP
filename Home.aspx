@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Researcheropedia</title>
+    <title>Researchopedia</title>
 
    
       <!-- Font Awesome -->
@@ -77,7 +77,7 @@
                             <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                            <a class="nav-link" href="Publish.aspx">Subscription</a>
                         </li>
                        
                     </ul>
@@ -107,7 +107,7 @@
 
                 <!--Main information-->
                 <div class="col-lg-5">
-                    <h2 class="h2-responsive font-bold">Researcheropedia</h2>
+                    <h2 class="h2-responsive font-bold">Researchopedia</h2>
                     <hr>
                     <p>
                        We are providing a platform Where researchers have to find a journal according to their need and standard they face some        difficulties. Our main purpose to make this project is to provide easiness for students, professors or anyone who is interested in reading journals or want to publish their own research paper.
@@ -225,7 +225,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid"  style="font-size:15px;">
-                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researcheropedia</a>
+                © 2018 Copyright: <a href="https://www.ResearchersPortal.com"> Researchopedia</a>
 
             </div>
         </div>

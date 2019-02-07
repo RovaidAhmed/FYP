@@ -116,7 +116,7 @@
         <!--/.Navbar-->
 
             <div class="form-group" style="padding-top:80px">
-                <p class="text-center label1" style="font-family:cursive">publication Information</p>
+                <p class="text-center label1" style="font-family:cursive">Publication Information</p>
                 <div class="row">
                 <div class="col-lg-2 col-sm-2"></div>
                 <div class="col-lg-8">

@@ -115,7 +115,7 @@
                             <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                            <a class="nav-link" href="Publish.aspx">Subscription</a>
                         </li>
                        
                     </ul>
@@ -174,7 +174,10 @@
                  <hr />
                   <div class="form-group">
                      <label style="font-family: 'Noto Sans JP', sans-serif;">Access:</label><br />
-                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control" required="required;"></asp:DropDownList>
+                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px"  required="required;">
+                          <asp:ListItem>Open</asp:ListItem>
+                          <asp:ListItem>close</asp:ListItem>
+                      </asp:DropDownList>
 
                  </div><br />
                    <div class="form-group">

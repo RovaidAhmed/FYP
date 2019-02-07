@@ -102,7 +102,7 @@
                             <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                            <a class="nav-link" href="Publish.aspx">Subscription</a>
                         </li>
                        
                     </ul>
@@ -113,7 +113,7 @@
         <!--/.Navbar-->
 
             <div class="form-group" style="padding-top:80px">
-                <p class="text-center label1" style="font-family:cursive">Researcheropedia</p>
+                <p class="text-center label1" style="font-family:cursive">Researchopedia</p>
                 <div class="row">
                 <div class="col-lg-2 col-sm-2"></div>
                 <div class="col-lg-8">

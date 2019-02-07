@@ -8,7 +8,8 @@
      <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
     
     <!-- Material Design Bootstrap -->
@@ -22,10 +23,11 @@
             padding-bottom: 2rem;
         }
 
-        body {
-            font-size: 15px;
-            background-color:#F5F5F5;
-        }
+     body {
+         font-size: 15px;
+         background-color:#F5F5F5;
+         /*background-image: url('img/research_paper.jpg');*/
+     }
 
         .extra-margins {
             margin-top: 1rem;
@@ -75,8 +77,9 @@
 
     </style>
 </head>
-<body>
+<body >
     <form id="form1" runat="server">
+        
           <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
@@ -100,7 +103,7 @@
                             <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="Publish.aspx">Subscribtion</a>
+                            <a class="nav-link" href="Publish.aspx">Subscription</a>
                         </li>
                        
                     </ul>
@@ -110,7 +113,7 @@
         </nav>
         <!--/.Navbar-->
     
-     <div class="featured-post-area" style="background-color:whitesmoke;padding-top:15px;">
+     <div class="featured-post-area" style="background-color:whitesmoke;padding-top:15px;" >
         <div class="container">
             <div class="row">
                 <div class=" col-md-6 col-lg-12">
@@ -126,10 +129,10 @@
                         <!-- Single Featured Post -->                            
                         <div class="col-12 col-lg-12" id="discriptiondiv">
                             <div class="single-blog-post featured-post">
-                                <a href="#" class="post-title">
-                              <div><h1 style="text-align:center;font-family: 'PT Serif', serif;"><%# Eval("Title") %></h1></div>
+                                
+                              <div><h1 style="text-align:center;font-family: 'Raleway', sans-serif;"><%# Eval("Title") %></h1></div>
                                             
-                                    </a>
+                                
                                  <p style="text-decoration:none!important;color:green;"> Research Related to :<span style="color:crimson;"> <%# Eval("Research_name") %></span></p>
                                 <div class="post-thumb">
                                   
@@ -138,8 +141,7 @@
                                  <%-- <a href="politics.aspx" class="post-catagory" style="margin-left:85%;">سیاست سے</a>--%>
                                     
                                     <div class="post-meta">
-                                        <p class="post-author" style="text-align:right;"></a><button type="button" class="btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >Full Preview</button>
-
+                                        <p class="post-author" style="text-align:right;"></a><button type="button" class="btn-primary"><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("paper_upload") %>' Text="Download" style="color:white;">Full Preview</asp:HyperLink></button>
                                         </p>
                                         <p class="post-excerp">                                    
 
@@ -229,4 +231,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </html>
