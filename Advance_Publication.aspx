@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Advance_Publication.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Advance_Publication.aspx.cs" Inherits="_Default"  %>
 
 <!DOCTYPE html>
 
@@ -31,6 +31,7 @@
 
         body {
             font-size: 15px;
+            background-color:ivory;
         }
 
         .extra-margins {
@@ -80,12 +81,22 @@
         h1 :hover{
             color :green;
         }
-        #Button1:hover{
-            background-color:lightblue;
-            color:firebrick;
-            font-weight:bold;
-        }
-        
+
+      td{
+          font-weight:bold;
+          color:darkcyan;
+         padding-top:25px;
+                       
+      }
+      span{
+          color:firebrick;
+      }
+      p{
+          font-style:italic;
+          color:black;
+      }
+
+     
 
     </style>
  </head>
@@ -126,25 +137,76 @@
         <!--/.Navbar-->   
     <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
      font-family: 'Cuprum', sans-serif;font-size:2em;"><b>Publication Information</b></h1>
- </div><br />
+       </div><br />
+          <div class="container">
+              <asp:Repeater ID="Repeater1" runat="server">
+                  <ItemTemplate>
 
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" 
-            CssClass="table table-bordered tab-content  table-condensed table-hover" ForeColor="Black" GridLines="Horizontal">
-            <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F7F7F7" />
-            <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-            <SortedDescendingCellStyle BackColor="#E5E5E5" />
-            <SortedDescendingHeaderStyle BackColor="#242121" />
-        </asp:GridView>
+                 
+
+             
+               
+            <div class="row" style="background-color:honeydew;width:100%;height:auto;border-radius:15px;border:1px solid green;">
+
+                   <div class="col-lg-3" >
+                      <table>
+                          <tr>
+                              <td>Publication Time: <span><%# Eval("publication_time") %></span></td>
+                             
+                          </tr>
+                          <tr>
+                              <td>Publication Charges: <span><%# Eval("publication_charges") %></span> </td>
+                             
+                          </tr>
+                          <tr>
+                              <td>Journal Access: <span><%# Eval("pub_Jou_Access") %></span> </td>
+                             
+                          </tr>
+                      </table>
+                    
+                       
+                    </div>
+                <div class="col-lg-6" >
+                       <h1 style="text-align:center;color:darkcyan;"><%# Eval("J_name") %></h1> <br />
+                    <p> keywords:  <span><%# Eval("keyword") %></span></p>
+                    </div>
+                <div class="col-lg-2" >
+                       <table>
+                          <tr>
+                              <td>Impact Factor: <span><%# Eval("Impact_factor") %></span></td>
+                             
+                          </tr>
+                          <tr>
+                              <td>ISSN: <span><%# Eval("ISSN") %></span> </td>
+                             
+                          </tr>
+                          <tr>
+                              <td>Journal Index: <span><%# Eval("index_name") %></span> </td>
+                             
+                          </tr>
+                      </table>
+                     </div>
+                <div class="col-lg-1" >
+                     <asp:hyperlink id="hlDownload" runat="server"  NavigateUrl='<%# Eval("Publication_link") %>' Text="Click_Here"  Target='<%# "_blank" %>'/>
+                    </div>
 
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            </div> 
+                      <br />
+                   </ItemTemplate>
+                   </asp:Repeater>           
+        </div>
+        <hr />
+      
+
+          
+    
+
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString2 %>" SelectCommand="SELECT DISTINCT * FROM [index]"></asp:SqlDataSource>
+
 
         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-<div class="container" runat="server" id="main_div">
+        <div class="container" runat="server" id="main_div">
          <div class="row">
              <div class="col-lg-12">
                  <div class="form-group">
@@ -161,23 +223,35 @@
                  </div>
          
                   <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Indexing:</label><br />
-                      <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left:25px;" Width="377px" CssClass="form-control"></asp:DropDownList>
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Indexing:<b style="color:red">*</b></label><br />
+                      <asp:DropDownList ID="DropDownIndex" runat="server" style="margin-left:25px;" Width="377px" DataSourceID="SqlDataSource1"   onclick="sethref2();" DataTextField="index_name" DataValueField="index_name" ></asp:DropDownList>
+
+                      <asp:TextBox ID="Txtindex" runat="server" Width="113px"></asp:TextBox>
 
                  </div>
                  <hr />
                    <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Time:</label><br />
-                      <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left:25px;" Width="378px" CssClass="form-control"></asp:DropDownList>
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Time:<b style="color:red">*</b></label><br />
+                      <asp:DropDownList ID="DropDownpub" AppendDataBoundItems="true" runat="server" style="margin-left:25px;" Width="378px" DataSourceID="SqlDataSource2" DataTextField="publication_time" DataValueField="publication_time" onclick="sethref1();">
+                          <asp:ListItem>--choose--</asp:ListItem>
+                      </asp:DropDownList>
+
+                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT [publication_time] FROM [journals_publication]"></asp:SqlDataSource>
+
+                       <asp:TextBox ID="Txttime" runat="server"></asp:TextBox>
 
                  </div>
                  <hr />
                   <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Access:</label><br />
-                      <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left:25px;" Width="378px"  required="required;">
-                          <asp:ListItem>Open</asp:ListItem>
-                          <asp:ListItem>close</asp:ListItem>
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Access: <b style="color:red">*</b></label><br />
+                      <asp:DropDownList ID="DropDownacc" runat="server" AppendDataBoundItems="true"    style="margin-left:25px;" Width="378px"  onclick="sethref();" DataSourceID="SqlDataSource3" DataTextField="pub_Jou_Access" DataValueField="pub_Jou_Access">
+                             <asp:ListItem >--choose--</asp:ListItem>
+                      
                       </asp:DropDownList>
+
+                      <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Researcher's portalConnectionString %>" SelectCommand="SELECT DISTINCT [pub_Jou_Access] FROM [journals_publication]"></asp:SqlDataSource>
+
+                      <asp:TextBox ID="Txtaccess" runat="server"></asp:TextBox>
 
                  </div><br />
                    <div class="form-group">
@@ -194,23 +268,90 @@
 
                   
 
-                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;" OnClick="Button1_Click"    />
+                 <asp:Button ID="Button1" runat="server" Text="Submit"  CssClass="btn-primary form-control" Style="font-size:14px;" OnClick="Button1_Click"  />
 
-
+                 
 
              </div>
          </div>
      </div>
+
+        <!------------>
+
+      
         
 
 
 
 
 
+  </div>
+   </form>
 
-    </div>
-    </form>
+  <script>
+      function sethref() {           //dropdownacc
 
+            var Textb = document.getElementById('<%=Txtaccess.ClientID%>');                                                                        
+            var parLab = document.getElementById('<%=DropDownacc.ClientID%>').options[document.getElementById('<%=DropDownacc.ClientID%>').selectedIndex].text;
+
+          if(parLab!='--select deptname--'){
+            Textb.value = parLab
+            }
+
+          else{
+
+         Textb.value ='';
+
+         }
+
+      }
+       function sethref1() {           //dropdowntime
+
+            var Textb = document.getElementById('<%=Txttime.ClientID%>');                                                                        
+            var parLab = document.getElementById('<%=DropDownpub.ClientID%>').options[document.getElementById('<%=DropDownpub.ClientID%>').selectedIndex].text;
+
+          if(parLab!='--select deptname--'){
+            Textb.value = parLab
+            }
+
+          else{
+
+         Textb.value ='';
+
+         }
+
+       }
+      function sethref2() {           //dropdowntime
+
+            var Textb = document.getElementById('<%=Txtindex.ClientID%>');                                                                        
+            var parLab = document.getElementById('<%=DropDownIndex.ClientID%>').options[document.getElementById('<%=DropDownIndex.ClientID%>').selectedIndex].text;
+
+          if(parLab!='--select deptname--'){
+            Textb.value = parLab
+            }
+
+          else{
+
+         Textb.value ='';
+
+         }
+
+       }
+
+
+
+      $(document).ready(function () {
+          $('#Txttime').hide();
+          $('#Txtaccess').hide();
+          $('#Txtindex').hide();
+
+      })
+     
+       </script> 
+
+
+  </script> 
+  
 </body>
    
 </html>

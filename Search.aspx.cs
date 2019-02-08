@@ -19,10 +19,16 @@ public partial class Search : System.Web.UI.Page
        
     }
 
-   
+
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
+        if (Radiobtnacm.Checked == false || RadioBtnauthor.Checked == false || 
+            RadioBtntitle.Checked==false || Radiobtnemerald.Checked == false ||
+            Radiobtnacm.Checked == false || RadiobtnIEEE.Checked == false)
+        {
+            Response.Write("please 'Select' the Radio Button from which you want to search");
+        }
         search_Author();
         search_Title();
         search_Keyword();
@@ -52,6 +58,7 @@ public partial class Search : System.Web.UI.Page
 
                 GridView1.DataSource = cust;
                 GridView1.DataBind();
+                Response.Clear();
 
 
 
@@ -73,6 +80,7 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust1;
             GridView1.DataBind();
+            Response.Clear();
         }
 
     }
@@ -90,7 +98,8 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust2;
             GridView1.DataBind();
-          
+            Response.Clear();
+
         }
 
     }
@@ -107,6 +116,7 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
+            Response.Clear();
         }
 
     }
@@ -128,6 +138,7 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
+            Response.Clear();
         }
 
     }
@@ -147,6 +158,7 @@ public partial class Search : System.Web.UI.Page
 
             GridView1.DataSource = cust3;
             GridView1.DataBind();
+            Response.Clear();
         }
 
     }
