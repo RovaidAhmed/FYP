@@ -15,11 +15,13 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
         //Btnback.Visible = false;
+        errormessage.Visible = false;
         if (IsPostBack)
         {
             main_div.Visible = false;
+        
             //Btnback.Visible = true;
         }
     }
@@ -29,6 +31,9 @@ public partial class _Default : System.Web.UI.Page
 
         //searching_keyword();
         publication_pubAccess_pubtime();
+        pubchargessgreaterthen();
+        lessimpactfactor();
+        greaterimpactfactor();
 
 
 
@@ -39,23 +44,23 @@ public partial class _Default : System.Web.UI.Page
 
 
 
-    //void searching_keyword()
-    //{
-    //    var cust = from p in dv.Journals
-    //               join q in dv.journals_publications
-    //               on p.j_id equals q.j_id
-    //               join s in dv.indexes
-    //               on p.index_id equals s.index_id
-    //               where q.Keyword.Contains(Txtkeyword.Text) ||
-    //               p.ISSN.Contains(Txtissn.Text)
-    //               select new { p.J_name,p.Publication_link,q.Keyword, p.Impact_factor, p.ISSN, s.index_name, q.publication_time, q.publication_charges, q.pub_Jou_Access, };
+    ////void searching_keyword()
+    ////{
+    ////    var cust = from p in dv.Journals
+    ////               join q in dv.journals_publications
+    ////               on p.j_id equals q.j_id
+    ////               join s in dv.indexes
+    ////               on p.index_id equals s.index_id
+    ////               where q.Keyword.Contains(Txtkeyword.Text) ||
+    ////               p.ISSN.Contains(Txtissn.Text)
+    ////               select new { p.J_name, p.Publication_link, q.Keyword, p.Impact_factor, p.ISSN, s.index_name, q.publication_time, q.publication_charges, q.pub_Jou_Access, };
 
 
-    //    Repeater1.DataSource = cust;
-    //    Repeater1.DataBind();
-    //    Txtkeyword.Text = " ";
+    ////    Repeater1.DataSource = cust;
+    ////    Repeater1.DataBind();
+     
 
-    //}
+    ////}
 
     void publication_pubAccess_pubtime()
     {
@@ -77,21 +82,127 @@ public partial class _Default : System.Web.UI.Page
         catch(Exception ex)
         {
             Response.Write("record not found");
+            errormessage.Visible = true;
+
         }
      }
 
-      
-    
-    
-    
-    
-      
-        
+
+    //greater pub charges
+      void pubchargessgreaterthen()
+    {
+        if (RadioBtnchargesgreater.Checked==true )
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges >='" + Txtpubcharges.Text + "%' And pub_Jou_Access ='" + Txtaccess.Text + "' OR publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+        }
+        else
+        {
+            errormessage.Visible = true;
+        }
 
     }
+    //greater pub charges
+
+    //less pub charges
+    void pubchargeslessthen()
+    {
+        if (RadioBtnchargesless.Checked == true)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges <='" + Txtpubcharges.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+        }
+        else
+        {
+            errormessage.Visible = true;
+        }
+
+    }
+    //less pub charges
+
+    //less impact factor
+    void lessimpactfactor()
+    {
+        if (RadioBtnimpless.Checked == true)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor <='" + Txtimpactfactor.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+        }
+        else
+        {
+            errormessage.Visible = true;
+        }
+
+    }
+    //less impact factor
+
+    //greater impact factor
+    void greaterimpactfactor()
+    {
+        if (RadioBtnimpgreater.Checked == true)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor >='" + Txtimpactfactor.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+        }
+        else
+        {
+            errormessage.Visible = true;
+        }
+
+    }
+    //greater impact factor
 
 
 
 
 
-   
+
+
+
+}
+
+
+
+
+
+

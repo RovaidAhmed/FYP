@@ -138,6 +138,13 @@
     <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
      font-family: 'Cuprum', sans-serif;font-size:2em;"><b>Publication Information</b></h1>
        </div><br />
+        
+        <!--------error message div---->
+        <div  runat="server" id="errormessage">
+            <h1 style="text-align:center;position:fixed;margin-left:50%;">Not Found !</h1>
+
+        </div>
+
           <div class="container">
               <asp:Repeater ID="Repeater1" runat="server">
                   <ItemTemplate>
@@ -146,9 +153,9 @@
 
              
                
-            <div class="row" style="background-color:honeydew;width:100%;height:auto;border-radius:15px;border:1px solid green;">
+            <div class="row" style="background-color:honeydew;width:100%;height:auto;border-radius:15px;border:1px solid green;position:relative">
 
-                   <div class="col-lg-3" >
+                   <div class="col-lg-3 col-md-3" >
                       <table>
                           <tr>
                               <td>Publication Time: <span><%# Eval("publication_time") %></span></td>
@@ -166,11 +173,11 @@
                     
                        
                     </div>
-                <div class="col-lg-6" >
+                <div class="col-lg-6 col-md-6" >
                        <h1 style="text-align:center;color:darkcyan;"><%# Eval("J_name") %></h1> <br />
                     <p> keywords:  <span><%# Eval("keyword") %></span></p>
                     </div>
-                <div class="col-lg-2" >
+                <div class="col-lg-2 col-md-2" >
                        <table>
                           <tr>
                               <td>Impact Factor: <span><%# Eval("Impact_factor") %></span></td>
@@ -186,7 +193,7 @@
                           </tr>
                       </table>
                      </div>
-                <div class="col-lg-1" >
+                <div class="col-lg-1 col-md-1" >
                      <asp:hyperlink id="hlDownload" runat="server"  NavigateUrl='<%# Eval("Publication_link") %>' Text="Click_Here"  Target='<%# "_blank" %>'/>
                     </div>
 
@@ -209,18 +216,13 @@
         <div class="container" runat="server" id="main_div">
          <div class="row">
              <div class="col-lg-12">
-                 <div class="form-group">
+               <%--  <div class="form-group">
                      <label style="font-family: 'Noto Sans JP', sans-serif;">Keyword:</label><br />
                   <asp:TextBox ID="Txtkeyword" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control"  ></asp:TextBox>
 
-                 </div>
+                 </div>--%>
 
-                  <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">ISSN:</label><br />
-                  <asp:TextBox ID="Txtissn" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
-
-
-                 </div>
+        
          
                   <div class="form-group">
                      <label style="font-family: 'Noto Sans JP', sans-serif;">Indexing:<b style="color:red">*</b></label><br />
@@ -255,13 +257,19 @@
 
                  </div><br />
                    <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Charges:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Publication Charges: 
+                         <asp:RadioButton ID="RadioBtnchargesless" runat="server" GroupName="choose1" /><span>less</span>
+                       <asp:RadioButton ID="RadioBtnchargesgreater" runat="server"  GroupName="choose1"/><span>Greater</span>
+                       </label><br />
                   <asp:TextBox ID="Txtpubcharges" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
                  </div>
 
                     <div class="form-group">
-                     <label style="font-family: 'Noto Sans JP', sans-serif;">Impact factor:</label><br />
+                     <label style="font-family: 'Noto Sans JP', sans-serif;">Impact factor:
+                         <asp:RadioButton ID="RadioBtnimpless" runat="server" GroupName="choose"/><span>less</span>
+                        <asp:RadioButton ID="RadioBtnimpgreater" runat="server" GroupName="choose" /><span>Greater</span>
+                        </label><br />
                   <asp:TextBox ID="Txtimpactfactor" Style="font-size:15px;padding-left:120px;" runat="server" CssClass="form-control" ></asp:TextBox>
 
                  </div>
@@ -275,8 +283,6 @@
              </div>
          </div>
      </div>
-
-        <!------------>
 
       
         
