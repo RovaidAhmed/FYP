@@ -168,19 +168,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<subscription> subscriptions
-	{
-		get
-		{
-			return this.GetTable<subscription>();
-		}
-	}
-	
 	public System.Data.Linq.Table<user> users
 	{
 		get
 		{
 			return this.GetTable<user>();
+		}
+	}
+	
+	public System.Data.Linq.Table<subscription> subscriptions
+	{
+		get
+		{
+			return this.GetTable<subscription>();
 		}
 	}
 }
@@ -1953,51 +1953,6 @@ public partial class research_paper_author : INotifyPropertyChanging, INotifyPro
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
-public partial class subscription
-{
-	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public subscription()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
 public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -2008,7 +1963,9 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _u_email;
 	
-	private int _a_id;
+	private string _u_name;
+	
+	private string _u_pass;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2018,8 +1975,10 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onu_idChanged();
     partial void Onu_emailChanging(string value);
     partial void Onu_emailChanged();
-    partial void Ona_idChanging(int value);
-    partial void Ona_idChanged();
+    partial void Onu_nameChanging(string value);
+    partial void Onu_nameChanged();
+    partial void Onu_passChanging(string value);
+    partial void Onu_passChanged();
     #endregion
 	
 	public user()
@@ -2067,22 +2026,42 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_a_id", DbType="Int NOT NULL")]
-	public int a_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string u_name
 	{
 		get
 		{
-			return this._a_id;
+			return this._u_name;
 		}
 		set
 		{
-			if ((this._a_id != value))
+			if ((this._u_name != value))
 			{
-				this.Ona_idChanging(value);
+				this.Onu_nameChanging(value);
 				this.SendPropertyChanging();
-				this._a_id = value;
-				this.SendPropertyChanged("a_id");
-				this.Ona_idChanged();
+				this._u_name = value;
+				this.SendPropertyChanged("u_name");
+				this.Onu_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_pass", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string u_pass
+	{
+		get
+		{
+			return this._u_pass;
+		}
+		set
+		{
+			if ((this._u_pass != value))
+			{
+				this.Onu_passChanging(value);
+				this.SendPropertyChanging();
+				this._u_pass = value;
+				this.SendPropertyChanged("u_pass");
+				this.Onu_passChanged();
 			}
 		}
 	}
@@ -2104,6 +2083,51 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
+public partial class subscription
+{
+	
+	private int _j_id;
+	
+	private int _u_id;
+	
+	public subscription()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this._u_id = value;
+			}
 		}
 	}
 }

@@ -68,7 +68,7 @@ public partial class _Default : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where pub_Jou_Access ='" + Txtaccess.Text + "' OR publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 con.Open();
                 com.ExecuteNonQuery();
@@ -95,7 +95,7 @@ public partial class _Default : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges >='" + Txtpubcharges.Text + "%' And pub_Jou_Access ='" + Txtaccess.Text + "' OR publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges >='" + Txtpubcharges.Text + "%' And pub_Jou_Access ='" + Txtaccess.Text + "' And publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 con.Open();
                 com.ExecuteNonQuery();
@@ -121,7 +121,7 @@ public partial class _Default : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges <='" + Txtpubcharges.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where publication_charges <='" + Txtpubcharges.Text + "%' And pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 con.Open();
                 com.ExecuteNonQuery();
@@ -147,7 +147,7 @@ public partial class _Default : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor <='" + Txtimpactfactor.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor <='" + Txtimpactfactor.Text + "%' And pub_Jou_Access ='" + Txtaccess.Text + "' And publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 con.Open();
                 com.ExecuteNonQuery();
@@ -173,7 +173,7 @@ public partial class _Default : System.Web.UI.Page
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor >='" + Txtimpactfactor.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' and index_name='" + Txtindex.Text + "'";
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id where Impact_factor >='" + Txtimpactfactor.Text + "%' and pub_Jou_Access ='" + Txtaccess.Text + "' and publication_time='" + Txttime.Text + "' OR index_name='" + Txtindex.Text + "'";
                 SqlCommand com = new SqlCommand(query, con);
                 con.Open();
                 com.ExecuteNonQuery();
