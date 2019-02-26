@@ -18,12 +18,19 @@ public partial class _Default : System.Web.UI.Page
 
         //Btnback.Visible = false;
         errormessage.Visible = false;
+        lblsorting.Visible = false;
+        DropDownList1.Visible = false;
+      
         if (IsPostBack)
         {
             main_div.Visible = false;
-        
+            lblsorting.Visible = true;
+            DropDownList1.Visible = true;
+          
+
             //Btnback.Visible = true;
         }
+      
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -199,6 +206,46 @@ public partial class _Default : System.Web.UI.Page
 
 
 
+
+
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DropDownList1.SelectedItem.Text == "DESC")
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id order by Impact_factor Desc ";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+
+        }
+        if (DropDownList1.SelectedItem.Text == "ASC")
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+
+                var query = "select * from Journal inner join journals_publication on Journal.j_id = journals_publication.j_id inner join dbo.[index] on Journal.index_id = dbo.[index].index_id order by Impact_factor Asc ";
+                SqlCommand com = new SqlCommand(query, con);
+                con.Open();
+                com.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                da.Fill(dt);
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+
+        }
+    }
 }
 
 

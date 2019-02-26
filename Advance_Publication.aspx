@@ -137,7 +137,14 @@
         <!--/.Navbar-->   
     <h1 style="text-align:center;font-family: 'Abril Fatface', cursive;
      font-family: 'Cuprum', sans-serif;font-size:2em;"><b>Publication Information</b></h1>
-       </div><br />
+       </div>
+     <label style="margin-left:25px;" runat="server" id="lblsorting">Order By:</label>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" >
+            <asp:ListItem>--choose--</asp:ListItem>          
+            <asp:ListItem>ASC</asp:ListItem>
+            <asp:ListItem>DESC</asp:ListItem>
+        </asp:DropDownList>
+        <br />
         
         <!--------error message div---->
         <div  runat="server" id="errormessage">

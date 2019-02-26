@@ -26,6 +26,8 @@
 
         body {
             font-size: 15px;
+            background-image:url('./img/search.png');            
+            
         }
 
         .extra-margins {
@@ -136,12 +138,12 @@
                 <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8 text-center">
-                <asp:RadioButton ID="RadioBtnauthor" runat="server" CssClass="rd" GroupName="choose"/><span>By Author</span>
-                <asp:RadioButton ID="RadioBtntitle" runat="server" CssClass="rd" GroupName="choose"/><span>By Title</span>
-                <asp:RadioButton ID="Radiobtnkeyword" runat="server" CssClass="rd" GroupName="choose"/><span>Keyword</span>
-                <asp:RadioButton ID="Radiobtnemerald" runat="server"  CssClass="rd" GroupName="choose"/><span>Emerald Database</span>
-                <asp:RadioButton ID="Radiobtnacm" runat="server" CssClass="rd" GroupName="choose" /><span>ACM Database</span>
-                <asp:RadioButton ID="RadiobtnIEEE" runat="server" CssClass="rd" GroupName="choose" /><span>IEEE Database</span>
+                <asp:RadioButton ID="RadioBtnauthor" runat="server" CssClass="rd" GroupName="choose"/><span style="font-weight:bold;">By Author</span>
+                <asp:RadioButton ID="RadioBtntitle" runat="server" CssClass="rd" GroupName="choose"/><span style="font-weight:bold;">By Title</span>
+                <asp:RadioButton ID="Radiobtnkeyword" runat="server" CssClass="rd" GroupName="choose"/><span style="font-weight:bold;">Keyword</span>
+                <asp:RadioButton ID="Radiobtnemerald" runat="server"  CssClass="rd" GroupName="choose"/><span style="font-weight:bold;">Emerald Database</span>
+                <asp:RadioButton ID="Radiobtnacm" runat="server" CssClass="rd" GroupName="choose" /><span style="font-weight:bold;">ACM Database</span>
+                <asp:RadioButton ID="RadiobtnIEEE" runat="server" CssClass="rd" GroupName="choose" /><span style="font-weight:bold;">IEEE Database</span>
                 </div>
 
                 <div class="col-lg-2">
