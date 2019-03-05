@@ -32,12 +32,15 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertadmin(admin instance);
   partial void Updateadmin(admin instance);
   partial void Deleteadmin(admin instance);
-  partial void Insertauthor(author instance);
-  partial void Updateauthor(author instance);
-  partial void Deleteauthor(author instance);
   partial void Insertcategory(category instance);
   partial void Updatecategory(category instance);
   partial void Deletecategory(category instance);
+  partial void Insertauthor(author instance);
+  partial void Updateauthor(author instance);
+  partial void Deleteauthor(author instance);
+  partial void Insertfavourite_list(favourite_list instance);
+  partial void Updatefavourite_list(favourite_list instance);
+  partial void Deletefavourite_list(favourite_list instance);
   partial void Insertindex(index instance);
   partial void Updateindex(index instance);
   partial void Deleteindex(index instance);
@@ -96,19 +99,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<author> authors
-	{
-		get
-		{
-			return this.GetTable<author>();
-		}
-	}
-	
 	public System.Data.Linq.Table<category> categories
 	{
 		get
 		{
 			return this.GetTable<category>();
+		}
+	}
+	
+	public System.Data.Linq.Table<author> authors
+	{
+		get
+		{
+			return this.GetTable<author>();
 		}
 	}
 	
@@ -168,19 +171,19 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<user> users
-	{
-		get
-		{
-			return this.GetTable<user>();
-		}
-	}
-	
 	public System.Data.Linq.Table<subscription> subscriptions
 	{
 		get
 		{
 			return this.GetTable<subscription>();
+		}
+	}
+	
+	public System.Data.Linq.Table<user> users
+	{
+		get
+		{
+			return this.GetTable<user>();
 		}
 	}
 }
@@ -347,6 +350,120 @@ public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
+public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _c_id;
+	
+	private string _c_name;
+	
+	private EntitySet<Journal> _Journals;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onc_idChanging(int value);
+    partial void Onc_idChanged();
+    partial void Onc_nameChanging(string value);
+    partial void Onc_nameChanged();
+    #endregion
+	
+	public category()
+	{
+		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int c_id
+	{
+		get
+		{
+			return this._c_id;
+		}
+		set
+		{
+			if ((this._c_id != value))
+			{
+				this.Onc_idChanging(value);
+				this.SendPropertyChanging();
+				this._c_id = value;
+				this.SendPropertyChanged("c_id");
+				this.Onc_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string c_name
+	{
+		get
+		{
+			return this._c_name;
+		}
+		set
+		{
+			if ((this._c_name != value))
+			{
+				this.Onc_nameChanging(value);
+				this.SendPropertyChanging();
+				this._c_name = value;
+				this.SendPropertyChanged("c_name");
+				this.Onc_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
+	public EntitySet<Journal> Journals
+	{
+		get
+		{
+			return this._Journals;
+		}
+		set
+		{
+			this._Journals.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = this;
+	}
+	
+	private void detach_Journals(Journal entity)
+	{
+		this.SendPropertyChanging();
+		entity.category = null;
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.author")]
 public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -509,84 +626,174 @@ public partial class author : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
-public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
+public partial class favourite_list : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _c_id;
+	private int _fav_id;
 	
-	private string _c_name;
+	private int _j_id;
 	
-	private EntitySet<Journal> _Journals;
+	private int _u_id;
+	
+	private EntityRef<Journal> _Journal;
+	
+	private EntityRef<user> _user;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onc_idChanging(int value);
-    partial void Onc_idChanged();
-    partial void Onc_nameChanging(string value);
-    partial void Onc_nameChanged();
+    partial void Onfav_idChanging(int value);
+    partial void Onfav_idChanged();
+    partial void Onj_idChanging(int value);
+    partial void Onj_idChanged();
+    partial void Onu_idChanging(int value);
+    partial void Onu_idChanged();
     #endregion
 	
-	public category()
+	public favourite_list()
 	{
-		this._Journals = new EntitySet<Journal>(new Action<Journal>(this.attach_Journals), new Action<Journal>(this.detach_Journals));
+		this._Journal = default(EntityRef<Journal>);
+		this._user = default(EntityRef<user>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int c_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fav_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int fav_id
 	{
 		get
 		{
-			return this._c_id;
+			return this._fav_id;
 		}
 		set
 		{
-			if ((this._c_id != value))
+			if ((this._fav_id != value))
 			{
-				this.Onc_idChanging(value);
+				this.Onfav_idChanging(value);
 				this.SendPropertyChanging();
-				this._c_id = value;
-				this.SendPropertyChanged("c_id");
-				this.Onc_idChanged();
+				this._fav_id = value;
+				this.SendPropertyChanged("fav_id");
+				this.Onfav_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-	public string c_name
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
 	{
 		get
 		{
-			return this._c_name;
+			return this._j_id;
 		}
 		set
 		{
-			if ((this._c_name != value))
+			if ((this._j_id != value))
 			{
-				this.Onc_nameChanging(value);
+				if (this._Journal.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onj_idChanging(value);
 				this.SendPropertyChanging();
-				this._c_name = value;
-				this.SendPropertyChanged("c_name");
-				this.Onc_nameChanged();
+				this._j_id = value;
+				this.SendPropertyChanged("j_id");
+				this.Onj_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_Journal", Storage="_Journals", ThisKey="c_id", OtherKey="c_id")]
-	public EntitySet<Journal> Journals
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
 	{
 		get
 		{
-			return this._Journals;
+			return this._u_id;
 		}
 		set
 		{
-			this._Journals.Assign(value);
+			if ((this._u_id != value))
+			{
+				if (this._user.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onu_idChanging(value);
+				this.SendPropertyChanging();
+				this._u_id = value;
+				this.SendPropertyChanged("u_id");
+				this.Onu_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_favourite_list", Storage="_Journal", ThisKey="j_id", OtherKey="j_id", IsForeignKey=true)]
+	public Journal Journal
+	{
+		get
+		{
+			return this._Journal.Entity;
+		}
+		set
+		{
+			Journal previousValue = this._Journal.Entity;
+			if (((previousValue != value) 
+						|| (this._Journal.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Journal.Entity = null;
+					previousValue.favourite_lists.Remove(this);
+				}
+				this._Journal.Entity = value;
+				if ((value != null))
+				{
+					value.favourite_lists.Add(this);
+					this._j_id = value.j_id;
+				}
+				else
+				{
+					this._j_id = default(int);
+				}
+				this.SendPropertyChanged("Journal");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_favourite_list", Storage="_user", ThisKey="u_id", OtherKey="u_id", IsForeignKey=true)]
+	public user user
+	{
+		get
+		{
+			return this._user.Entity;
+		}
+		set
+		{
+			user previousValue = this._user.Entity;
+			if (((previousValue != value) 
+						|| (this._user.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._user.Entity = null;
+					previousValue.favourite_lists.Remove(this);
+				}
+				this._user.Entity = value;
+				if ((value != null))
+				{
+					value.favourite_lists.Add(this);
+					this._u_id = value.u_id;
+				}
+				else
+				{
+					this._u_id = default(int);
+				}
+				this.SendPropertyChanged("user");
+			}
 		}
 	}
 	
@@ -607,63 +814,6 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = this;
-	}
-	
-	private void detach_Journals(Journal entity)
-	{
-		this.SendPropertyChanging();
-		entity.category = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourite_list")]
-public partial class favourite_list
-{
-	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public favourite_list()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
 		}
 	}
 }
@@ -780,6 +930,8 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _ISSN;
 	
+	private EntitySet<favourite_list> _favourite_lists;
+	
 	private EntitySet<journals_publication> _journals_publications;
 	
 	private EntitySet<research_paper> _research_papers;
@@ -816,6 +968,7 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Journal()
 	{
+		this._favourite_lists = new EntitySet<favourite_list>(new Action<favourite_list>(this.attach_favourite_lists), new Action<favourite_list>(this.detach_favourite_lists));
 		this._journals_publications = new EntitySet<journals_publication>(new Action<journals_publication>(this.attach_journals_publications), new Action<journals_publication>(this.detach_journals_publications));
 		this._research_papers = new EntitySet<research_paper>(new Action<research_paper>(this.attach_research_papers), new Action<research_paper>(this.detach_research_papers));
 		this._admin = default(EntityRef<admin>);
@@ -1031,6 +1184,19 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_favourite_list", Storage="_favourite_lists", ThisKey="j_id", OtherKey="j_id")]
+	public EntitySet<favourite_list> favourite_lists
+	{
+		get
+		{
+			return this._favourite_lists;
+		}
+		set
+		{
+			this._favourite_lists.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Journal_journals_publication", Storage="_journals_publications", ThisKey="j_id", OtherKey="j_id")]
 	public EntitySet<journals_publication> journals_publications
 	{
@@ -1143,6 +1309,18 @@ public partial class Journal : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_favourite_lists(favourite_list entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = this;
+	}
+	
+	private void detach_favourite_lists(favourite_list entity)
+	{
+		this.SendPropertyChanging();
+		entity.Journal = null;
 	}
 	
 	private void attach_journals_publications(journals_publication entity)
@@ -1953,6 +2131,51 @@ public partial class research_paper_author : INotifyPropertyChanging, INotifyPro
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
+public partial class subscription
+{
+	
+	private int _j_id;
+	
+	private int _u_id;
+	
+	public subscription()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
+	public int u_id
+	{
+		get
+		{
+			return this._u_id;
+		}
+		set
+		{
+			if ((this._u_id != value))
+			{
+				this._u_id = value;
+			}
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[user]")]
 public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1966,6 +2189,8 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 	private string _u_name;
 	
 	private string _u_pass;
+	
+	private EntitySet<favourite_list> _favourite_lists;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1983,6 +2208,7 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public user()
 	{
+		this._favourite_lists = new EntitySet<favourite_list>(new Action<favourite_list>(this.attach_favourite_lists), new Action<favourite_list>(this.detach_favourite_lists));
 		OnCreated();
 	}
 	
@@ -2066,6 +2292,19 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_favourite_list", Storage="_favourite_lists", ThisKey="u_id", OtherKey="u_id")]
+	public EntitySet<favourite_list> favourite_lists
+	{
+		get
+		{
+			return this._favourite_lists;
+		}
+		set
+		{
+			this._favourite_lists.Assign(value);
+		}
+	}
+	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -2085,50 +2324,17 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.subscription")]
-public partial class subscription
-{
 	
-	private int _j_id;
-	
-	private int _u_id;
-	
-	public subscription()
+	private void attach_favourite_lists(favourite_list entity)
 	{
+		this.SendPropertyChanging();
+		entity.user = this;
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
-	public int j_id
+	private void detach_favourite_lists(favourite_list entity)
 	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				this._j_id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_id", DbType="Int NOT NULL")]
-	public int u_id
-	{
-		get
-		{
-			return this._u_id;
-		}
-		set
-		{
-			if ((this._u_id != value))
-			{
-				this._u_id = value;
-			}
-		}
+		this.SendPropertyChanging();
+		entity.user = null;
 	}
 }
 #pragma warning restore 1591

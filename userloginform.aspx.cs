@@ -14,6 +14,7 @@ public partial class userloginform : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+
     }
 
 
@@ -30,10 +31,14 @@ public partial class userloginform : System.Web.UI.Page
         {
 
             Lblerror.Text = "success";
+            Session["uname"] = Txtuname.Text;
+            Session["upass"] = Txtpass.Text;
             Txtpass.Text = " ";
             Txtuname.Text = " ";
+           
 
-            Response.Redirect("Home.aspx");
+            Response.Redirect("./user/userfavlist.aspx");
+           
         }
 
 

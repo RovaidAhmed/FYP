@@ -40,7 +40,8 @@
     <form id="form1" runat="server">
    <div class="login-form">
    
-        <h2 class="text-center">Log in</h2>       
+        <h2 class="text-center">Log in</h2> 
+             
         <div class="form-group">
             <asp:TextBox ID="Txtuname" runat="server" placeholder="username" CssClass="form-control"></asp:TextBox>
         </div>
