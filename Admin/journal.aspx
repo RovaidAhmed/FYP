@@ -51,16 +51,16 @@
 
 
             <ul class="nav nav-stacked">
-                <li class="nav-header"> <a href="journal.aspx" data-toggle="collapse" data-target="#menu"><strong>Journals</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
+                <li class="nav-header"> <a href="journal.aspx" data-toggle="collapse" data-target="#menu"><strong>Journals</strong><i class="glyphicon glyphicon"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu">
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-home"></i> View Committee Members</a></li>
+                       <%-- <li class="active"> <a href="#"><i class="glyphicon glyphicon-home"></i> View Committee Members</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Add Members <span class="badge badge-info">4</span></a></li>
-                     
+                     --%>
                     </ul>
                 </li>
             <hr>
 
-                <li class="nav-header"> <a href="author.aspx" data-toggle="collapse" data-target="#menu2"> <strong>Authors</strong> <i class="glyphicon glyphicon-chevron-down pull-right"></i></a>
+                <li class="nav-header"> <a href="author.aspx" data-toggle="collapse" data-target="#menu2"> <strong>Authors</strong> <i class="glyphicon glyphicon"></i></a>
 
                     <ul class="nav nav-stacked collapse" id="menu2">
                       

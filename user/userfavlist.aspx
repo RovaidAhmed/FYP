@@ -67,18 +67,17 @@
              
 
                 <ul class="nav nav-stacked">
-                    <li class="nav-header">
-                        <a href="userfavlist.aspx" data-toggle="collapse" data-target="#menu">
-                            <strong>Dashboard</strong>
-                            <i class="glyphicon glyphicon-chevron-down pull-right"></i>
-                        </a>
-                      
-                    </li>
+                     <li class="nav-header"> <a href="userfavlist.aspx" data-toggle="collapse" data-target="#menu"><strong>Add</strong><i class="glyphicon glyphicon"></i></a>
+                    <ul class="nav nav-stacked collapse" id="menu">
+ 
+                     
+                    </ul>
+                </li>
                     <hr>
 
                     <li class="nav-header">
                         <a href="author.aspx" data-toggle="collapse" data-target="#menu2">
-                            <strong>View Details</strong>
+                            <strong>Remove Journal From List </strong>
                             <i class="glyphicon glyphicon-chevron-down pull-right"></i>
                         </a>
                        
@@ -149,7 +148,7 @@
                     <asp:TextBox ID="Txtuid" runat="server" placeholder="txtuid " CssClass="form-control" Enabled="false"></asp:TextBox> 
                     <br />
 
-                    <asp:TextBox ID="Txtjid" runat="server" placeholder="Journal Name " CssClass="form-control" required="required;" ></asp:TextBox> 
+                    <asp:TextBox ID="Txtjid" runat="server" placeholder="Journal Name " CssClass="form-control"  ></asp:TextBox> 
                     <br />
 
                     <hr>

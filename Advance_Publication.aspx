@@ -126,9 +126,11 @@
                             <a class="nav-link" href="Publish.aspx">Publication Information</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="subscription.aspx">Subscription</a>
+                            <a class="nav-link" href="subscription.aspx">Subscription / Register</a>
                         </li>
-                       
+                          <li class="nav-item">
+                            <a class="nav-link" href="userloginform.aspx">Login</a>
+                        </li>
                     </ul>
                    
                 </div>
